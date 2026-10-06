@@ -543,7 +543,8 @@
                                 </div>
                                 <div class="mt-2.5 h-1 rounded-full bg-surface-alt"><div class="h-full w-[35%] rounded-full bg-cobalt"></div></div>
                                 <div class="mt-3 text-[13px] font-[560] leading-[1.4]">Quale estintore non va usato su un incendio di liquidi infiammabili?</div>
-                                <div class="mt-2.5 flex flex-col gap-1.5">
+                                {{-- "₂" non è in Commissioner: come nel design ripiega sul sans-serif generico. --}}
+                                <div class="mt-2.5 flex flex-col gap-1.5 [font-family:Commissioner,sans-serif]">
                                     @foreach ($examAnswers as $answer)
                                         <span @class([
                                             'flex items-center gap-2 rounded-lg border px-2.5 py-[7px]',
@@ -685,8 +686,8 @@
                     <h2 class="mx-auto max-w-[760px] {{ $sectionTitle }} text-ivory">Vuoi vederla con i tuoi corsi?</h2>
                     <p class="mx-auto mt-5 max-w-[520px] text-[19px] leading-[1.6] text-muted-dark">Una demo guidata su un'edizione vera: dal catalogo all'attestato, con le tue scadenze.</p>
                     <div class="mt-9 flex flex-wrap justify-center gap-3">
-                        <a href="{{ route('contact') }}" class="inline-flex min-h-12 items-center gap-2 rounded-full bg-cobalt px-6 text-[16px] font-medium text-white no-underline transition-colors hover:bg-cobalt-hover hover:text-white focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-periwinkle">Richiedi una demo{{ $icon('arrow-right', 18) }}</a>
-                        <a href="{{ route('verify') }}" class="inline-flex min-h-12 items-center gap-2 rounded-full border border-ivory/22 bg-ivory/10 px-6 text-[16px] font-medium text-ivory no-underline transition-colors hover:bg-ivory/16 hover:text-ivory focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-periwinkle">Verifica un attestato</a>
+                        <a href="{{ route('contact') }}" class="inline-flex min-h-12 items-center gap-2 rounded-full bg-cobalt px-6 text-[16px] font-medium text-white no-underline transition-colors hover:bg-cobalt-hover hover:text-white focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-cobalt">Richiedi una demo{{ $icon('arrow-right', 18) }}</a>
+                        <a href="{{ route('verify') }}" class="inline-flex min-h-12 items-center gap-2 rounded-full border border-ivory/22 bg-ivory/10 px-6 text-[16px] font-medium text-ivory no-underline transition-colors hover:bg-ivory/16 hover:text-ivory focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-cobalt">Verifica un attestato</a>
                     </div>
                 </div>
             </div>

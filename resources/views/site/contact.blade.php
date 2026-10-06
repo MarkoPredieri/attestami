@@ -99,7 +99,7 @@
     $labelClass = 'mb-2 block text-sm font-medium leading-[1.4] text-ink-soft';
     $fieldClass = 'block w-full rounded-xl border bg-white text-base text-ink placeholder:text-[#75758C] focus:border-cobalt focus:ring-3 focus:ring-cobalt-soft focus:outline-none';
     $fieldStateClass = fn (string $field) => $errors->has($field) ? 'border-danger' : 'border-[#D9D9E3] hover:border-[#B9B9C9]';
-    $cardClass = 'reveal-scale scroll-mt-[104px] max-[600px]:scroll-mt-[152px] rounded-3xl bg-white p-10 shadow-[0_30px_80px_-30px_rgba(23,23,33,0.25),0_0_0_1px_rgba(23,23,33,0.06)] max-[860px]:rounded-[20px] max-[860px]:px-5 max-[860px]:py-7';
+    $cardClass = 'reveal-scale scroll-mt-[104px] rounded-3xl bg-white p-10 shadow-[0_30px_80px_-30px_rgba(23,23,33,0.25),0_0_0_1px_rgba(23,23,33,0.06)] max-[860px]:rounded-[20px] max-[860px]:px-5 max-[860px]:py-7';
     $buttonFocusClass = 'focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-cobalt';
 @endphp
 

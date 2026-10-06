@@ -36,7 +36,7 @@
         position: relative;
     }
 
-    @media (width >= 860px) and (height >= 700px) {
+    @media (width >= 860px) and (height > 700px) {
         .home-stack-card {
             position: sticky;
             top: 96px;
