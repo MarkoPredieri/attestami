@@ -226,7 +226,7 @@
                         autocomplete="email"
                         placeholder="La tua email di lavoro"
                         @error('email') aria-invalid="true" aria-describedby="hero-email-error" @enderror
-                        class="h-12 min-w-0 flex-[1_1_236px] border-0 bg-transparent px-[18px] text-[16px] text-ivory placeholder:text-[#D4D7E3] focus:outline-none"
+                        class="h-12 min-w-0 flex-[1_1_236px] border-0 bg-transparent px-[18px] text-[16px] text-ivory placeholder:text-[#D4D7E3] focus:outline-hidden"
                     >
                     <button type="submit" class="inline-flex min-h-12 flex-none cursor-pointer items-center gap-2 rounded-full bg-cobalt px-6 text-[16px] font-medium text-white transition-colors hover:bg-cobalt-hover focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-periwinkle max-[860px]:w-full max-[860px]:justify-center">Richiedi una demo</button>
                 </form>

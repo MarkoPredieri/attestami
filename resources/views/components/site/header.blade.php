@@ -21,7 +21,7 @@
             <x-site.logo />
         </a>
 
-        <div class="flex flex-wrap items-center gap-7 text-[15px]">
+        <div class="flex flex-wrap items-center gap-7 text-[15px] max-[600px]:order-3 max-[600px]:w-full max-[600px]:gap-x-5 max-[600px]:gap-y-2 max-[600px]:pb-3">
             @foreach ($links as $route => $label)
                 <a
                     href="{{ route($route) }}"
