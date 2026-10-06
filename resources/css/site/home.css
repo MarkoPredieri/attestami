@@ -1,1 +1,57 @@
 /* Stili specifici della pagina "home" (classi non esprimibili con le utility Tailwind). */
+
+@layer components {
+    /* Cielo del hero: dalla notte delle Dolomiti al grigio chiaro della pagina. */
+    .home-hero-sky {
+        background: linear-gradient(
+            180deg,
+            var(--color-onyx) 0%,
+            #23263e 30%,
+            #4b5583 58%,
+            #9aa8d6 78%,
+            #dce2f3 92%,
+            var(--color-mist) 100%
+        );
+    }
+
+    /* Cielo della CTA finale: lo stesso gradiente, rovesciato verso il footer. */
+    .home-cta-sky {
+        background: linear-gradient(
+            180deg,
+            var(--color-mist) 0%,
+            var(--color-mist) 34%,
+            #dce2f3 48%,
+            #9aa8d6 64%,
+            #4b5583 80%,
+            #23263e 92%,
+            var(--color-onyx) 100%
+        );
+    }
+
+    /*
+     * Card della sezione "La piattaforma": si impilano agganciate sotto l'header,
+     * ognuna 18px più in basso della precedente. Su schermi stretti o bassi scorrono normalmente.
+     */
+    .home-stack-card {
+        position: relative;
+    }
+
+    @media (width >= 860px) and (height >= 700px) {
+        .home-stack-card {
+            position: sticky;
+            top: 96px;
+        }
+
+        .home-stack-card:nth-child(2) {
+            top: calc(96px + 1 * 18px);
+        }
+
+        .home-stack-card:nth-child(3) {
+            top: calc(96px + 2 * 18px);
+        }
+
+        .home-stack-card:nth-child(4) {
+            top: calc(96px + 3 * 18px);
+        }
+    }
+}

@@ -1,1 +1,118 @@
 /* Stili specifici della pagina "platform" (classi non esprimibili con le utility Tailwind). */
+
+/* Cielo dietro la schermata dell'hero: gradiente a quattro stop. */
+.platform-hero-sky {
+    background: linear-gradient(180deg, rgb(220 226 243 / 0) 0%, #dfe4f4 26%, #e6e9f6 60%, #f6f6f9 100%);
+}
+
+/* Colonna giorno del calendario finto: una riga ogni 32px (un'ora). */
+.platform-calendar-day {
+    background-image: repeating-linear-gradient(180deg, #efeff4 0, #efeff4 1px, transparent 1px, transparent 32px);
+}
+
+/*
+ * Scrollytelling "Come funziona": a sinistra l'elenco dei capitoli resta fisso,
+ * a destra scorrono i pannelli. Ogni pannello definisce una view-timeline che
+ * accende il capitolo corrispondente e ne riempie la barra.
+ * Senza supporto (o con "riduci animazioni", o sotto i 1080px) l'elenco resta statico.
+ */
+.platform-chapter-bar {
+    transform: scaleY(0);
+    transform-origin: 50% 0;
+}
+
+@media (prefers-reduced-motion: no-preference) and (width >= 1080px) {
+    @supports (animation-timeline: view()) and (timeline-scope: --platform-chapter-1) {
+        .platform-story {
+            timeline-scope: --platform-chapter-1, --platform-chapter-2, --platform-chapter-3, --platform-chapter-4;
+        }
+
+        .platform-panel-1 {
+            view-timeline-name: --platform-chapter-1;
+        }
+
+        .platform-panel-2 {
+            view-timeline-name: --platform-chapter-2;
+        }
+
+        .platform-panel-3 {
+            view-timeline-name: --platform-chapter-3;
+        }
+
+        .platform-panel-4 {
+            view-timeline-name: --platform-chapter-4;
+        }
+
+        .platform-chapter-1 {
+            animation: platform-chapter-focus linear both;
+            animation-timeline: --platform-chapter-1;
+            animation-range: cover 25% cover 75%;
+        }
+
+        .platform-chapter-2 {
+            animation: platform-chapter-focus linear both;
+            animation-timeline: --platform-chapter-2;
+            animation-range: cover 25% cover 75%;
+        }
+
+        .platform-chapter-3 {
+            animation: platform-chapter-focus linear both;
+            animation-timeline: --platform-chapter-3;
+            animation-range: cover 25% cover 75%;
+        }
+
+        .platform-chapter-4 {
+            animation: platform-chapter-focus linear both;
+            animation-timeline: --platform-chapter-4;
+            animation-range: cover 25% cover 75%;
+        }
+
+        .platform-chapter-bar-1 {
+            animation: platform-chapter-fill linear both;
+            animation-timeline: --platform-chapter-1;
+            animation-range: cover 20% cover 60%;
+        }
+
+        .platform-chapter-bar-2 {
+            animation: platform-chapter-fill linear both;
+            animation-timeline: --platform-chapter-2;
+            animation-range: cover 20% cover 60%;
+        }
+
+        .platform-chapter-bar-3 {
+            animation: platform-chapter-fill linear both;
+            animation-timeline: --platform-chapter-3;
+            animation-range: cover 20% cover 60%;
+        }
+
+        .platform-chapter-bar-4 {
+            animation: platform-chapter-fill linear both;
+            animation-timeline: --platform-chapter-4;
+            animation-range: cover 20% cover 60%;
+        }
+    }
+}
+
+@keyframes platform-chapter-focus {
+    0% {
+        opacity: 0.45;
+    }
+    15% {
+        opacity: 1;
+    }
+    85% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.45;
+    }
+}
+
+@keyframes platform-chapter-fill {
+    from {
+        transform: scaleY(0);
+    }
+    to {
+        transform: scaleY(1);
+    }
+}
