@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Attestami — Dettaglio attestato</title>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght,FLAR,VOLM@300..800,0..100,0..100&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F3F4F8}
+a{color:#5266EB}a:hover{color:#4255D4}
+button,input,select{font-family:inherit}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.app-nav a:hover{background:#F3F4F8;color:#171721}
+.app-nav a[aria-current]:hover{background:#E8EBFD;color:#3E50D0}
+.ib:hover{background:#F3F4F8 !important;color:#171721 !important}
+.bp:hover{background:#4255D4 !important;border-color:#4255D4 !important}
+.bs:hover{background:#F8F8FB !important}
+.bd:hover{background:#FBE7E8 !important;border-color:#E9BDC1 !important}
+.chip:hover{border-color:#CDD3F8 !important;color:#171721 !important}
+.fld:focus-within{outline:2px solid #5266EB;outline-offset:1px}
+.fld input:focus{outline:none}
+input::placeholder{color:#62627A;opacity:1}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #5266EB;outline-offset:2px}
+.g-att{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:24px;align-items:start}
+.g-right{align-self:stretch}
+.dl-row{display:grid;grid-template-columns:112px minmax(0,1fr);gap:2px 16px;align-items:start}
+.tr:hover td{background:#FAFAFD}
+@media (max-width: 1180px){.g-att{grid-template-columns:minmax(0,1fr)}}
+@media (max-width: 860px){
+.app-side{display:none !important}
+.app-top{padding:0 16px !important;gap:8px !important}
+.app-content{padding:16px !important;gap:16px !important}
+.hide-sm{display:none !important}
+.g-att,.g-right{gap:16px !important}
+.stage{padding:12px !important}
+.paper{padding:8px !important}
+.paper-in{padding:24px 20px 20px !important}
+.cert-name{font-size:32px !important}
+}
+@media (max-width: 420px){.dl-row{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<div style="width: 100%; min-height: 100vh; background: #F3F4F8; color: #171721; font-family: 'Commissioner', sans-serif; font-size: 14px; line-height: 1.5; display: flex; flex-wrap: wrap; align-items: stretch">
+
+<aside class="app-side" style="flex: 0 0 256px; background: #FFFFFF; border-right: 1px solid #E9E9F0; display: flex; flex-direction: column">
+<div style="position: sticky; top: 0; height: 100vh; overflow-y: auto; display: flex; flex-direction: column">
+<div style="flex: none; height: 64px; box-sizing: border-box; display: flex; align-items: center; gap: 10px; padding: 0 24px; border-bottom: 1px solid #E9E9F0; color: #5266EB">
+<svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><circle cx="13" cy="13" r="11.25" stroke="currentColor" stroke-width="1.5"></circle><path d="M8.5 13.4l3 3 6-6.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span style="font-family: 'Commissioner', sans-serif; font-size: 19px; font-weight: 520; font-variation-settings: 'FLAR' 100; letter-spacing: 0.01em; color: #171721">Attestami</span>
+</div>
+
+<nav class="app-nav" aria-label="Menu principale" style="padding-bottom: 8px">
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #74748C">Principale</div>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"></rect><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"></rect></svg>Dashboard</a>
+
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #74748C">Formazione</div>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 5a1.5 1.5 0 0 1 1.5-1.5H19v15H6.5A1.5 1.5 0 0 0 5 20z"></path><path d="M5 20a1.5 1.5 0 0 0 1.5 1.5H19"></path><path d="M9 8h6"></path></svg>Corsi</a>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l8.5 4.5-8.5 4.5-8.5-4.5z"></path><path d="M3.5 12.5l8.5 4.5 8.5-4.5"></path><path d="M3.5 16.5l8.5 4.5 8.5-4.5"></path></svg>Edizioni</a>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"></rect><path d="M3.5 10h17M8 3v4M16 3v4"></path></svg>Calendario</a>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4.5" width="14" height="16.5" rx="2"></rect><path d="M9 4.5V3h6v1.5"></path><path d="M9 13l2 2 4-4.5"></path></svg>Esami</a>
+
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #74748C">Persone</div>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8.5" r="3.5"></circle><path d="M2.5 20c.6-3.5 3.3-5.5 6.5-5.5s5.9 2 6.5 5.5"></path><path d="M15.5 5.2a3.5 3.5 0 0 1 0 6.6M17.5 14.8c2 .7 3.5 2.4 4 5.2"></path></svg>Corsisti</a>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a1.5 1.5 0 0 1 1.5-1.5h8A1.5 1.5 0 0 1 15 5v16"></path><path d="M15 9.5h3.5A1.5 1.5 0 0 1 20 11v10M2.5 21h19"></path><path d="M8 8h3M8 12h3M8 16h3"></path></svg>Aziende</a>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"></rect><path d="M12 16v4M8 20.5h8"></path><path d="M7.5 12l3-3 2 2 4-4"></path></svg>Docenti</a>
+
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #74748C">Documenti</div>
+<a href="#" aria-current="page" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; background: #E8EBFD; color: #3E50D0; font-size: 14px; font-weight: 560; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5.5"></circle><path d="M8.6 13.4L7.5 21l4.5-2.5 4.5 2.5-1.1-7.6"></path></svg>Attestati</a>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="7.5"></circle><path d="M12 9.5V13l2.5 2M5 4.5L3 6.5M19 4.5l2 2"></path></svg>Scadenze<span style="margin-left: auto; min-width: 22px; height: 20px; padding: 0 7px; box-sizing: border-box; border-radius: 999px; background: #FDF0DC; color: #A15C07; font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; font-variant-numeric: tabular-nums">9</span></a>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="5" rx="1.5"></rect><path d="M5 9v10a1.5 1.5 0 0 0 1.5 1.5h11A1.5 1.5 0 0 0 19 19V9"></path><path d="M10 13h4"></path></svg>Registro</a>
+
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #74748C">Impostazioni</div>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.6-.8 1.6-1.6 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.7-1.6 1.6-1.6H16a5 5 0 0 0 5-5C21 6.4 17 3 12 3z"></path><circle cx="7.5" cy="11" r="1"></circle><circle cx="10.5" cy="7" r="1"></circle><circle cx="15.5" cy="7.5" r="1"></circle></svg>Ente e brand</a>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="8" r="4"></circle><path d="M3 20.5c.7-3.8 3.5-6 7-6 1.4 0 2.7.3 3.8 1"></path><path d="M15.5 18.5l2 2 4-4.5"></path></svg>Utenti</a>
+</nav>
+
+<div style="margin: auto 16px 16px; padding: 14px; background: #F3F4F8; border-radius: 8px">
+<div style="font-weight: 560; color: #171721">Ente Demo Formazione</div>
+<div style="font-size: 12px; color: #62627A">Piano Professional · 3 sedi</div>
+</div>
+</div>
+</aside>
+
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column">
+
+<header class="app-top" style="flex: none; height: 64px; box-sizing: border-box; background: #FFFFFF; border-bottom: 1px solid #E9E9F0; padding: 0 24px; display: flex; align-items: center; gap: 16px">
+<button type="button" class="ib" aria-label="Apri menu" style="flex: none; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"></path></svg></button>
+<div class="fld" style="position: relative; flex: 0 1 420px; min-width: 0; height: 40px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 0 12px; border-radius: 8px; background: #F3F4F8; border: 1px solid #E9E9F0; color: #62627A">
+<label for="app-cerca" class="sr">Cerca in Attestami</label>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="11" cy="11" r="6.5"></circle><path d="M20 20l-4.2-4.2"></path></svg>
+<input id="app-cerca" type="search" placeholder="Cerca corsisti, corsi, attestati…" style="flex: 1; min-width: 0; height: 38px; padding: 0; border: 0; background: transparent; font-size: 14px; color: #171721">
+</div>
+<div style="flex: 1"></div>
+<div style="flex: none; display: flex; align-items: center; gap: 4px">
+<button type="button" class="ib hide-sm" aria-label="Calendario" style="width: 40px; height: 40px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"></rect><path d="M3.5 10h17M8 3v4M16 3v4"></path></svg></button>
+<button type="button" class="ib" aria-label="Notifiche, 3 non lette" style="position: relative; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"></path><path d="M10 21h4"></path></svg><span style="position: absolute; top: 9px; right: 10px; width: 8px; height: 8px; border-radius: 50%; background: #5266EB; box-shadow: 0 0 0 2px #FFFFFF"></span></button>
+<button type="button" class="ib hide-sm" aria-label="Guida" style="width: 40px; height: 40px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6"></path><path d="M12 17.2v.1"></path></svg></button>
+</div>
+<div class="hide-sm" style="flex: none; width: 1px; height: 28px; background: #E9E9F0"></div>
+<div style="flex: none; display: flex; align-items: center; gap: 10px">
+<span aria-hidden="true" style="width: 36px; height: 36px; border-radius: 50%; background: #E8EBFD; color: #3E50D0; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600">MP</span>
+<div class="hide-sm" style="line-height: 1.3">
+<div style="font-size: 14px; font-weight: 560; color: #171721">Marco Predieri</div>
+<div style="font-size: 12px; color: #62627A">Amministratore</div>
+</div>
+</div>
+</header>
+
+<main class="app-content" style="flex: 1; padding: 24px; display: flex; flex-direction: column; gap: 24px">
+
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px">
+<h1 style="margin: 0; font-size: 22px; font-weight: 560; font-variation-settings: 'FLAR' 60; line-height: 1.25; color: #171721">Attestato <span style="font-variant-numeric: tabular-nums">ATT-2026-0418-7Q</span></h1>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px">
+<nav aria-label="Percorso">
+<ol style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0; padding: 0; list-style: none; font-size: 13px; color: #62627A">
+<li><a href="#" style="color: #62627A; text-decoration: none">Home</a></li>
+<li aria-hidden="true">/</li>
+<li><a href="#" style="color: #62627A; text-decoration: none">Documenti</a></li>
+<li aria-hidden="true">/</li>
+<li><a href="#" style="color: #62627A; text-decoration: none">Attestati</a></li>
+<li aria-hidden="true">/</li>
+<li aria-current="page" style="color: #171721; font-weight: 500; font-variant-numeric: tabular-nums">ATT-2026-0418-7Q</li>
+</ol>
+</nav>
+<div class="hide-sm" style="width: 1px; height: 24px; background: #E1E1EA"></div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<button type="button" class="bs" style="height: 40px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; border: 1px solid #E1E1EA; border-radius: 8px; background: #FFFFFF; color: #171721; font-size: 14px; font-weight: 500; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"></rect><path d="M3.5 7l8.5 6 8.5-6"></path></svg>Invia per email</button>
+<button type="button" class="bd" style="height: 40px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; border: 1px solid #E1E1EA; border-radius: 8px; background: #FFFFFF; color: #C2343B; font-size: 14px; font-weight: 500; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M6 6l12 12"></path></svg>Revoca</button>
+<button type="button" class="bp" style="height: 40px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; border: 1px solid #5266EB; border-radius: 8px; background: #5266EB; color: #FFFFFF; font-size: 14px; font-weight: 500; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7.5 10.5L12 15l4.5-4.5M5 19.5h14"></path></svg>Scarica PDF</button>
+</div>
+</div>
+</div>
+
+<div class="g-att">
+
+<section class="g-left" aria-labelledby="t-anteprima" style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05); min-width: 0">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding: 16px 20px; border-bottom: 1px solid #EFEFF4">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px">
+<h2 id="t-anteprima" style="margin: 0; font-size: 16px; font-weight: 560; line-height: 1.5; color: #171721">Anteprima</h2>
+<span style="font-size: 13px; color: #62627A">A4 verticale · PDF/A · versione 2</span>
+</div>
+<button type="button" class="ib" aria-label="Apri anteprima a schermo intero" style="flex: none; width: 32px; height: 32px; margin: -4px -6px -4px 0; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-6.5 6.5M4 20l6.5-6.5"></path></svg></button>
+</div>
+
+<div style="padding: 20px">
+<div class="stage" style="display: flex; justify-content: center; padding: 24px; border-radius: 8px; background: #F3F4F8">
+
+<article class="paper" aria-label="Anteprima dell'attestato di Anna Neri" style="width: 100%; max-width: 560px; aspect-ratio: 210 / 297; box-sizing: border-box; display: flex; flex-direction: column; padding: 12px; background: #FBFAF7; border: 1px solid #E6E3DB; box-shadow: 0 1px 2px rgba(23,23,33,0.06), 0 16px 36px -16px rgba(23,23,33,0.22); color: #171721">
+<div class="paper-in" style="flex: 1; box-sizing: border-box; display: flex; flex-direction: column; padding: 36px 36px 28px; border: 1px solid #ECE9E1">
+
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 12px 16px">
+<div style="display: flex; align-items: center; gap: 12px">
+<span style="flex: none; width: 44px; height: 44px; box-sizing: border-box; border: 1px dashed #A3A3B8; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 600; letter-spacing: 0.04em; color: #62627A">[LOGO]</span>
+<div style="line-height: 1.35">
+<div style="font-size: 15px; font-weight: 600; color: #171721">Ente Demo Formazione</div>
+<div style="font-size: 11px; color: #5E5E6E">Ente accreditato · Regione [—]</div>
+</div>
+</div>
+<div style="margin-left: auto; font-size: 11px; line-height: 1.6; color: #5E5E6E; text-align: right; font-variant-numeric: tabular-nums">N. ATT-2026-0418-7Q<br>Reg. corso 2026/081</div>
+</div>
+
+<div style="height: 1px; margin-top: 28px; background: #5266EB"></div>
+
+<div style="margin-top: 40px; font-size: 11px; font-weight: 600; letter-spacing: 0.24em; color: #4A4A5C">ATTESTATO DI FORMAZIONE</div>
+<div style="margin-top: 20px; font-size: 14px; color: #3B3B4F">Si attesta che</div>
+<div class="cert-name" style="margin-top: 4px; font-size: 40px; font-weight: 480; font-variation-settings: 'FLAR' 100, 'VOLM' 0; letter-spacing: 0.005em; line-height: 1.08; color: #171721">Anna Neri</div>
+<div style="margin-top: 8px; font-size: 12px; color: #5E5E6E; font-variant-numeric: tabular-nums">C.F. NRENNA90A41H501X · nata a Roma il 01/01/1990</div>
+
+<div style="margin-top: 24px; font-size: 14px; color: #3B3B4F">ha frequentato con esito positivo il corso</div>
+<div style="margin-top: 4px; font-size: 20px; font-weight: 560; font-variation-settings: 'FLAR' 60; line-height: 1.3; color: #171721">Formazione Generale dei Lavoratori</div>
+<div style="margin-top: 4px; font-size: 13px; line-height: 1.5; color: #3B3B4F">Durata 4 ore · ai sensi dell'art. 37 D.Lgs 81/08 e dell'Accordo Stato-Regioni</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(120px, 100%), 1fr)); gap: 12px 16px; margin-top: 32px">
+<div style="padding-top: 10px; border-top: 1px solid #E4E1D8">
+<div style="font-size: 11px; color: #5E5E6E">Svolto</div>
+<div style="margin-top: 2px; font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums">14–18 apr 2026</div>
+</div>
+<div style="padding-top: 10px; border-top: 1px solid #E4E1D8">
+<div style="font-size: 11px; color: #5E5E6E">Esito esame</div>
+<div style="margin-top: 2px; font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums">18/20</div>
+</div>
+<div style="padding-top: 10px; border-top: 1px solid #E4E1D8">
+<div style="font-size: 11px; color: #5E5E6E">Validità</div>
+<div style="margin-top: 2px; font-size: 14px; font-weight: 600">Permanente</div>
+</div>
+</div>
+
+<div style="margin-top: auto; padding-top: 32px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px">
+<div>
+<div style="font-size: 11px; color: #5E5E6E; font-variant-numeric: tabular-nums">Rilasciato il 18/04/2026</div>
+<svg width="150" height="44" viewBox="0 0 150 44" fill="none" aria-hidden="true" style="display: block; margin-top: 6px"><path d="M8 33c5-9 9-21 13-22 3-1 1 9-1 15-1 4 0 6 3 4 4-3 7-11 10-11 2 0 0 7 2 7 3 0 5-6 8-6 2 0 1 5 3 5 3 0 6-9 9-9 2 0 0 6 2 6 3 0 5-4 8-5 3-1 3 3 6 3 5 0 10-6 16-7" stroke="#2A2F4A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path><path d="M22 38c26-3 58-6 96-9" stroke="#2A2F4A" stroke-width="1.1" stroke-linecap="round"></path></svg>
+<div style="width: 188px; max-width: 100%; margin-top: 2px; padding-top: 6px; border-top: 1px solid #171721; font-size: 11px; color: #3B3B4F">Il Direttore del corso</div>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 6px">
+<svg width="80" height="80" viewBox="-1 -1 27 27" aria-label="Codice QR di verifica" role="img" shape-rendering="crispEdges" style="display: block; background: #FFFFFF"><g fill="#171721"><rect x="0" y="0" width="7" height="1"></rect><rect x="8" y="0" width="1" height="1"></rect><rect x="12" y="0" width="2" height="1"></rect><rect x="16" y="0" width="1" height="1"></rect><rect x="18" y="0" width="7" height="1"></rect><rect x="0" y="1" width="1" height="1"></rect><rect x="6" y="1" width="1" height="1"></rect><rect x="9" y="1" width="1" height="1"></rect><rect x="13" y="1" width="1" height="1"></rect><rect x="15" y="1" width="2" height="1"></rect><rect x="18" y="1" width="1" height="1"></rect><rect x="24" y="1" width="1" height="1"></rect><rect x="0" y="2" width="1" height="1"></rect><rect x="2" y="2" width="3" height="1"></rect><rect x="6" y="2" width="1" height="1"></rect><rect x="8" y="2" width="2" height="1"></rect><rect x="12" y="2" width="2" height="1"></rect><rect x="15" y="2" width="2" height="1"></rect><rect x="18" y="2" width="1" height="1"></rect><rect x="20" y="2" width="3" height="1"></rect><rect x="24" y="2" width="1" height="1"></rect><rect x="0" y="3" width="1" height="1"></rect><rect x="2" y="3" width="3" height="1"></rect><rect x="6" y="3" width="1" height="1"></rect><rect x="9" y="3" width="2" height="1"></rect><rect x="14" y="3" width="1" height="1"></rect><rect x="18" y="3" width="1" height="1"></rect><rect x="20" y="3" width="3" height="1"></rect><rect x="24" y="3" width="1" height="1"></rect><rect x="0" y="4" width="1" height="1"></rect><rect x="2" y="4" width="3" height="1"></rect><rect x="6" y="4" width="1" height="1"></rect><rect x="8" y="4" width="1" height="1"></rect><rect x="11" y="4" width="3" height="1"></rect><rect x="15" y="4" width="1" height="1"></rect><rect x="18" y="4" width="1" height="1"></rect><rect x="20" y="4" width="3" height="1"></rect><rect x="24" y="4" width="1" height="1"></rect><rect x="0" y="5" width="1" height="1"></rect><rect x="6" y="5" width="1" height="1"></rect><rect x="8" y="5" width="1" height="1"></rect><rect x="11" y="5" width="1" height="1"></rect><rect x="13" y="5" width="4" height="1"></rect><rect x="18" y="5" width="1" height="1"></rect><rect x="24" y="5" width="1" height="1"></rect><rect x="0" y="6" width="7" height="1"></rect><rect x="8" y="6" width="1" height="1"></rect><rect x="10" y="6" width="1" height="1"></rect><rect x="12" y="6" width="1" height="1"></rect><rect x="14" y="6" width="1" height="1"></rect><rect x="16" y="6" width="1" height="1"></rect><rect x="18" y="6" width="7" height="1"></rect><rect x="10" y="7" width="1" height="1"></rect><rect x="15" y="7" width="2" height="1"></rect><rect x="0" y="8" width="1" height="1"></rect><rect x="3" y="8" width="2" height="1"></rect><rect x="6" y="8" width="1" height="1"></rect><rect x="10" y="8" width="1" height="1"></rect><rect x="12" y="8" width="1" height="1"></rect><rect x="20" y="8" width="2" height="1"></rect><rect x="1" y="9" width="2" height="1"></rect><rect x="7" y="9" width="5" height="1"></rect><rect x="13" y="9" width="3" height="1"></rect><rect x="17" y="9" width="6" height="1"></rect><rect x="3" y="10" width="1" height="1"></rect><rect x="6" y="10" width="2" height="1"></rect><rect x="9" y="10" width="2" height="1"></rect><rect x="13" y="10" width="1" height="1"></rect><rect x="15" y="10" width="3" height="1"></rect><rect x="19" y="10" width="2" height="1"></rect><rect x="0" y="11" width="2" height="1"></rect><rect x="4" y="11" width="2" height="1"></rect><rect x="7" y="11" width="1" height="1"></rect><rect x="9" y="11" width="1" height="1"></rect><rect x="12" y="11" width="2" height="1"></rect><rect x="17" y="11" width="2" height="1"></rect><rect x="3" y="12" width="1" height="1"></rect><rect x="5" y="12" width="2" height="1"></rect><rect x="8" y="12" width="1" height="1"></rect><rect x="10" y="12" width="1" height="1"></rect><rect x="12" y="12" width="2" height="1"></rect><rect x="15" y="12" width="2" height="1"></rect><rect x="20" y="12" width="3" height="1"></rect><rect x="0" y="13" width="1" height="1"></rect><rect x="5" y="13" width="1" height="1"></rect><rect x="7" y="13" width="4" height="1"></rect><rect x="17" y="13" width="3" height="1"></rect><rect x="22" y="13" width="1" height="1"></rect><rect x="0" y="14" width="2" height="1"></rect><rect x="3" y="14" width="6" height="1"></rect><rect x="10" y="14" width="5" height="1"></rect><rect x="16" y="14" width="1" height="1"></rect><rect x="23" y="14" width="1" height="1"></rect><rect x="0" y="15" width="2" height="1"></rect><rect x="3" y="15" width="3" height="1"></rect><rect x="8" y="15" width="1" height="1"></rect><rect x="10" y="15" width="1" height="1"></rect><rect x="14" y="15" width="4" height="1"></rect><rect x="19" y="15" width="1" height="1"></rect><rect x="3" y="16" width="4" height="1"></rect><rect x="8" y="16" width="2" height="1"></rect><rect x="11" y="16" width="2" height="1"></rect><rect x="15" y="16" width="7" height="1"></rect><rect x="23" y="16" width="2" height="1"></rect><rect x="9" y="17" width="2" height="1"></rect><rect x="14" y="17" width="3" height="1"></rect><rect x="20" y="17" width="1" height="1"></rect><rect x="0" y="18" width="7" height="1"></rect><rect x="10" y="18" width="1" height="1"></rect><rect x="12" y="18" width="1" height="1"></rect><rect x="14" y="18" width="1" height="1"></rect><rect x="16" y="18" width="1" height="1"></rect><rect x="18" y="18" width="1" height="1"></rect><rect x="20" y="18" width="1" height="1"></rect><rect x="24" y="18" width="1" height="1"></rect><rect x="0" y="19" width="1" height="1"></rect><rect x="6" y="19" width="1" height="1"></rect><rect x="9" y="19" width="4" height="1"></rect><rect x="14" y="19" width="1" height="1"></rect><rect x="16" y="19" width="1" height="1"></rect><rect x="20" y="19" width="3" height="1"></rect><rect x="0" y="20" width="1" height="1"></rect><rect x="2" y="20" width="3" height="1"></rect><rect x="6" y="20" width="1" height="1"></rect><rect x="9" y="20" width="4" height="1"></rect><rect x="14" y="20" width="1" height="1"></rect><rect x="16" y="20" width="9" height="1"></rect><rect x="0" y="21" width="1" height="1"></rect><rect x="2" y="21" width="3" height="1"></rect><rect x="6" y="21" width="1" height="1"></rect><rect x="9" y="21" width="5" height="1"></rect><rect x="15" y="21" width="1" height="1"></rect><rect x="17" y="21" width="1" height="1"></rect><rect x="21" y="21" width="1" height="1"></rect><rect x="23" y="21" width="1" height="1"></rect><rect x="0" y="22" width="1" height="1"></rect><rect x="2" y="22" width="3" height="1"></rect><rect x="6" y="22" width="1" height="1"></rect><rect x="8" y="22" width="1" height="1"></rect><rect x="12" y="22" width="2" height="1"></rect><rect x="16" y="22" width="1" height="1"></rect><rect x="20" y="22" width="1" height="1"></rect><rect x="23" y="22" width="1" height="1"></rect><rect x="0" y="23" width="1" height="1"></rect><rect x="6" y="23" width="1" height="1"></rect><rect x="8" y="23" width="5" height="1"></rect><rect x="14" y="23" width="6" height="1"></rect><rect x="22" y="23" width="1" height="1"></rect><rect x="24" y="23" width="1" height="1"></rect><rect x="0" y="24" width="7" height="1"></rect><rect x="8" y="24" width="2" height="1"></rect><rect x="13" y="24" width="1" height="1"></rect><rect x="16" y="24" width="1" height="1"></rect><rect x="18" y="24" width="1" height="1"></rect><rect x="22" y="24" width="2" height="1"></rect></g></svg>
+<div style="font-size: 10px; color: #5E5E6E">verifica.attestami.it</div>
+</div>
+</div>
+
+</div>
+</article>
+
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 16px; padding: 14px 20px; border-top: 1px solid #EFEFF4">
+<div role="group" aria-labelledby="lbl-modello" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px">
+<span id="lbl-modello" style="font-size: 13px; color: #62627A">Modello</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<button type="button" aria-pressed="true" style="height: 32px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 6px; padding: 0 14px 0 10px; border: 1px solid #CDD3F8; border-radius: 999px; background: #E8EBFD; color: #3E50D0; font-size: 13px; font-weight: 560; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Standard ente</button>
+<button type="button" class="chip" aria-pressed="false" style="height: 32px; box-sizing: border-box; display: inline-flex; align-items: center; padding: 0 14px; border: 1px solid #E1E1EA; border-radius: 999px; background: #FFFFFF; color: #3B3B4F; font-size: 13px; font-weight: 500; cursor: pointer">Con logo azienda cliente</button>
+</div>
+</div>
+<a href="#" style="font-size: 13px; font-weight: 500; text-decoration: none">Gestisci modelli</a>
+</div>
+</section>
+
+<div class="g-right" style="display: flex; flex-direction: column; gap: 24px; min-width: 0">
+
+<section aria-labelledby="t-dati" style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05)">
+<div style="padding: 16px 20px; border-bottom: 1px solid #EFEFF4">
+<h2 id="t-dati" style="margin: 0; font-size: 16px; font-weight: 560; line-height: 1.5; color: #171721">Dati attestato</h2>
+</div>
+<dl style="margin: 0; padding: 4px 20px">
+<div class="dl-row" style="padding: 10px 0; border-bottom: 1px solid #EFEFF4">
+<dt style="font-size: 13px; line-height: 20px; color: #62627A">Codice</dt>
+<dd style="margin: 0; display: flex; align-items: center; gap: 6px; line-height: 20px"><span style="font-weight: 600; font-variant-numeric: tabular-nums">ATT-2026-0418-7Q</span><button type="button" class="ib" aria-label="Copia codice" style="flex: none; width: 24px; height: 24px; margin: -2px 0; padding: 0; border: 0; border-radius: 6px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="12" height="12" rx="2"></rect><path d="M15.5 8.5V5.5a2 2 0 0 0-2-2h-8a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3"></path></svg></button></dd>
+</div>
+<div class="dl-row" style="padding: 10px 0; border-bottom: 1px solid #EFEFF4">
+<dt style="font-size: 13px; line-height: 20px; color: #62627A">Stato</dt>
+<dd style="margin: 0; line-height: 20px"><span style="display: inline-flex; align-items: center; gap: 6px; height: 22px; padding: 0 9px 0 8px; box-sizing: border-box; border-radius: 999px; background: #E3F4EC; color: #0B7352; font-size: 12px; font-weight: 600; vertical-align: middle"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: #0F8A63"></span>Valido</span></dd>
+</div>
+<div class="dl-row" style="padding: 10px 0; border-bottom: 1px solid #EFEFF4">
+<dt style="font-size: 13px; line-height: 20px; color: #62627A">Corsista</dt>
+<dd style="margin: 0; line-height: 20px"><a href="#" style="font-weight: 500; text-decoration: none">Neri Anna</a><div style="font-size: 12px; line-height: 18px; color: #62627A; font-variant-numeric: tabular-nums">NRENNA90A41H501X</div></dd>
+</div>
+<div class="dl-row" style="padding: 10px 0; border-bottom: 1px solid #EFEFF4">
+<dt style="font-size: 13px; line-height: 20px; color: #62627A">Azienda</dt>
+<dd style="margin: 0; line-height: 20px">Forno Aurora</dd>
+</div>
+<div class="dl-row" style="padding: 10px 0; border-bottom: 1px solid #EFEFF4">
+<dt style="font-size: 13px; line-height: 20px; color: #62627A">Corso</dt>
+<dd style="margin: 0; line-height: 20px">Formazione Generale dei Lavoratori<div style="font-size: 12px; line-height: 18px; color: #62627A">4 ore · art. 37 D.Lgs 81/08</div></dd>
+</div>
+<div class="dl-row" style="padding: 10px 0; border-bottom: 1px solid #EFEFF4">
+<dt style="font-size: 13px; line-height: 20px; color: #62627A">Edizione</dt>
+<dd style="margin: 0; line-height: 20px"><a href="#" style="font-weight: 500; text-decoration: none; font-variant-numeric: tabular-nums">2026/081</a><span style="color: #62627A"> · e-learning, 14–18 apr</span></dd>
+</div>
+<div class="dl-row" style="padding: 10px 0; border-bottom: 1px solid #EFEFF4">
+<dt style="font-size: 13px; line-height: 20px; color: #62627A">Docente</dt>
+<dd style="margin: 0; line-height: 20px">Ing. Conti</dd>
+</div>
+<div class="dl-row" style="padding: 10px 0; border-bottom: 1px solid #EFEFF4">
+<dt style="font-size: 13px; line-height: 20px; color: #62627A">Emesso il</dt>
+<dd style="margin: 0; line-height: 20px; font-variant-numeric: tabular-nums">18/04/2026</dd>
+</div>
+<div class="dl-row" style="padding: 10px 0">
+<dt style="font-size: 13px; line-height: 20px; color: #62627A">Scadenza</dt>
+<dd style="margin: 0; line-height: 20px">—<div style="font-size: 12px; line-height: 18px; color: #62627A">Credito formativo permanente</div></dd>
+</div>
+</dl>
+</section>
+
+<section aria-labelledby="t-verifiche" style="flex: 1 1 auto; background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05)">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding: 16px 20px; border-bottom: 1px solid #EFEFF4">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px">
+<h2 id="t-verifiche" style="margin: 0; font-size: 16px; font-weight: 560; line-height: 1.5; color: #171721">Verifiche pubbliche</h2>
+<span style="font-size: 13px; color: #62627A; font-variant-numeric: tabular-nums">2 verifiche</span>
+</div>
+<a href="verifica.html" style="display: inline-flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 500; text-decoration: none">Pagina pubblica<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16L16 8M9.5 8H16v6.5"></path></svg></a>
+</div>
+<ol style="list-style: none; margin: 0; padding: 20px 20px 4px">
+<li style="position: relative; display: flex; gap: 14px; padding-bottom: 20px">
+<span aria-hidden="true" style="position: absolute; left: 5px; top: 18px; bottom: 0; width: 2px; background: #EFEFF4"></span>
+<span aria-hidden="true" style="position: relative; flex: none; width: 12px; height: 12px; margin-top: 4px; border-radius: 50%; background: #FFFFFF; border: 3px solid #5266EB; box-sizing: border-box"></span>
+<div style="flex: 1; min-width: 0">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 2px 8px"><span style="font-weight: 600">Verificato da QR</span><span style="font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">2 ott 2026, 10:42</span></div>
+<div style="margin-top: 2px; font-size: 13px; color: #3B3B4F">Scansione del QR stampato · Milano</div>
+</div>
+</li>
+<li style="position: relative; display: flex; gap: 14px; padding-bottom: 20px">
+<span aria-hidden="true" style="position: absolute; left: 5px; top: 18px; bottom: 0; width: 2px; background: #EFEFF4"></span>
+<span aria-hidden="true" style="position: relative; flex: none; width: 12px; height: 12px; margin-top: 4px; border-radius: 50%; background: #FFFFFF; border: 3px solid #6F7FB0; box-sizing: border-box"></span>
+<div style="flex: 1; min-width: 0">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 2px 8px"><span style="font-weight: 600">Verificato da codice</span><span style="font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">12 set 2026, 15:08</span></div>
+<div style="margin-top: 2px; font-size: 13px; color: #3B3B4F">Codice inserito su verifica.attestami.it</div>
+</div>
+</li>
+<li style="position: relative; display: flex; gap: 14px; padding-bottom: 20px">
+<span aria-hidden="true" style="position: relative; flex: none; width: 12px; height: 12px; margin-top: 4px; border-radius: 50%; background: #FFFFFF; border: 3px solid #0F8A63; box-sizing: border-box"></span>
+<div style="flex: 1; min-width: 0">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 2px 8px"><span style="font-weight: 600">Inviato al corsista</span><span style="font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">18 apr 2026, 16:40</span></div>
+<div style="margin-top: 2px; font-size: 13px; color: #3B3B4F">PDF e link di verifica via email</div>
+</div>
+</li>
+</ol>
+</section>
+
+<section aria-labelledby="t-revoca" style="display: flex; gap: 16px; padding: 20px; background: #FDF7F7; border: 1px solid #F3D5D7; border-radius: 8px">
+<span aria-hidden="true" style="flex: none; width: 40px; height: 40px; border-radius: 8px; background: #FBE7E8; color: #C2343B; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M6 6l12 12"></path></svg></span>
+<div style="flex: 1; min-width: 0">
+<h2 id="t-revoca" style="margin: 0; font-size: 16px; font-weight: 560; line-height: 1.5; color: #171721">Revoca attestato</h2>
+<p style="margin: 4px 0 0; font-size: 13px; line-height: 1.55; color: #3B3B4F">Chi verifica il codice o il QR vedrà l'attestato come revocato, con data e motivo. Il codice non potrà tornare valido: per correggere i dati, rigenera il PDF.</p>
+<button type="button" class="bd" style="margin-top: 16px; height: 36px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px; padding: 0 14px; border: 1px solid #EBC3C6; border-radius: 8px; background: #FFFFFF; color: #C2343B; font-size: 14px; font-weight: 500; cursor: pointer">Revoca attestato…</button>
+</div>
+</section>
+
+</div>
+</div>
+
+<section aria-labelledby="t-registro" style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05); overflow: hidden">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding: 16px 20px; border-bottom: 1px solid #EFEFF4">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px">
+<h2 id="t-registro" style="margin: 0; font-size: 16px; font-weight: 560; line-height: 1.5; color: #171721">Registro modifiche</h2>
+<span style="font-size: 13px; color: #62627A; font-variant-numeric: tabular-nums">3 eventi</span>
+</div>
+<a href="#" style="font-size: 13px; font-weight: 500; text-decoration: none">Esporta registro</a>
+</div>
+<div role="region" aria-labelledby="t-registro" tabindex="0" style="overflow-x: auto">
+<table style="width: 100%; min-width: 840px; border-collapse: collapse; font-size: 14px">
+<thead>
+<tr style="background: #FAFAFC">
+<th scope="col" style="padding: 10px 20px; border-bottom: 1px solid #EFEFF4; text-align: left; font-size: 12px; font-weight: 600; color: #62627A; white-space: nowrap; width: 160px">Data e ora</th>
+<th scope="col" style="padding: 10px 20px; border-bottom: 1px solid #EFEFF4; text-align: left; font-size: 12px; font-weight: 600; color: #62627A">Modifica</th>
+<th scope="col" style="padding: 10px 20px; border-bottom: 1px solid #EFEFF4; text-align: left; font-size: 12px; font-weight: 600; color: #62627A; width: 220px">Autore</th>
+<th scope="col" style="padding: 10px 20px; border-bottom: 1px solid #EFEFF4; text-align: right; font-size: 12px; font-weight: 600; color: #62627A; width: 120px">Versione PDF</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tr">
+<td style="padding: 12px 20px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; white-space: nowrap; font-variant-numeric: tabular-nums">18/04/2026 16:31</td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #EFEFF4; font-weight: 500; color: #171721">PDF rigenerato con i dati corretti</td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #EFEFF4"><span style="display: inline-flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 28px; height: 28px; border-radius: 50%; background: #E8EBFD; color: #3E50D0; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600">MP</span>Marco Predieri</span></td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #EFEFF4; text-align: right"><span style="display: inline-flex; align-items: center; height: 22px; padding: 0 8px; box-sizing: border-box; border-radius: 999px; background: #E8EBFD; color: #3E50D0; font-size: 12px; font-weight: 600; white-space: nowrap">v2 · attuale</span></td>
+</tr>
+<tr class="tr">
+<td style="padding: 12px 20px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; white-space: nowrap; font-variant-numeric: tabular-nums">18/04/2026 16:29</td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #EFEFF4; color: #171721"><span style="font-weight: 500">Data di nascita corretta</span><span style="color: #3B3B4F; font-variant-numeric: tabular-nums"> · 10/01/1990 → 01/01/1990</span></td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #EFEFF4"><span style="display: inline-flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 28px; height: 28px; border-radius: 50%; background: #E8EBFD; color: #3E50D0; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600">MP</span>Marco Predieri</span></td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #EFEFF4; text-align: right"><span style="display: inline-flex; align-items: center; height: 22px; padding: 0 8px; box-sizing: border-box; border-radius: 999px; background: #EDEDF3; color: #3B3B4F; font-size: 12px; font-weight: 600">v1</span></td>
+</tr>
+<tr class="tr">
+<td style="padding: 12px 20px; color: #3B3B4F; white-space: nowrap; font-variant-numeric: tabular-nums">18/04/2026 16:05</td>
+<td style="padding: 12px 20px; color: #171721"><span style="font-weight: 500">Emesso dopo l'esame superato</span><span style="color: #3B3B4F; font-variant-numeric: tabular-nums"> · 18/20</span></td>
+<td style="padding: 12px 20px"><span style="display: inline-flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 28px; height: 28px; border-radius: 50%; background: #EDEDF3; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L5 13.5h6L10 21l8-10.5h-6z"></path></svg></span><span style="color: #3B3B4F">Automatico</span></span></td>
+<td style="padding: 12px 20px; text-align: right"><span style="display: inline-flex; align-items: center; height: 22px; padding: 0 8px; box-sizing: border-box; border-radius: 999px; background: #EDEDF3; color: #3B3B4F; font-size: 12px; font-weight: 600">v1</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+</main>
+</div>
+</div>
+</body>
+</html>

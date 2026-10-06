@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Attestami — Scadenze</title>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght,FLAR,VOLM@300..800,0..100,0..100&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F3F4F8}
+a{color:#5266EB}a:hover{color:#4255D4}
+button,input,select{font-family:inherit}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.app-nav a:hover{background:#F3F4F8;color:#171721}
+.ib:hover{background:#F3F4F8 !important;color:#171721 !important}
+.bp:hover{background:#4255D4 !important;border-color:#4255D4 !important}
+.bs:hover{background:#F8F8FB !important}
+.tr:hover{background:#FAFAFD}
+.fld:focus-within{outline:2px solid #5266EB;outline-offset:1px}
+.fld input:focus,.fld select:focus{outline:none}
+input::placeholder{color:#62627A;opacity:1}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #5266EB;outline-offset:2px}
+.ck{width:16px;height:16px;margin:0;accent-color:#5266EB;cursor:pointer;vertical-align:middle}
+.sw{-webkit-appearance:none;appearance:none;flex:none;position:relative;width:36px;height:20px;margin:0;border-radius:999px;background:#D5D5E0;cursor:pointer;transition:background .15s ease}
+.sw::before{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#FFFFFF;box-shadow:0 1px 2px rgba(23,23,33,0.24);transition:transform .15s ease}
+.sw:checked{background:#5266EB}
+.sw:checked::before{transform:translateX(16px)}
+@media (max-width: 860px){
+.app-side{display:none !important}
+.app-top{padding:0 16px !important;gap:8px !important}
+.app-content{padding:16px !important;gap:16px !important}
+.hide-sm{display:none !important}
+.g-sm{gap:16px !important}
+}
+</style>
+</head>
+<body>
+<div style="width: 100%; min-height: 100vh; background: #F3F4F8; color: #171721; font-family: 'Commissioner', sans-serif; font-size: 14px; line-height: 1.5; display: flex; flex-wrap: wrap; align-items: stretch">
+
+<aside class="app-side" style="flex: 0 0 256px; background: #FFFFFF; border-right: 1px solid #E9E9F0; display: flex; flex-direction: column">
+<div style="position: sticky; top: 0; height: 100vh; overflow-y: auto; display: flex; flex-direction: column">
+<div style="flex: none; height: 64px; box-sizing: border-box; display: flex; align-items: center; gap: 10px; padding: 0 24px; border-bottom: 1px solid #E9E9F0; color: #5266EB">
+<svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><circle cx="13" cy="13" r="11.25" stroke="currentColor" stroke-width="1.5"></circle><path d="M8.5 13.4l3 3 6-6.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span style="font-family: 'Commissioner', sans-serif; font-size: 19px; font-weight: 520; font-variation-settings: 'FLAR' 100; letter-spacing: 0.01em; color: #171721">Attestami</span>
+</div>
+
+<nav class="app-nav" aria-label="Menu principale" style="padding-bottom: 8px">
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #74748C">Principale</div>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"></rect><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"></rect></svg>Dashboard</a>
+
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #74748C">Formazione</div>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 5a1.5 1.5 0 0 1 1.5-1.5H19v15H6.5A1.5 1.5 0 0 0 5 20z"></path><path d="M5 20a1.5 1.5 0 0 0 1.5 1.5H19"></path><path d="M9 8h6"></path></svg>Corsi</a>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l8.5 4.5-8.5 4.5-8.5-4.5z"></path><path d="M3.5 12.5l8.5 4.5 8.5-4.5"></path><path d="M3.5 16.5l8.5 4.5 8.5-4.5"></path></svg>Edizioni</a>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"></rect><path d="M3.5 10h17M8 3v4M16 3v4"></path></svg>Calendario</a>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4.5" width="14" height="16.5" rx="2"></rect><path d="M9 4.5V3h6v1.5"></path><path d="M9 13l2 2 4-4.5"></path></svg>Esami</a>
+
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #74748C">Persone</div>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8.5" r="3.5"></circle><path d="M2.5 20c.6-3.5 3.3-5.5 6.5-5.5s5.9 2 6.5 5.5"></path><path d="M15.5 5.2a3.5 3.5 0 0 1 0 6.6M17.5 14.8c2 .7 3.5 2.4 4 5.2"></path></svg>Corsisti</a>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a1.5 1.5 0 0 1 1.5-1.5h8A1.5 1.5 0 0 1 15 5v16"></path><path d="M15 9.5h3.5A1.5 1.5 0 0 1 20 11v10M2.5 21h19"></path><path d="M8 8h3M8 12h3M8 16h3"></path></svg>Aziende</a>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"></rect><path d="M12 16v4M8 20.5h8"></path><path d="M7.5 12l3-3 2 2 4-4"></path></svg>Docenti</a>
+
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #74748C">Documenti</div>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5.5"></circle><path d="M8.6 13.4L7.5 21l4.5-2.5 4.5 2.5-1.1-7.6"></path></svg>Attestati</a>
+<a href="#" aria-current="page" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; background: #E8EBFD; color: #3E50D0; font-size: 14px; font-weight: 560; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="7.5"></circle><path d="M12 9.5V13l2.5 2M5 4.5L3 6.5M19 4.5l2 2"></path></svg>Scadenze<span style="margin-left: auto; min-width: 22px; height: 20px; padding: 0 7px; box-sizing: border-box; border-radius: 999px; background: #FDF0DC; color: #A15C07; font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; font-variant-numeric: tabular-nums">9</span></a>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="5" rx="1.5"></rect><path d="M5 9v10a1.5 1.5 0 0 0 1.5 1.5h11A1.5 1.5 0 0 0 19 19V9"></path><path d="M10 13h4"></path></svg>Registro</a>
+
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #74748C">Impostazioni</div>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.6-.8 1.6-1.6 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.7-1.6 1.6-1.6H16a5 5 0 0 0 5-5C21 6.4 17 3 12 3z"></path><circle cx="7.5" cy="11" r="1"></circle><circle cx="10.5" cy="7" r="1"></circle><circle cx="15.5" cy="7.5" r="1"></circle></svg>Ente e brand</a>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="8" r="4"></circle><path d="M3 20.5c.7-3.8 3.5-6 7-6 1.4 0 2.7.3 3.8 1"></path><path d="M15.5 18.5l2 2 4-4.5"></path></svg>Utenti</a>
+</nav>
+
+<div style="margin: auto 16px 16px; padding: 14px; background: #F3F4F8; border-radius: 8px">
+<div style="font-weight: 560; color: #171721">Ente Demo Formazione</div>
+<div style="font-size: 12px; color: #62627A">Piano Professional · 3 sedi</div>
+</div>
+</div>
+</aside>
+
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column">
+
+<header class="app-top" style="flex: none; height: 64px; box-sizing: border-box; background: #FFFFFF; border-bottom: 1px solid #E9E9F0; padding: 0 24px; display: flex; align-items: center; gap: 16px">
+<button type="button" class="ib" aria-label="Apri menu" style="flex: none; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"></path></svg></button>
+<div class="fld" style="position: relative; flex: 0 1 420px; min-width: 0; height: 40px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 0 12px; border-radius: 8px; background: #F3F4F8; border: 1px solid #E9E9F0; color: #62627A">
+<label for="app-cerca" class="sr">Cerca in Attestami</label>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="11" cy="11" r="6.5"></circle><path d="M20 20l-4.2-4.2"></path></svg>
+<input id="app-cerca" type="search" placeholder="Cerca corsisti, corsi, attestati…" style="flex: 1; min-width: 0; height: 38px; padding: 0; border: 0; background: transparent; font-size: 14px; color: #171721">
+</div>
+<div style="flex: 1"></div>
+<div style="flex: none; display: flex; align-items: center; gap: 4px">
+<button type="button" class="ib hide-sm" aria-label="Calendario" style="width: 40px; height: 40px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"></rect><path d="M3.5 10h17M8 3v4M16 3v4"></path></svg></button>
+<button type="button" class="ib" aria-label="Notifiche, 3 non lette" style="position: relative; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"></path><path d="M10 21h4"></path></svg><span style="position: absolute; top: 9px; right: 10px; width: 8px; height: 8px; border-radius: 50%; background: #5266EB; box-shadow: 0 0 0 2px #FFFFFF"></span></button>
+<button type="button" class="ib hide-sm" aria-label="Guida" style="width: 40px; height: 40px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6"></path><path d="M12 17.2v.1"></path></svg></button>
+</div>
+<div class="hide-sm" style="flex: none; width: 1px; height: 28px; background: #E9E9F0"></div>
+<div style="flex: none; display: flex; align-items: center; gap: 10px">
+<span aria-hidden="true" style="width: 36px; height: 36px; border-radius: 50%; background: #E8EBFD; color: #3E50D0; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600">MP</span>
+<div class="hide-sm" style="line-height: 1.3">
+<div style="font-size: 14px; font-weight: 560; color: #171721">Marco Predieri</div>
+<div style="font-size: 12px; color: #62627A">Amministratore</div>
+</div>
+</div>
+</header>
+
+<main class="app-content" style="flex: 1; padding: 24px; display: flex; flex-direction: column; gap: 24px">
+
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px">
+<h1 style="margin: 0; font-size: 22px; font-weight: 560; font-variation-settings: 'FLAR' 60; line-height: 1.25; color: #171721">Scadenze</h1>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px">
+<nav aria-label="Percorso">
+<ol style="display: flex; align-items: center; gap: 8px; margin: 0; padding: 0; list-style: none; font-size: 13px; color: #62627A">
+<li><a href="#" style="color: #62627A; text-decoration: none">Home</a></li>
+<li aria-hidden="true">/</li>
+<li><a href="#" style="color: #62627A; text-decoration: none">Documenti</a></li>
+<li aria-hidden="true">/</li>
+<li aria-current="page" style="color: #171721; font-weight: 500">Scadenze</li>
+</ol>
+</nav>
+<div class="hide-sm" style="width: 1px; height: 24px; background: #E1E1EA"></div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<button type="button" class="bs" style="height: 40px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; border: 1px solid #E1E1EA; border-radius: 8px; background: #FFFFFF; color: #171721; font-size: 14px; font-weight: 500; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7.5 10.5L12 15l4.5-4.5M5 19.5h14"></path></svg>Esporta Excel</button>
+<button type="button" class="bp" style="height: 40px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; border: 1px solid #5266EB; border-radius: 8px; background: #5266EB; color: #FFFFFF; font-size: 14px; font-weight: 500; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"></rect><path d="M3.5 10h17M8 3v4M16 3v4M12 13v5M9.5 15.5h5"></path></svg>Convoca selezionati</button>
+</div>
+</div>
+</div>
+
+<section aria-label="Riepilogo scadenze" class="g-sm" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px">
+<div style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05); padding: 20px; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px">
+<div>
+<div style="font-size: 13px; font-weight: 500; color: #62627A">Scaduti</div>
+<div style="margin-top: 4px; font-size: 28px; line-height: 1.15; font-weight: 560; font-variant-numeric: tabular-nums; color: #171721">2</div>
+<div style="margin-top: 8px; font-size: 12px; color: #C2343B; font-weight: 500">Da convocare con priorità</div>
+</div>
+<span aria-hidden="true" style="flex: none; width: 40px; height: 40px; border-radius: 8px; background: #FBE7E8; color: #C2343B; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5.5M12 16.4v.1"></path></svg></span>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05); padding: 20px; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px">
+<div>
+<div style="font-size: 13px; font-weight: 500; color: #62627A">Entro 30 giorni</div>
+<div style="margin-top: 4px; font-size: 28px; line-height: 1.15; font-weight: 560; font-variant-numeric: tabular-nums; color: #171721">9</div>
+<div style="margin-top: 8px; font-size: 12px; color: #62627A"><span style="color: #171721; font-weight: 600; font-variant-numeric: tabular-nums">4</span> già convocati</div>
+</div>
+<span aria-hidden="true" style="flex: none; width: 40px; height: 40px; border-radius: 8px; background: #FDF0DC; color: #A15C07; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg></span>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05); padding: 20px; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px">
+<div>
+<div style="font-size: 13px; font-weight: 500; color: #62627A">Entro 90 giorni</div>
+<div style="margin-top: 4px; font-size: 28px; line-height: 1.15; font-weight: 560; font-variant-numeric: tabular-nums; color: #171721">23</div>
+<div style="margin-top: 8px; font-size: 12px; color: #62627A">Tra 31 e 90 giorni da oggi</div>
+</div>
+<span aria-hidden="true" style="flex: none; width: 40px; height: 40px; border-radius: 8px; background: #E8EBFD; color: #3E50D0; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2"></rect><path d="M3.5 10h17M8 3v4M16 3v4"></path></svg></span>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05); padding: 20px; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px">
+<div>
+<div style="font-size: 13px; font-weight: 500; color: #62627A">A norma</div>
+<div style="margin-top: 4px; font-size: 28px; line-height: 1.15; font-weight: 560; font-variant-numeric: tabular-nums; color: #171721">142</div>
+<div style="margin-top: 8px; font-size: 12px; color: #62627A"><span style="color: #0B7352; font-weight: 600; font-variant-numeric: tabular-nums">81%</span> dei corsisti attivi</div>
+</div>
+<span aria-hidden="true" style="flex: none; width: 40px; height: 40px; border-radius: 8px; background: #E3F4EC; color: #0F8A63; display: inline-flex; align-items: center; justify-content: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.3-7.5 9.5-4.3-1.2-7.5-4.9-7.5-9.5V6z"></path><path d="M8.8 12l2.2 2.2 4.2-4.4"></path></svg></span>
+</div>
+</section>
+
+<section aria-label="Filtri" style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05); padding: 16px 20px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+<div class="fld" style="position: relative; flex: 2 1 280px; min-width: 0; height: 40px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 0 12px; border: 1px solid #E1E1EA; border-radius: 8px; background: #FFFFFF; color: #62627A">
+<label for="f-cerca" class="sr">Cerca nell'elenco</label>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="11" cy="11" r="6.5"></circle><path d="M20 20l-4.2-4.2"></path></svg>
+<input id="f-cerca" type="search" placeholder="Nome, email o codice attestato" style="flex: 1; min-width: 0; height: 38px; padding: 0; border: 0; background: transparent; font-size: 14px; color: #171721">
+</div>
+<div class="fld" style="flex: 1 1 200px; min-width: 0; position: relative; height: 40px; box-sizing: border-box; display: flex; align-items: center; border: 1px solid #E1E1EA; border-radius: 8px; background: #FFFFFF">
+<label for="f-azienda" style="flex: none; padding-left: 12px; font-size: 13px; color: #62627A">Azienda</label>
+<select id="f-azienda" style="-webkit-appearance: none; appearance: none; flex: 1; min-width: 0; height: 38px; padding: 0 36px 0 8px; border: 0; background: transparent; font-size: 14px; font-weight: 500; color: #171721; cursor: pointer">
+<option selected>Tutte</option>
+<option>Forno Aurora</option>
+<option>Logistica Nord</option>
+<option>Metalli Srl</option>
+<option>Studio Ferri</option>
+</select>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position: absolute; right: 12px; top: 11px; color: #62627A; pointer-events: none"><path d="M6 9l6 6 6-6"></path></svg>
+</div>
+<div class="fld" style="flex: 1 1 240px; min-width: 0; position: relative; height: 40px; box-sizing: border-box; display: flex; align-items: center; border: 1px solid #E1E1EA; border-radius: 8px; background: #FFFFFF">
+<label for="f-corso" style="flex: none; padding-left: 12px; font-size: 13px; color: #62627A">Corso</label>
+<select id="f-corso" style="-webkit-appearance: none; appearance: none; flex: 1; min-width: 0; height: 38px; padding: 0 36px 0 8px; border: 0; background: transparent; font-size: 14px; font-weight: 500; color: #171721; cursor: pointer">
+<option selected>Tutti</option>
+<option>Antincendio livello 2</option>
+<option>Carrelli elevatori</option>
+<option>HACCP alimentaristi</option>
+<option>Lavoratori rischio basso</option>
+<option>Lavoratori rischio medio</option>
+<option>Lavoratori rischio alto</option>
+<option>Preposti</option>
+<option>Primo soccorso gruppo B/C</option>
+</select>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position: absolute; right: 12px; top: 11px; color: #62627A; pointer-events: none"><path d="M6 9l6 6 6-6"></path></svg>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; margin-top: 16px; padding-top: 16px; border-top: 1px solid #EFEFF4">
+<div role="group" aria-labelledby="lbl-periodo" style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+<span id="lbl-periodo" style="font-size: 13px; color: #62627A">Periodo</span>
+<div style="display: inline-flex; gap: 2px; padding: 3px; border: 1px solid #E9E9F0; border-radius: 8px; background: #F3F4F8">
+<button type="button" aria-pressed="false" style="height: 30px; padding: 0 12px; border: 0; border-radius: 6px; background: transparent; color: #3B3B4F; font-size: 13px; font-weight: 500; font-variant-numeric: tabular-nums; cursor: pointer">30 giorni</button>
+<button type="button" aria-pressed="false" style="height: 30px; padding: 0 12px; border: 0; border-radius: 6px; background: transparent; color: #3B3B4F; font-size: 13px; font-weight: 500; font-variant-numeric: tabular-nums; cursor: pointer">60 giorni</button>
+<button type="button" aria-pressed="true" style="height: 30px; padding: 0 12px; border: 0; border-radius: 6px; background: #FFFFFF; color: #3E50D0; font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; box-shadow: 0 1px 2px rgba(23,23,33,0.08), 0 0 0 1px #E1E1EA; cursor: pointer">90 giorni</button>
+</div>
+</div>
+<div style="display: flex; align-items: center; gap: 10px">
+<input type="checkbox" id="f-nonconv" class="sw" role="switch">
+<label for="f-nonconv" style="font-size: 14px; color: #3B3B4F; cursor: pointer">Mostra solo non convocati</label>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="t-titolo" style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05); overflow: hidden">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding: 16px 20px; border-bottom: 1px solid #EFEFF4">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px">
+<h2 id="t-titolo" style="margin: 0; font-size: 16px; font-weight: 560; line-height: 1.5; color: #171721">Corsisti in scadenza</h2>
+<span style="font-size: 13px; color: #62627A; font-variant-numeric: tabular-nums">34 risultati</span>
+</div>
+<span style="font-size: 13px; color: #62627A">Aggiornato oggi alle 08:00</span>
+</div>
+
+<div style="padding: 12px 20px">
+<div role="region" aria-label="Azioni sui selezionati" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding: 8px 8px 8px 16px; border-radius: 8px; background: #E8EBFD; color: #3E50D0">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px">
+<span style="display: inline-flex; align-items: center; gap: 8px; font-weight: 600"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"></rect><path d="M8 12.2l2.8 2.8 5.2-5.6"></path></svg>2 selezionati</span>
+<span style="font-size: 13px">Antincendio livello 2 · Metalli Srl</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
+<button type="button" class="bp" style="height: 36px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px; padding: 0 14px; border: 1px solid #5266EB; border-radius: 8px; background: #5266EB; color: #FFFFFF; font-size: 14px; font-weight: 500; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"></rect><path d="M3.5 10h17M8 3v4M16 3v4M12 13v5M9.5 15.5h5"></path></svg>Convoca nell'edizione…</button>
+<button type="button" class="bs" style="height: 36px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px; padding: 0 14px; border: 1px solid #CDD3F8; border-radius: 8px; background: #FFFFFF; color: #171721; font-size: 14px; font-weight: 500; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"></rect><path d="M3.5 7l8.5 6 8.5-6"></path></svg>Invia promemoria</button>
+<button type="button" style="height: 36px; display: inline-flex; align-items: center; padding: 0 12px; border: 0; border-radius: 8px; background: transparent; color: #3E50D0; font-size: 14px; font-weight: 500; cursor: pointer">Annulla selezione</button>
+</div>
+</div>
+</div>
+
+<div style="position: relative; overflow-x: auto">
+<table style="width: 100%; min-width: 1060px; border-collapse: collapse; font-size: 14px; line-height: 1.45">
+<thead>
+<tr style="background: #FAFAFC">
+<th scope="col" style="width: 36px; padding: 10px 4px 10px 20px; text-align: left; border-top: 1px solid #EFEFF4; border-bottom: 1px solid #EFEFF4"><input type="checkbox" class="ck" aria-label="Seleziona tutti i corsisti della pagina"></th>
+<th scope="col" aria-sort="ascending" style="padding: 10px; text-align: left; border-top: 1px solid #EFEFF4; border-bottom: 1px solid #EFEFF4; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #3B3B4F; white-space: nowrap"><span style="display: inline-flex; align-items: center; gap: 4px">Corsista<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6.5 10.5L12 5l5.5 5.5"></path></svg></span></th>
+<th scope="col" style="padding: 10px; text-align: left; border-top: 1px solid #EFEFF4; border-bottom: 1px solid #EFEFF4; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #62627A; white-space: nowrap">Azienda</th>
+<th scope="col" style="padding: 10px; text-align: left; border-top: 1px solid #EFEFF4; border-bottom: 1px solid #EFEFF4; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #62627A; white-space: nowrap">Corso</th>
+<th scope="col" style="padding: 10px; text-align: left; border-top: 1px solid #EFEFF4; border-bottom: 1px solid #EFEFF4; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #62627A; white-space: nowrap">Ultimo attestato</th>
+<th scope="col" style="padding: 10px; text-align: left; border-top: 1px solid #EFEFF4; border-bottom: 1px solid #EFEFF4; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #62627A; white-space: nowrap">Scadenza</th>
+<th scope="col" style="padding: 10px; text-align: right; border-top: 1px solid #EFEFF4; border-bottom: 1px solid #EFEFF4; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #62627A; white-space: nowrap">Giorni</th>
+<th scope="col" style="padding: 10px; text-align: left; border-top: 1px solid #EFEFF4; border-bottom: 1px solid #EFEFF4; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #62627A; white-space: nowrap">Stato</th>
+<th scope="col" style="padding: 10px 20px 10px 4px; border-top: 1px solid #EFEFF4; border-bottom: 1px solid #EFEFF4"><span class="sr">Azioni</span></th>
+</tr>
+</thead>
+<tbody>
+
+<tr class="tr" style="background: #F5F6FE">
+<td style="padding: 12px 4px 12px 20px; border-bottom: 1px solid #EFEFF4"><input type="checkbox" class="ck" checked aria-label="Seleziona Bianchi Laura"></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #E8EBFD; color: #3E50D0; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">BL</span><div><div style="font-weight: 560; color: #171721; white-space: nowrap">Bianchi Laura</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">l.bianchi@metallisrl.it</div></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; white-space: nowrap">Metalli Srl</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><div style="color: #171721; white-space: nowrap">Antincendio livello 2</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">Aggiornamento · 5 ore</div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; font-variant-numeric: tabular-nums; white-space: nowrap">01/10/2021</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #171721; font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap">01/10/2026</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; text-align: right; color: #C2343B; font-weight: 650; font-variant-numeric: tabular-nums; white-space: nowrap">−5</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 6px; background: #FBE7E8; color: #C2343B; font-size: 12px; font-weight: 560; line-height: 18px; white-space: nowrap"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: currentColor"></span>Scaduto</span></td>
+<td style="padding: 12px 20px 12px 4px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; justify-content: flex-end; gap: 4px"><button type="button" class="ib" aria-label="Invia promemoria a Bianchi Laura" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"></rect><path d="M3.5 7l8.5 6 8.5-6"></path></svg></button><button type="button" class="ib" aria-label="Altre azioni per Bianchi Laura" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5.5" cy="12" r="1.5"></circle><circle cx="12" cy="12" r="1.5"></circle><circle cx="18.5" cy="12" r="1.5"></circle></svg></button></div></td>
+</tr>
+
+<tr class="tr" style="background: #F5F6FE">
+<td style="padding: 12px 4px 12px 20px; border-bottom: 1px solid #EFEFF4"><input type="checkbox" class="ck" checked aria-label="Seleziona Colombo Sara"></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #E3F4EC; color: #0B7352; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">CS</span><div><div style="font-weight: 560; color: #171721; white-space: nowrap">Colombo Sara</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">s.colombo@metallisrl.it</div></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; white-space: nowrap">Metalli Srl</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><div style="color: #171721; white-space: nowrap">Antincendio livello 2</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">Aggiornamento · 5 ore</div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; font-variant-numeric: tabular-nums; white-space: nowrap">14/10/2021</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #171721; font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap">14/10/2026</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; text-align: right; color: #A15C07; font-weight: 650; font-variant-numeric: tabular-nums; white-space: nowrap">8</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 6px; background: #FDF0DC; color: #A15C07; font-size: 12px; font-weight: 560; line-height: 18px; white-space: nowrap"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: currentColor"></span>In scadenza</span></td>
+<td style="padding: 12px 20px 12px 4px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; justify-content: flex-end; gap: 4px"><button type="button" class="ib" aria-label="Invia promemoria a Colombo Sara" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"></rect><path d="M3.5 7l8.5 6 8.5-6"></path></svg></button><button type="button" class="ib" aria-label="Altre azioni per Colombo Sara" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5.5" cy="12" r="1.5"></circle><circle cx="12" cy="12" r="1.5"></circle><circle cx="18.5" cy="12" r="1.5"></circle></svg></button></div></td>
+</tr>
+
+<tr class="tr">
+<td style="padding: 12px 4px 12px 20px; border-bottom: 1px solid #EFEFF4"><input type="checkbox" class="ck" aria-label="Seleziona Conti Elisa"></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #EDEDF3; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">CE</span><div><div style="font-weight: 560; color: #171721; white-space: nowrap">Conti Elisa</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">e.conti@logisticanord.it</div></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; white-space: nowrap">Logistica Nord</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><div style="color: #171721; white-space: nowrap">Preposti</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">Aggiornamento · 6 ore</div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; font-variant-numeric: tabular-nums; white-space: nowrap">03/11/2024</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #171721; font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap">03/11/2026</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; text-align: right; color: #A15C07; font-weight: 650; font-variant-numeric: tabular-nums; white-space: nowrap">28</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 6px; background: #FDF0DC; color: #A15C07; font-size: 12px; font-weight: 560; line-height: 18px; white-space: nowrap"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: currentColor"></span>In scadenza</span></td>
+<td style="padding: 12px 20px 12px 4px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; justify-content: flex-end; gap: 4px"><button type="button" class="ib" aria-label="Invia promemoria a Conti Elisa" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"></rect><path d="M3.5 7l8.5 6 8.5-6"></path></svg></button><button type="button" class="ib" aria-label="Altre azioni per Conti Elisa" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5.5" cy="12" r="1.5"></circle><circle cx="12" cy="12" r="1.5"></circle><circle cx="18.5" cy="12" r="1.5"></circle></svg></button></div></td>
+</tr>
+
+<tr class="tr">
+<td style="padding: 12px 4px 12px 20px; border-bottom: 1px solid #EFEFF4"><input type="checkbox" class="ck" aria-label="Seleziona Esposito Giulia"></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #E8EBFD; color: #3E50D0; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">EG</span><div><div style="font-weight: 560; color: #171721; white-space: nowrap">Esposito Giulia</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">g.esposito@studioferri.it</div></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; white-space: nowrap">Studio Ferri</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><div style="color: #171721; white-space: nowrap">Lavoratori rischio basso</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">Aggiornamento · 6 ore</div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; font-variant-numeric: tabular-nums; white-space: nowrap">25/11/2021</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #171721; font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap">25/11/2026</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; text-align: right; color: #3B3B4F; font-weight: 650; font-variant-numeric: tabular-nums; white-space: nowrap">50</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 6px; background: #E3F4EC; color: #0B7352; font-size: 12px; font-weight: 560; line-height: 18px; white-space: nowrap"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: #0F8A63"></span>Valido</span></td>
+<td style="padding: 12px 20px 12px 4px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; justify-content: flex-end; gap: 4px"><button type="button" class="ib" aria-label="Invia promemoria a Esposito Giulia" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"></rect><path d="M3.5 7l8.5 6 8.5-6"></path></svg></button><button type="button" class="ib" aria-label="Altre azioni per Esposito Giulia" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5.5" cy="12" r="1.5"></circle><circle cx="12" cy="12" r="1.5"></circle><circle cx="18.5" cy="12" r="1.5"></circle></svg></button></div></td>
+</tr>
+
+<tr class="tr">
+<td style="padding: 12px 4px 12px 20px; border-bottom: 1px solid #EFEFF4"><input type="checkbox" class="ck" aria-label="Seleziona Ferrari Luca"></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #E3F4EC; color: #0B7352; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">FL</span><div><div style="font-weight: 560; color: #171721; white-space: nowrap">Ferrari Luca</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">l.ferrari@fornoaurora.it</div></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; white-space: nowrap">Forno Aurora</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><div style="color: #171721; white-space: nowrap">HACCP alimentaristi</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">Rinnovo · 4 ore</div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; font-variant-numeric: tabular-nums; white-space: nowrap">18/11/2024</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #171721; font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap">18/11/2026</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; text-align: right; color: #3B3B4F; font-weight: 650; font-variant-numeric: tabular-nums; white-space: nowrap">43</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 6px; background: #EDEDF3; color: #3B3B4F; font-size: 12px; font-weight: 560; line-height: 18px; white-space: nowrap"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: #74748C"></span>Promemoria inviato</span></td>
+<td style="padding: 12px 20px 12px 4px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; justify-content: flex-end; gap: 4px"><button type="button" class="ib" aria-label="Invia promemoria a Ferrari Luca" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"></rect><path d="M3.5 7l8.5 6 8.5-6"></path></svg></button><button type="button" class="ib" aria-label="Altre azioni per Ferrari Luca" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5.5" cy="12" r="1.5"></circle><circle cx="12" cy="12" r="1.5"></circle><circle cx="18.5" cy="12" r="1.5"></circle></svg></button></div></td>
+</tr>
+
+<tr class="tr">
+<td style="padding: 12px 4px 12px 20px; border-bottom: 1px solid #EFEFF4"><input type="checkbox" class="ck" aria-label="Seleziona Gallo Stefano"></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #EDEDF3; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">GS</span><div><div style="font-weight: 560; color: #171721; white-space: nowrap">Gallo Stefano</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">s.gallo@metallisrl.it</div></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; white-space: nowrap">Metalli Srl</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><div style="color: #171721; white-space: nowrap">Lavoratori rischio alto</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">Aggiornamento · 6 ore</div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; font-variant-numeric: tabular-nums; white-space: nowrap">27/10/2021</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #171721; font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap">27/10/2026</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; text-align: right; color: #A15C07; font-weight: 650; font-variant-numeric: tabular-nums; white-space: nowrap">21</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 6px; background: #E8EBFD; color: #3E50D0; font-size: 12px; font-weight: 560; line-height: 18px; white-space: nowrap"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: currentColor"></span>Convocato</span></td>
+<td style="padding: 12px 20px 12px 4px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; justify-content: flex-end; gap: 4px"><button type="button" class="ib" aria-label="Invia promemoria a Gallo Stefano" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"></rect><path d="M3.5 7l8.5 6 8.5-6"></path></svg></button><button type="button" class="ib" aria-label="Altre azioni per Gallo Stefano" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5.5" cy="12" r="1.5"></circle><circle cx="12" cy="12" r="1.5"></circle><circle cx="18.5" cy="12" r="1.5"></circle></svg></button></div></td>
+</tr>
+
+<tr class="tr">
+<td style="padding: 12px 4px 12px 20px; border-bottom: 1px solid #EFEFF4"><input type="checkbox" class="ck" aria-label="Seleziona Greco Marco"></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #E8EBFD; color: #3E50D0; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">GM</span><div><div style="font-weight: 560; color: #171721; white-space: nowrap">Greco Marco</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">m.greco@logisticanord.it</div></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; white-space: nowrap">Logistica Nord</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><div style="color: #171721; white-space: nowrap">Carrelli elevatori</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">Aggiornamento · 4 ore</div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; font-variant-numeric: tabular-nums; white-space: nowrap">09/12/2021</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #171721; font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap">09/12/2026</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; text-align: right; color: #3B3B4F; font-weight: 650; font-variant-numeric: tabular-nums; white-space: nowrap">64</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 6px; background: #EDEDF3; color: #3B3B4F; font-size: 12px; font-weight: 560; line-height: 18px; white-space: nowrap"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: #74748C"></span>Promemoria inviato</span></td>
+<td style="padding: 12px 20px 12px 4px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; justify-content: flex-end; gap: 4px"><button type="button" class="ib" aria-label="Invia promemoria a Greco Marco" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"></rect><path d="M3.5 7l8.5 6 8.5-6"></path></svg></button><button type="button" class="ib" aria-label="Altre azioni per Greco Marco" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5.5" cy="12" r="1.5"></circle><circle cx="12" cy="12" r="1.5"></circle><circle cx="18.5" cy="12" r="1.5"></circle></svg></button></div></td>
+</tr>
+
+<tr class="tr">
+<td style="padding: 12px 4px 12px 20px; border-bottom: 1px solid #EFEFF4"><input type="checkbox" class="ck" aria-label="Seleziona Neri Anna"></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #E3F4EC; color: #0B7352; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">NA</span><div><div style="font-weight: 560; color: #171721; white-space: nowrap">Neri Anna</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">a.neri@studioferri.it</div></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; white-space: nowrap">Studio Ferri</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><div style="color: #171721; white-space: nowrap">Primo soccorso gruppo B/C</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">Aggiornamento · 4 ore</div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; font-variant-numeric: tabular-nums; white-space: nowrap">19/10/2023</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #171721; font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap">19/10/2026</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; text-align: right; color: #A15C07; font-weight: 650; font-variant-numeric: tabular-nums; white-space: nowrap">13</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 6px; background: #E8EBFD; color: #3E50D0; font-size: 12px; font-weight: 560; line-height: 18px; white-space: nowrap"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: currentColor"></span>Convocato</span></td>
+<td style="padding: 12px 20px 12px 4px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; justify-content: flex-end; gap: 4px"><button type="button" class="ib" aria-label="Invia promemoria a Neri Anna" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"></rect><path d="M3.5 7l8.5 6 8.5-6"></path></svg></button><button type="button" class="ib" aria-label="Altre azioni per Neri Anna" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5.5" cy="12" r="1.5"></circle><circle cx="12" cy="12" r="1.5"></circle><circle cx="18.5" cy="12" r="1.5"></circle></svg></button></div></td>
+</tr>
+
+<tr class="tr">
+<td style="padding: 12px 4px 12px 20px; border-bottom: 1px solid #EFEFF4"><input type="checkbox" class="ck" aria-label="Seleziona Rossi Mario"></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #EDEDF3; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">RM</span><div><div style="font-weight: 560; color: #171721; white-space: nowrap">Rossi Mario</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">m.rossi@logisticanord.it</div></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; white-space: nowrap">Logistica Nord</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><div style="color: #171721; white-space: nowrap">Lavoratori rischio medio</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">Aggiornamento · 6 ore</div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; font-variant-numeric: tabular-nums; white-space: nowrap">22/09/2021</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #171721; font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap">22/09/2026</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; text-align: right; color: #C2343B; font-weight: 650; font-variant-numeric: tabular-nums; white-space: nowrap">−14</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 6px; background: #FBE7E8; color: #C2343B; font-size: 12px; font-weight: 560; line-height: 18px; white-space: nowrap"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: currentColor"></span>Scaduto</span></td>
+<td style="padding: 12px 20px 12px 4px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; justify-content: flex-end; gap: 4px"><button type="button" class="ib" aria-label="Invia promemoria a Rossi Mario" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"></rect><path d="M3.5 7l8.5 6 8.5-6"></path></svg></button><button type="button" class="ib" aria-label="Altre azioni per Rossi Mario" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5.5" cy="12" r="1.5"></circle><circle cx="12" cy="12" r="1.5"></circle><circle cx="18.5" cy="12" r="1.5"></circle></svg></button></div></td>
+</tr>
+
+<tr class="tr">
+<td style="padding: 12px 4px 12px 20px; border-bottom: 1px solid #EFEFF4"><input type="checkbox" class="ck" aria-label="Seleziona Verdi Paolo"></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #E8EBFD; color: #3E50D0; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">VP</span><div><div style="font-weight: 560; color: #171721; white-space: nowrap">Verdi Paolo</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">p.verdi@fornoaurora.it</div></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; white-space: nowrap">Forno Aurora</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><div style="color: #171721; white-space: nowrap">Primo soccorso gruppo B/C</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">Aggiornamento · 4 ore</div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; font-variant-numeric: tabular-nums; white-space: nowrap">30/12/2023</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #171721; font-weight: 500; font-variant-numeric: tabular-nums; white-space: nowrap">30/12/2026</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; text-align: right; color: #3B3B4F; font-weight: 650; font-variant-numeric: tabular-nums; white-space: nowrap">85</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 6px; background: #E3F4EC; color: #0B7352; font-size: 12px; font-weight: 560; line-height: 18px; white-space: nowrap"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: #0F8A63"></span>Valido</span></td>
+<td style="padding: 12px 20px 12px 4px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; justify-content: flex-end; gap: 4px"><button type="button" class="ib" aria-label="Invia promemoria a Verdi Paolo" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2"></rect><path d="M3.5 7l8.5 6 8.5-6"></path></svg></button><button type="button" class="ib" aria-label="Altre azioni per Verdi Paolo" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="5.5" cy="12" r="1.5"></circle><circle cx="12" cy="12" r="1.5"></circle><circle cx="18.5" cy="12" r="1.5"></circle></svg></button></div></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 16px; padding: 14px 20px">
+<div style="font-size: 13px; color: #62627A; font-variant-numeric: tabular-nums">Mostrati <span style="color: #171721; font-weight: 560">1–10</span> di 34</div>
+<nav aria-label="Paginazione" style="display: flex; align-items: center; gap: 4px">
+<button type="button" disabled aria-label="Pagina precedente" style="width: 32px; height: 32px; padding: 0; border: 1px solid #E9E9F0; border-radius: 8px; background: #FFFFFF; color: #A8A8BA; display: inline-flex; align-items: center; justify-content: center; cursor: default"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button>
+<button type="button" aria-current="page" style="width: 32px; height: 32px; padding: 0; border: 1px solid #5266EB; border-radius: 8px; background: #5266EB; color: #FFFFFF; font-size: 13px; font-weight: 560; font-variant-numeric: tabular-nums; cursor: pointer">1</button>
+<button type="button" class="bs" style="width: 32px; height: 32px; padding: 0; border: 1px solid #E1E1EA; border-radius: 8px; background: #FFFFFF; color: #3B3B4F; font-size: 13px; font-weight: 500; font-variant-numeric: tabular-nums; cursor: pointer">2</button>
+<button type="button" class="bs" style="width: 32px; height: 32px; padding: 0; border: 1px solid #E1E1EA; border-radius: 8px; background: #FFFFFF; color: #3B3B4F; font-size: 13px; font-weight: 500; font-variant-numeric: tabular-nums; cursor: pointer">3</button>
+<button type="button" class="bs" style="width: 32px; height: 32px; padding: 0; border: 1px solid #E1E1EA; border-radius: 8px; background: #FFFFFF; color: #3B3B4F; font-size: 13px; font-weight: 500; font-variant-numeric: tabular-nums; cursor: pointer">4</button>
+<button type="button" class="bs" aria-label="Pagina successiva" style="width: 32px; height: 32px; padding: 0; border: 1px solid #E1E1EA; border-radius: 8px; background: #FFFFFF; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button>
+</nav>
+</div>
+</section>
+
+<div class="g-sm" style="display: flex; flex-wrap: wrap; align-items: stretch; gap: 24px">
+
+<section aria-labelledby="p-titolo" style="flex: 1 1 520px; min-width: 0; background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05); display: flex; flex-direction: column">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding: 16px 20px; border-bottom: 1px solid #EFEFF4">
+<h2 id="p-titolo" style="margin: 0; font-size: 16px; font-weight: 560; line-height: 1.5; color: #171721">Promemoria automatici</h2>
+<a href="#" style="font-size: 13px; font-weight: 500; text-decoration: none">Modelli email</a>
+</div>
+<ol style="list-style: none; margin: 0; padding: 20px 20px 4px">
+<li style="position: relative; display: flex; gap: 16px; padding-bottom: 20px">
+<span aria-hidden="true" style="position: absolute; left: 5px; top: 20px; bottom: 0; width: 2px; background: #EFEFF4"></span>
+<span aria-hidden="true" style="flex: none; position: relative; width: 12px; height: 12px; margin-top: 5px; box-sizing: border-box; border-radius: 50%; border: 2px solid #C9C9D6; background: #FFFFFF"></span>
+<div style="flex: 1; min-width: 0; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px">
+<div>
+<div style="font-weight: 560; color: #171721">90 giorni prima</div>
+<div style="color: #3B3B4F">Email al corsista con le prossime edizioni disponibili.</div>
+<div style="margin-top: 4px; font-size: 12px; color: #62627A">Disattivato · in questo periodo i promemoria partono a mano</div>
+</div>
+<div style="flex: none; padding-top: 2px">
+<input type="checkbox" id="r-90" class="sw" role="switch">
+<label for="r-90" class="sr">Promemoria 90 giorni prima</label>
+</div>
+</div>
+</li>
+<li style="position: relative; display: flex; gap: 16px; padding-bottom: 20px">
+<span aria-hidden="true" style="position: absolute; left: 5px; top: 20px; bottom: 0; width: 2px; background: #EFEFF4"></span>
+<span aria-hidden="true" style="flex: none; position: relative; width: 12px; height: 12px; margin-top: 5px; border-radius: 50%; background: #A15C07; box-shadow: 0 0 0 4px #FDF0DC"></span>
+<div style="flex: 1; min-width: 0; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px">
+<div>
+<div style="font-weight: 560; color: #171721">30 giorni prima</div>
+<div style="color: #3B3B4F">Email al corsista e al referente dell'azienda.</div>
+<div style="margin-top: 4px; font-size: 12px; color: #62627A">Attivo · ultimo invio oggi alle 08:00, 3 email</div>
+</div>
+<div style="flex: none; padding-top: 2px">
+<input type="checkbox" id="r-30" class="sw" role="switch" checked>
+<label for="r-30" class="sr">Promemoria 30 giorni prima</label>
+</div>
+</div>
+</li>
+<li style="position: relative; display: flex; gap: 16px; padding-bottom: 20px">
+<span aria-hidden="true" style="flex: none; position: relative; width: 12px; height: 12px; margin-top: 5px; border-radius: 50%; background: #C2343B; box-shadow: 0 0 0 4px #FBE7E8"></span>
+<div style="flex: 1; min-width: 0; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px">
+<div>
+<div style="font-weight: 560; color: #171721">Alla scadenza</div>
+<div style="color: #3B3B4F">Avviso alla segreteria dell'ente e segnalazione in dashboard.</div>
+<div style="margin-top: 4px; font-size: 12px; color: #62627A">Attivo · ultimo avviso 01/10/2026 per Bianchi Laura</div>
+</div>
+<div style="flex: none; padding-top: 2px">
+<input type="checkbox" id="r-0" class="sw" role="switch" checked>
+<label for="r-0" class="sr">Avviso alla scadenza</label>
+</div>
+</div>
+</li>
+</ol>
+<div style="margin-top: auto; display: flex; align-items: center; gap: 8px; padding: 14px 20px; border-top: 1px solid #EFEFF4; font-size: 13px; color: #62627A">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg>
+<span>Invio ogni giorno alle 08:00 da segreteria@entedemoformazione.it</span>
+</div>
+</section>
+
+<section aria-labelledby="e-titolo" style="flex: 1 1 400px; min-width: 0; background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05)">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding: 16px 20px; border-bottom: 1px solid #EFEFF4">
+<h2 id="e-titolo" style="margin: 0; font-size: 16px; font-weight: 560; line-height: 1.5; color: #171721">Edizioni con posti liberi</h2>
+<a href="#" style="font-size: 13px; font-weight: 500; text-decoration: none">Vai al calendario</a>
+</div>
+<ul style="list-style: none; margin: 0; padding: 0">
+<li style="display: flex; align-items: center; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #EFEFF4">
+<div style="flex: none; width: 48px; padding: 6px 0; box-sizing: border-box; border: 1px solid #E9E9F0; border-radius: 8px; text-align: center; line-height: 1.1">
+<div style="font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #62627A">OTT</div>
+<div style="margin-top: 2px; font-size: 18px; font-weight: 560; font-variant-numeric: tabular-nums; color: #171721">16</div>
+</div>
+<div style="flex: 1; min-width: 0">
+<div style="font-weight: 560; color: #171721">Primo soccorso gruppo B/C</div>
+<div style="font-size: 12px; color: #62627A">Bergamo · Dott.ssa Mari · 4 ore</div>
+</div>
+<div style="flex: none; width: 96px; text-align: right">
+<div style="font-size: 13px; color: #3B3B4F; font-variant-numeric: tabular-nums"><span style="font-weight: 600; color: #171721">3</span> liberi su 12</div>
+<div style="margin-top: 6px; height: 4px; border-radius: 999px; background: #EFEFF4"><div style="width: 75%; height: 4px; border-radius: 999px; background: #9CA8F2"></div></div>
+</div>
+</li>
+<li style="display: flex; align-items: center; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #EFEFF4; background: #F7F8FE">
+<div style="flex: none; width: 48px; padding: 6px 0; box-sizing: border-box; border: 1px solid #CDD3F8; border-radius: 8px; background: #FFFFFF; text-align: center; line-height: 1.1">
+<div style="font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #3E50D0">OTT</div>
+<div style="margin-top: 2px; font-size: 18px; font-weight: 560; font-variant-numeric: tabular-nums; color: #171721">20</div>
+</div>
+<div style="flex: 1; min-width: 0">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px"><span style="font-weight: 560; color: #171721">Antincendio livello 2</span><span style="padding: 1px 6px; border-radius: 6px; background: #E8EBFD; color: #3E50D0; font-size: 11px; font-weight: 600; line-height: 16px">Adatta ai selezionati</span></div>
+<div style="font-size: 12px; color: #62627A">Brescia · Ing. Conti · 5 ore</div>
+</div>
+<div style="flex: none; width: 96px; text-align: right">
+<div style="font-size: 13px; color: #3B3B4F; font-variant-numeric: tabular-nums"><span style="font-weight: 600; color: #171721">6</span> liberi su 20</div>
+<div style="margin-top: 6px; height: 4px; border-radius: 999px; background: #E1E1EA"><div style="width: 70%; height: 4px; border-radius: 999px; background: #5266EB"></div></div>
+</div>
+</li>
+<li style="display: flex; align-items: center; gap: 16px; padding: 14px 20px; border-bottom: 1px solid #EFEFF4">
+<div style="flex: none; width: 48px; padding: 6px 0; box-sizing: border-box; border: 1px solid #E9E9F0; border-radius: 8px; text-align: center; line-height: 1.1">
+<div style="font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #62627A">OTT</div>
+<div style="margin-top: 2px; font-size: 18px; font-weight: 560; font-variant-numeric: tabular-nums; color: #171721">22</div>
+</div>
+<div style="flex: 1; min-width: 0">
+<div style="font-weight: 560; color: #171721">Lavoratori rischio alto</div>
+<div style="font-size: 12px; color: #62627A">Bergamo · Geom. Russo · 6 ore</div>
+</div>
+<div style="flex: none; width: 96px; text-align: right">
+<div style="font-size: 13px; color: #3B3B4F; font-variant-numeric: tabular-nums"><span style="font-weight: 600; color: #171721">9</span> liberi su 25</div>
+<div style="margin-top: 6px; height: 4px; border-radius: 999px; background: #EFEFF4"><div style="width: 64%; height: 4px; border-radius: 999px; background: #9CA8F2"></div></div>
+</div>
+</li>
+<li style="display: flex; align-items: center; gap: 16px; padding: 14px 20px">
+<div style="flex: none; width: 48px; padding: 6px 0; box-sizing: border-box; border: 1px solid #E9E9F0; border-radius: 8px; text-align: center; line-height: 1.1">
+<div style="font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: #62627A">NOV</div>
+<div style="margin-top: 2px; font-size: 18px; font-weight: 560; font-variant-numeric: tabular-nums; color: #171721">5</div>
+</div>
+<div style="flex: 1; min-width: 0">
+<div style="font-weight: 560; color: #171721">Carrelli elevatori</div>
+<div style="font-size: 12px; color: #62627A">Brescia · Dott. Bassi · 4 ore</div>
+</div>
+<div style="flex: none; width: 96px; text-align: right">
+<div style="font-size: 13px; color: #3B3B4F; font-variant-numeric: tabular-nums"><span style="font-weight: 600; color: #171721">4</span> liberi su 10</div>
+<div style="margin-top: 6px; height: 4px; border-radius: 999px; background: #EFEFF4"><div style="width: 60%; height: 4px; border-radius: 999px; background: #9CA8F2"></div></div>
+</div>
+</li>
+</ul>
+</section>
+
+</div>
+
+</main>
+</div>
+</div>
+</body>
+</html>

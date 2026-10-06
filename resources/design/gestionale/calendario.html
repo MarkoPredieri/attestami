@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Attestami — Calendario</title>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght,FLAR,VOLM@300..800,0..100,0..100&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F3F4F8}
+a{color:#5266EB}a:hover{color:#4255D4}
+button,input{font-family:inherit}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.nav-item:hover{background:#F3F4F8;color:#171721}
+.icon-btn:hover{background:#F3F4F8;color:#171721}
+.btn-p:hover{background:#4255D4 !important;color:#FFFFFF}
+.btn-s:hover{background:#F6F6F9 !important;color:#171721}
+.btn-d:hover{background:#A92C33 !important;color:#FFFFFF}
+.seg:hover{color:#171721 !important}
+.day:hover{background:#E8EBFD !important;color:#3E50D0 !important}
+.ev{transition:box-shadow .15s}
+.ev:hover{box-shadow:0 6px 16px -6px rgba(23,23,33,0.22)}
+.search:focus-within{border-color:#5266EB !important;box-shadow:0 0 0 3px #E8EBFD}
+.search input::placeholder{color:#62627A;opacity:1}
+a:focus-visible,button:focus-visible{outline:2px solid #5266EB;outline-offset:2px}
+@media (max-width:860px){
+.app-side{display:none !important}
+.ph-actions{align-items:flex-start !important}
+.app-content{padding:16px !important}
+.app-top{padding:0 12px !important;gap:8px !important}
+.hide-sm{display:none !important}
+}
+</style>
+</head>
+<body>
+<div style="width: 100%; min-height: 100vh; background: #F3F4F8; color: #171721; font-family: 'Commissioner', sans-serif; font-size: 14px; line-height: 1.5; display: flex; flex-wrap: wrap; align-items: stretch">
+
+<!-- SIDEBAR -->
+<aside class="app-side" style="flex: 0 0 256px; background: #FFFFFF; border-right: 1px solid #E9E9F0; display: flex; flex-direction: column; box-sizing: border-box">
+<a href="#" style="height: 64px; flex: none; display: flex; align-items: center; gap: 10px; padding: 0 24px; border-bottom: 1px solid #E9E9F0; color: #5266EB; text-decoration: none; box-sizing: border-box">
+<svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><circle cx="13" cy="13" r="11.25" stroke="currentColor" stroke-width="1.5"></circle><path d="M8.5 13.4l3 3 6-6.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span style="font-family: 'Commissioner', sans-serif; font-size: 19px; font-weight: 520; font-variation-settings: 'FLAR' 100; letter-spacing: 0.01em; color: #171721">Attestami</span>
+</a>
+
+<nav aria-label="Menu principale" style="padding: 4px 0 16px">
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #72728A">Principale</div>
+<a href="dashboard.html" class="nav-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><rect x="3" y="3" width="7.5" height="9" rx="1.5"></rect><rect x="13.5" y="3" width="7.5" height="5" rx="1.5"></rect><rect x="13.5" y="11" width="7.5" height="10" rx="1.5"></rect><rect x="3" y="15" width="7.5" height="6" rx="1.5"></rect></svg>Dashboard</a>
+
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #72728A">Formazione</div>
+<a href="#" class="nav-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M2.5 5h5.5a4 4 0 0 1 4 4v11a3 3 0 0 0-3-3H2.5z"></path><path d="M21.5 5H16a4 4 0 0 0-4 4v11a3 3 0 0 1 3-3h6.5z"></path></svg>Corsi</a>
+<a href="#" class="nav-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M12 3l9 4.5-9 4.5-9-4.5z"></path><path d="M3 12l9 4.5 9-4.5"></path><path d="M3 16.5l9 4.5 9-4.5"></path></svg>Edizioni</a>
+<a href="#" class="nav-item" aria-current="page" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; background: #E8EBFD; color: #3E50D0; font-weight: 560; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><rect x="3" y="4.5" width="18" height="16.5" rx="2"></rect><path d="M3 9.5h18"></path><path d="M8 2.5v4"></path><path d="M16 2.5v4"></path></svg>Calendario</a>
+<a href="#" class="nav-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M9 2.5h6v3H9z"></path><path d="M9 13l2 2 4-4"></path></svg>Esami</a>
+
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #72728A">Persone</div>
+<a href="#" class="nav-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"></path><path d="M18 14.2a6.5 6.5 0 0 1 3.5 5.8"></path></svg>Corsisti</a>
+<a href="#" class="nav-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M4 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"></path><path d="M16 9h2a2 2 0 0 1 2 2v10"></path><path d="M2.5 21h19"></path><path d="M8 7h4"></path><path d="M8 11h4"></path><path d="M8 15h4"></path></svg>Aziende</a>
+<a href="#" class="nav-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="10" cy="8" r="3.5"></circle><path d="M3.5 20a6.5 6.5 0 0 1 10.8-4.9"></path><path d="M15.5 18.5l2 2 4-4"></path></svg>Docenti</a>
+
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #72728A">Documenti</div>
+<a href="#" class="nav-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="12" cy="9" r="6"></circle><path d="M8.6 13.9L7 21.5l5-2.5 5 2.5-1.6-7.6"></path></svg>Attestati</a>
+<a href="#" class="nav-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Scadenze<span style="margin-left: auto; padding: 0 8px; border-radius: 999px; background: #FDF0DC; color: #A15C07; font-size: 12px; font-weight: 600; line-height: 20px; font-variant-numeric: tabular-nums">9<span class="sr"> in scadenza</span></span></a>
+<a href="#" class="nav-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="M9 13h6"></path><path d="M9 17h6"></path></svg>Registro</a>
+
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #72728A">Impostazioni</div>
+<a href="#" class="nav-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M4 6h9"></path><path d="M17 6h3"></path><path d="M4 12h3"></path><path d="M11 12h9"></path><path d="M4 18h11"></path><path d="M19 18h1"></path><circle cx="15" cy="6" r="2"></circle><circle cx="9" cy="12" r="2"></circle><circle cx="17" cy="18" r="2"></circle></svg>Ente e brand</a>
+<a href="#" class="nav-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Utenti</a>
+</nav>
+
+<div style="margin: auto 16px 16px; padding: 14px; border-radius: 8px; background: #F3F4F8">
+<div style="font-weight: 560; color: #171721">Ente Demo Formazione</div>
+<div style="margin-top: 2px; font-size: 13px; color: #62627A">Piano Professional · 3 sedi</div>
+</div>
+</aside>
+
+<!-- MAIN -->
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column">
+
+<header class="app-top" style="position: sticky; top: 0; z-index: 20; height: 64px; flex: none; background: #FFFFFF; border-bottom: 1px solid #E9E9F0; padding: 0 24px; display: flex; align-items: center; gap: 16px; box-sizing: border-box">
+<button type="button" class="icon-btn" aria-label="Apri menu" style="flex: none; width: 40px; height: 40px; border: 0; border-radius: 8px; background: transparent; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16"></path><path d="M4 12h16"></path><path d="M4 18h10"></path></svg>
+</button>
+<div class="search" style="flex: 0 1 420px; min-width: 0; height: 40px; display: flex; align-items: center; gap: 8px; padding: 0 12px; border-radius: 8px; background: #F3F4F8; border: 1px solid #E9E9F0; color: #62627A; box-sizing: border-box">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="11" cy="11" r="7"></circle><path d="M20.5 20.5L16 16"></path></svg>
+<label for="app-search" class="sr">Cerca nel gestionale</label>
+<input id="app-search" type="search" placeholder="Cerca corsisti, corsi, attestati…" style="flex: 1; min-width: 0; height: 100%; border: 0; background: transparent; color: #171721; font-size: 14px; outline: none; padding: 0">
+</div>
+<div style="flex: 1 1 auto"></div>
+<div style="display: flex; align-items: center; gap: 4px; flex: none">
+<button type="button" class="icon-btn hide-sm" aria-label="Calendario" style="width: 40px; height: 40px; border: 0; border-radius: 8px; background: transparent; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="2"></rect><path d="M3 9.5h18"></path><path d="M8 2.5v4"></path><path d="M16 2.5v4"></path></svg>
+</button>
+<button type="button" class="icon-btn" aria-label="Notifiche, 3 non lette" style="position: relative; width: 40px; height: 40px; border: 0; border-radius: 8px; background: transparent; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 6 2.5 7.5 2.5 7.5h-17S6 15 6 9z"></path><path d="M10 20a2 2 0 0 0 4 0"></path></svg>
+<span aria-hidden="true" style="position: absolute; top: 8px; right: 9px; width: 8px; height: 8px; border-radius: 50%; background: #5266EB; box-shadow: 0 0 0 2px #FFFFFF"></span>
+</button>
+<button type="button" class="icon-btn hide-sm" aria-label="Guida" style="width: 40px; height: 40px; border: 0; border-radius: 8px; background: transparent; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M9.6 9.5a2.5 2.5 0 0 1 4.9.7c0 1.7-2.5 2.2-2.5 3.8"></path><path d="M12 17.2v.1"></path></svg>
+</button>
+</div>
+<a href="#" style="flex: none; display: flex; align-items: center; gap: 10px; margin-left: 4px; padding-left: 16px; border-left: 1px solid #E9E9F0; height: 40px; color: inherit; text-decoration: none">
+<span aria-hidden="true" style="width: 36px; height: 36px; border-radius: 50%; background: #E8EBFD; color: #3E50D0; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; flex: none">MP</span>
+<span class="hide-sm" style="display: flex; flex-direction: column; line-height: 1.3">
+<span style="font-size: 14px; font-weight: 560; color: #171721">Marco Predieri</span>
+<span style="font-size: 12px; color: #62627A">Amministratore</span>
+</span>
+<span class="sr">Profilo di Marco Predieri</span>
+</a>
+</header>
+
+<main class="app-content" style="flex: 1; padding: 24px; display: flex; flex-direction: column; gap: 20px; min-width: 0">
+
+<!-- PAGE HEADER -->
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 24px; padding-bottom: 4px">
+<div style="min-width: 0">
+<h1 style="margin: 0; font-size: 22px; font-weight: 560; font-variation-settings: 'FLAR' 60; letter-spacing: 0.005em; line-height: 1.25">Calendario</h1>
+<p style="margin: 6px 0 0; font-size: 14px; color: #62627A">Settimana 41 · <span style="font-variant-numeric: tabular-nums">9</span> lezioni, <span style="font-variant-numeric: tabular-nums">26</span> ore d’aula · sede di Brescia</p>
+</div>
+<div class="ph-actions" style="display: flex; flex-direction: column; align-items: flex-end; gap: 12px">
+<nav aria-label="Percorso" style="font-size: 13px; color: #62627A">
+<a href="dashboard.html" style="color: #62627A; text-decoration: none">Home</a><span aria-hidden="true" style="margin: 0 8px; color: #A9A9BC">/</span><a href="#" style="color: #62627A; text-decoration: none">Formazione</a><span aria-hidden="true" style="margin: 0 8px; color: #A9A9BC">/</span><span aria-current="page" style="color: #171721">Calendario</span>
+</nav>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<div role="group" aria-label="Vista del calendario" style="display: inline-flex; align-items: center; gap: 2px; height: 40px; padding: 3px; border-radius: 8px; background: #FFFFFF; border: 1px solid #E1E1EA; box-sizing: border-box">
+<button type="button" class="seg" aria-pressed="false" style="height: 32px; padding: 0 12px; border: 0; border-radius: 6px; background: transparent; color: #3B3B4F; font-size: 14px; cursor: pointer">Giorno</button>
+<button type="button" aria-pressed="true" style="height: 32px; padding: 0 12px; border: 0; border-radius: 6px; background: #E8EBFD; color: #3E50D0; font-size: 14px; font-weight: 560; cursor: pointer">Settimana</button>
+<button type="button" class="seg" aria-pressed="false" style="height: 32px; padding: 0 12px; border: 0; border-radius: 6px; background: transparent; color: #3B3B4F; font-size: 14px; cursor: pointer">Mese</button>
+</div>
+<button type="button" class="btn-s" style="display: inline-flex; align-items: center; height: 40px; padding: 0 16px; border-radius: 8px; background: #FFFFFF; border: 1px solid #E1E1EA; color: #171721; font-size: 14px; font-weight: 500; cursor: pointer; box-sizing: border-box">Oggi</button>
+<button type="button" class="btn-p" style="display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px; border-radius: 8px; background: #5266EB; border: 0; color: #FFFFFF; font-size: 14px; font-weight: 500; cursor: pointer; box-sizing: border-box">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>Nuova lezione</button>
+</div>
+</div>
+</div>
+
+<!-- CONFLICT ALERT -->
+<div role="status" style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 12px 12px 12px 16px; border-radius: 8px; background: #FBE7E8; border: 1px solid #F1C7CA">
+<span aria-hidden="true" style="flex: none; width: 36px; height: 36px; border-radius: 8px; background: #FFFFFF; color: #C2343B; display: inline-flex; align-items: center; justify-content: center">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 4.1L2.6 17.5A2 2 0 0 0 4.3 20.5h15.4a2 2 0 0 0 1.7-3L13.7 4.1a2 2 0 0 0-3.4 0z"></path><path d="M12 9.5v4"></path><path d="M12 17h.01"></path></svg>
+</span>
+<div style="flex: 1 1 240px; min-width: 0">
+<div style="font-size: 14px; color: #171721"><strong style="font-weight: 600; color: #C2343B">Conflitto:</strong> Ing. Conti è assegnato a due lezioni oggi, martedì 6 ottobre, <span style="font-variant-numeric: tabular-nums">14:00–16:00</span>.</div>
+<div style="margin-top: 2px; font-size: 13px; color: #62627A">81/08 Rischio specifico in Aula C e Aggiornamento 81/08 in Aula A.</div>
+</div>
+<button type="button" class="btn-d" style="flex: none; display: inline-flex; align-items: center; height: 36px; padding: 0 16px; border-radius: 8px; background: #C2343B; border: 0; color: #FFFFFF; font-size: 14px; font-weight: 500; cursor: pointer">Risolvi</button>
+</div>
+
+<!-- CALENDAR + SIDE -->
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 20px">
+
+<!-- WEEK CALENDAR -->
+<section aria-labelledby="cal-title" style="flex: 3 1 0%; min-width: min(100%, 600px); background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05); overflow: hidden">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 20px; border-bottom: 1px solid #EFEFF4">
+<div style="display: flex; align-items: center; gap: 14px; min-width: 0">
+<div style="display: flex; gap: 4px; flex: none">
+<button type="button" class="btn-s" aria-label="Settimana precedente" style="width: 32px; height: 32px; padding: 0; border-radius: 8px; background: #FFFFFF; border: 1px solid #E1E1EA; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>
+<button type="button" class="btn-s" aria-label="Settimana successiva" style="width: 32px; height: 32px; padding: 0; border-radius: 8px; background: #FFFFFF; border: 1px solid #E1E1EA; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg></button>
+</div>
+<h2 id="cal-title" style="margin: 0; font-size: 16px; font-weight: 560; line-height: 1.3; font-variant-numeric: tabular-nums">5 – 9 ottobre 2026</h2>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<button type="button" class="btn-s" style="display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 10px; border-radius: 8px; background: #FFFFFF; border: 1px solid #E1E1EA; color: #3B3B4F; font-size: 13px; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>Brescia<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: #62627A"><path d="M6 9l6 6 6-6"></path></svg></button>
+<button type="button" class="btn-s" style="display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 10px; border-radius: 8px; background: #FFFFFF; border: 1px solid #E1E1EA; color: #3B3B4F; font-size: 13px; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Tutti i docenti<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: #62627A"><path d="M6 9l6 6 6-6"></path></svg></button>
+</div>
+</div>
+
+<div style="overflow-x: auto">
+<div style="min-width: 760px">
+
+<!-- day headers -->
+<div style="display: grid; grid-template-columns: 56px repeat(5, minmax(0, 1fr)); border-bottom: 1px solid #E9E9F0">
+<div></div>
+<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; padding: 10px 12px; border-left: 1px solid #EFEFF4">
+<div><div style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #62627A">LUN</div><div style="font-size: 20px; font-weight: 560; line-height: 1.2; font-variant-numeric: tabular-nums">5</div></div>
+<div style="font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">6 h</div>
+</div>
+<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; padding: 10px 12px; border-left: 1px solid #EFEFF4; background: #E8EBFD">
+<div><div style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #3E50D0">MAR · OGGI</div><div style="font-size: 20px; font-weight: 560; line-height: 1.2; color: #3E50D0; font-variant-numeric: tabular-nums">6</div></div>
+<div style="font-size: 12px; color: #3E50D0; font-variant-numeric: tabular-nums">6 h</div>
+</div>
+<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; padding: 10px 12px; border-left: 1px solid #EFEFF4">
+<div><div style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #62627A">MER</div><div style="font-size: 20px; font-weight: 560; line-height: 1.2; font-variant-numeric: tabular-nums">7</div></div>
+<div style="font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">4 h</div>
+</div>
+<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; padding: 10px 12px; border-left: 1px solid #EFEFF4">
+<div><div style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #62627A">GIO</div><div style="font-size: 20px; font-weight: 560; line-height: 1.2; font-variant-numeric: tabular-nums">8</div></div>
+<div style="font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">6 h</div>
+</div>
+<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; padding: 10px 12px; border-left: 1px solid #EFEFF4">
+<div><div style="font-size: 11px; font-weight: 600; letter-spacing: 0.08em; color: #62627A">VEN</div><div style="font-size: 20px; font-weight: 560; line-height: 1.2; font-variant-numeric: tabular-nums">9</div></div>
+<div style="font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">4 h</div>
+</div>
+</div>
+
+<!-- time grid: 08:00–18:00, 80px per hour -->
+<div style="display: grid; grid-template-columns: 56px repeat(5, minmax(0, 1fr))">
+
+<!-- time column -->
+<div style="position: relative; height: 824px">
+<div style="position: absolute; left: 0; right: 0; top: 12px; height: 800px; font-size: 12px; line-height: 16px; color: #62627A; font-variant-numeric: tabular-nums; text-align: right">
+<div style="position: absolute; right: 10px; top: -8px">08:00</div>
+<div style="position: absolute; right: 10px; top: 72px">09:00</div>
+<div style="position: absolute; right: 10px; top: 152px">10:00</div>
+<div style="position: absolute; right: 10px; top: 232px">11:00</div>
+<div style="position: absolute; right: 10px; top: 312px">12:00</div>
+<div style="position: absolute; right: 10px; top: 392px">13:00</div>
+<div style="position: absolute; right: 10px; top: 472px">14:00</div>
+<div style="position: absolute; right: 10px; top: 552px">15:00</div>
+<div style="position: absolute; right: 10px; top: 632px">16:00</div>
+<div style="position: absolute; right: 10px; top: 712px">17:00</div>
+<div style="position: absolute; right: 10px; top: 792px">18:00</div>
+<div style="position: absolute; right: 6px; top: 204px; padding: 0 5px; border-radius: 4px; background: #5266EB; color: #FFFFFF; font-size: 11px; font-weight: 600; line-height: 18px"><span class="sr">Ora attuale </span>10:40</div>
+</div>
+</div>
+
+<!-- LUN 5 -->
+<div style="position: relative; height: 824px; border-left: 1px solid #EFEFF4">
+<div style="position: absolute; left: 0; right: 0; top: 12px; height: 800px; border-bottom: 1px solid #E9E9F0; background-image: linear-gradient(to bottom, #E9E9F0 1px, transparent 1px), linear-gradient(to bottom, #F4F4F7 1px, transparent 1px); background-size: 100% 80px, 100% 40px">
+<a href="#" class="ev" style="position: absolute; top: 82px; height: 316px; left: 4px; right: 4px; box-sizing: border-box; padding: 6px 8px 6px 9px; border-radius: 6px; background: #E8EBFD; border-left: 3px solid #5266EB; color: #171721; text-decoration: none; overflow: hidden">
+<div style="font-size: 12px; line-height: 16px; font-weight: 500; color: #3E50D0; font-variant-numeric: tabular-nums">09:00 – 13:00</div>
+<div style="margin-top: 2px; font-size: 13px; line-height: 17px; font-weight: 560">81/08 Formazione generale</div>
+<div style="margin-top: 4px; font-size: 12px; line-height: 16px; color: #3B3B4F">Aula A · Ing. Conti</div>
+<div style="margin-top: 4px; display: flex; align-items: center; gap: 5px; font-size: 12px; line-height: 16px; color: #62627A; font-variant-numeric: tabular-nums"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"></path><path d="M18 14.2a6.5 6.5 0 0 1 3.5 5.8"></path></svg>18/20 iscritti</div>
+</a>
+<a href="#" class="ev" style="position: absolute; top: 482px; height: 156px; left: 4px; right: 4px; box-sizing: border-box; padding: 6px 8px 6px 9px; border-radius: 6px; background: #E3F4EC; border-left: 3px solid #0F8A63; color: #171721; text-decoration: none; overflow: hidden">
+<div style="font-size: 12px; line-height: 16px; font-weight: 500; color: #0B7655; font-variant-numeric: tabular-nums">14:00 – 16:00</div>
+<div style="margin-top: 2px; font-size: 13px; line-height: 17px; font-weight: 560">HACCP Base</div>
+<div style="margin-top: 4px; font-size: 12px; line-height: 16px; color: #3B3B4F">Aula B · Dott.ssa Mari</div>
+<div style="margin-top: 4px; display: flex; align-items: center; gap: 5px; font-size: 12px; line-height: 16px; color: #62627A; font-variant-numeric: tabular-nums"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"></path><path d="M18 14.2a6.5 6.5 0 0 1 3.5 5.8"></path></svg>12/15 iscritti</div>
+</a>
+</div>
+</div>
+
+<!-- MAR 6 (oggi) -->
+<div style="position: relative; height: 824px; border-left: 1px solid #EFEFF4; background: #FAFBFF">
+<div style="position: absolute; left: 0; right: 0; top: 12px; height: 800px; border-bottom: 1px solid #E9E9F0; background-image: linear-gradient(to bottom, #E9E9F0 1px, transparent 1px), linear-gradient(to bottom, #F2F3F8 1px, transparent 1px); background-size: 100% 80px, 100% 40px">
+<a href="#" class="ev" style="position: absolute; top: 82px; height: 156px; left: 4px; right: 4px; box-sizing: border-box; padding: 6px 8px 6px 9px; border-radius: 6px; background: #FDF0DC; border-left: 3px solid #A15C07; color: #171721; text-decoration: none; overflow: hidden">
+<div style="font-size: 12px; line-height: 16px; font-weight: 500; color: #A15C07; font-variant-numeric: tabular-nums">09:00 – 11:00</div>
+<div style="margin-top: 2px; font-size: 13px; line-height: 17px; font-weight: 560">Antincendio rischio medio</div>
+<div style="margin-top: 4px; font-size: 12px; line-height: 16px; color: #3B3B4F">Aula A · Geom. Russo</div>
+<div style="margin-top: 4px; display: flex; align-items: center; gap: 5px; font-size: 12px; line-height: 16px; color: #62627A; font-variant-numeric: tabular-nums"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"></path><path d="M18 14.2a6.5 6.5 0 0 1 3.5 5.8"></path></svg>14/16 iscritti</div>
+</a>
+<a href="#" class="ev" title="81/08 Rischio specifico · Aula C · Ing. Conti · in conflitto" style="position: absolute; top: 482px; height: 156px; left: 4px; width: calc(50% - 6px); box-sizing: border-box; padding: 5px 6px 6px 7px; border-radius: 6px; background: #FBE7E8; border: 1px solid #C2343B; border-left-width: 3px; color: #171721; text-decoration: none; overflow: hidden">
+<div style="display: flex; align-items: center; gap: 4px; white-space: nowrap; font-size: 12px; line-height: 16px; font-weight: 500; color: #C2343B; font-variant-numeric: tabular-nums"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 4.1L2.6 17.5A2 2 0 0 0 4.3 20.5h15.4a2 2 0 0 0 1.7-3L13.7 4.1a2 2 0 0 0-3.4 0z"></path><path d="M12 9.5v4"></path><path d="M12 17h.01"></path></svg>14–16</div>
+<div style="margin-top: 2px; font-size: 12px; line-height: 16px; font-weight: 560"><span class="sr">81/08 </span>Rischio specifico</div>
+<div style="margin-top: 4px; font-size: 12px; line-height: 16px; color: #3B3B4F">Aula C</div>
+<div style="font-size: 12px; line-height: 16px; font-weight: 560; color: #C2343B">Ing. Conti</div>
+</a>
+<a href="#" class="ev" title="Aggiornamento 81/08 · Aula A · Ing. Conti · in conflitto" style="position: absolute; top: 482px; height: 156px; left: calc(50% + 2px); right: 4px; box-sizing: border-box; padding: 5px 6px 6px 7px; border-radius: 6px; background: #FBE7E8; border: 1px solid #C2343B; border-left-width: 3px; color: #171721; text-decoration: none; overflow: hidden">
+<div style="display: flex; align-items: center; gap: 4px; white-space: nowrap; font-size: 12px; line-height: 16px; font-weight: 500; color: #C2343B; font-variant-numeric: tabular-nums"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 4.1L2.6 17.5A2 2 0 0 0 4.3 20.5h15.4a2 2 0 0 0 1.7-3L13.7 4.1a2 2 0 0 0-3.4 0z"></path><path d="M12 9.5v4"></path><path d="M12 17h.01"></path></svg>14–16</div>
+<div style="margin-top: 2px; font-size: 12px; line-height: 16px; font-weight: 560"><abbr title="Aggiornamento" style="text-decoration: none">Agg.</abbr> 81/08</div>
+<div style="margin-top: 4px; font-size: 12px; line-height: 16px; color: #3B3B4F">Aula A</div>
+<div style="font-size: 12px; line-height: 16px; font-weight: 560; color: #C2343B">Ing. Conti</div>
+</a>
+<!-- now line 10:40 -->
+<div aria-hidden="true" style="position: absolute; left: -1px; right: 0; top: 212px; height: 2px; background: #5266EB; z-index: 2"><span style="position: absolute; left: -4px; top: -4px; width: 10px; height: 10px; border-radius: 50%; background: #5266EB"></span></div>
+</div>
+</div>
+
+<!-- MER 7 -->
+<div style="position: relative; height: 824px; border-left: 1px solid #EFEFF4">
+<div style="position: absolute; left: 0; right: 0; top: 12px; height: 800px; border-bottom: 1px solid #E9E9F0; background-image: linear-gradient(to bottom, #E9E9F0 1px, transparent 1px), linear-gradient(to bottom, #F4F4F7 1px, transparent 1px); background-size: 100% 80px, 100% 40px">
+<a href="#" class="ev" style="position: absolute; top: 82px; height: 316px; left: 4px; right: 4px; box-sizing: border-box; padding: 6px 8px 6px 9px; border-radius: 6px; background: #E3F4EC; border-left: 3px solid #0F8A63; color: #171721; text-decoration: none; overflow: hidden">
+<div style="font-size: 12px; line-height: 16px; font-weight: 500; color: #0B7655; font-variant-numeric: tabular-nums">09:00 – 13:00</div>
+<div style="margin-top: 2px; font-size: 13px; line-height: 17px; font-weight: 560">HACCP Base</div>
+<div style="margin-top: 4px; font-size: 12px; line-height: 16px; color: #3B3B4F">Aula B · Dott.ssa Mari</div>
+<div style="margin-top: 4px; display: flex; align-items: center; gap: 5px; font-size: 12px; line-height: 16px; color: #62627A; font-variant-numeric: tabular-nums"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"></path><path d="M18 14.2a6.5 6.5 0 0 1 3.5 5.8"></path></svg>15/15 · 3 in attesa</div>
+</a>
+</div>
+</div>
+
+<!-- GIO 8 -->
+<div style="position: relative; height: 824px; border-left: 1px solid #EFEFF4">
+<div style="position: absolute; left: 0; right: 0; top: 12px; height: 800px; border-bottom: 1px solid #E9E9F0; background-image: linear-gradient(to bottom, #E9E9F0 1px, transparent 1px), linear-gradient(to bottom, #F4F4F7 1px, transparent 1px); background-size: 100% 80px, 100% 40px">
+<a href="#" class="ev" style="position: absolute; top: 82px; height: 156px; left: 4px; right: 4px; box-sizing: border-box; padding: 6px 8px 6px 9px; border-radius: 6px; background: #FDF0DC; border-left: 3px solid #A15C07; color: #171721; text-decoration: none; overflow: hidden">
+<div style="font-size: 12px; line-height: 16px; font-weight: 500; color: #A15C07; font-variant-numeric: tabular-nums">09:00 – 11:00</div>
+<div style="margin-top: 2px; font-size: 13px; line-height: 17px; font-weight: 560">Primo soccorso gruppo B</div>
+<div style="margin-top: 4px; font-size: 12px; line-height: 16px; color: #3B3B4F">Aula A · Dott. Bassi</div>
+<div style="margin-top: 4px; display: flex; align-items: center; gap: 5px; font-size: 12px; line-height: 16px; color: #62627A; font-variant-numeric: tabular-nums"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"></path><path d="M18 14.2a6.5 6.5 0 0 1 3.5 5.8"></path></svg>10/12 iscritti</div>
+</a>
+<a href="#" class="ev" style="position: absolute; top: 482px; height: 316px; left: 4px; right: 4px; box-sizing: border-box; padding: 6px 8px 6px 9px; border-radius: 6px; background: #EDF0F8; border-left: 3px solid #6F7FB0; color: #171721; text-decoration: none; overflow: hidden">
+<div style="font-size: 12px; line-height: 16px; font-weight: 500; color: #4E5C8F; font-variant-numeric: tabular-nums">14:00 – 18:00</div>
+<div style="margin-top: 2px; font-size: 13px; line-height: 17px; font-weight: 560">RSPP Modulo B</div>
+<div style="margin-top: 4px; font-size: 12px; line-height: 16px; color: #3B3B4F">Aula C · Ing. Conti</div>
+<div style="margin-top: 4px; display: flex; align-items: center; gap: 5px; font-size: 12px; line-height: 16px; color: #62627A; font-variant-numeric: tabular-nums"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"></path><path d="M18 14.2a6.5 6.5 0 0 1 3.5 5.8"></path></svg>11/16 iscritti</div>
+</a>
+</div>
+</div>
+
+<!-- VEN 9 -->
+<div style="position: relative; height: 824px; border-left: 1px solid #EFEFF4">
+<div style="position: absolute; left: 0; right: 0; top: 12px; height: 800px; border-bottom: 1px solid #E9E9F0; background-image: linear-gradient(to bottom, #E9E9F0 1px, transparent 1px), linear-gradient(to bottom, #F4F4F7 1px, transparent 1px); background-size: 100% 80px, 100% 40px">
+<a href="#" class="ev" style="position: absolute; top: 82px; height: 316px; left: 4px; right: 4px; box-sizing: border-box; padding: 6px 8px 6px 9px; border-radius: 6px; background: #FDF0DC; border-left: 3px solid #A15C07; color: #171721; text-decoration: none; overflow: hidden">
+<div style="font-size: 12px; line-height: 16px; font-weight: 500; color: #A15C07; font-variant-numeric: tabular-nums">09:00 – 13:00</div>
+<div style="margin-top: 2px; font-size: 13px; line-height: 17px; font-weight: 560">Antincendio prova pratica</div>
+<div style="margin-top: 4px; font-size: 12px; line-height: 16px; color: #3B3B4F">Area esterna · Geom. Russo</div>
+<div style="margin-top: 4px; display: flex; align-items: center; gap: 5px; font-size: 12px; line-height: 16px; color: #62627A; font-variant-numeric: tabular-nums"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"></path><path d="M18 14.2a6.5 6.5 0 0 1 3.5 5.8"></path></svg>14/16 iscritti</div>
+</a>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- legend -->
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding: 14px 20px; border-top: 1px solid #EFEFF4; font-size: 12px; color: #3B3B4F">
+<ul aria-label="Legenda" style="display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 0; padding: 0; list-style: none">
+<li style="display: inline-flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 3px; background: #5266EB"></span>Sicurezza 81/08</li>
+<li style="display: inline-flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 3px; background: #0F8A63"></span>HACCP</li>
+<li style="display: inline-flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 3px; background: #A15C07"></span>Emergenze</li>
+<li style="display: inline-flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 3px; background: #6F7FB0"></span>RSPP / ASPP</li>
+<li style="display: inline-flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 3px; background: #FBE7E8; box-shadow: inset 0 0 0 1.5px #C2343B"></span>Conflitto</li>
+</ul>
+<span style="color: #62627A; font-variant-numeric: tabular-nums">9 lezioni · 26 ore · 4 docenti</span>
+</div>
+</section>
+
+<!-- SIDE COLUMN -->
+<div style="flex: 1 1 0%; min-width: min(100%, 280px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 20px; align-items: start">
+
+<!-- mini month -->
+<section aria-labelledby="mini-title" style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05)">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 12px 12px 12px 20px; border-bottom: 1px solid #EFEFF4">
+<h2 id="mini-title" style="margin: 0; font-size: 16px; font-weight: 560; line-height: 1.3; font-variant-numeric: tabular-nums">Ottobre 2026</h2>
+<div style="display: flex; gap: 2px">
+<button type="button" class="icon-btn" aria-label="Mese precedente" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>
+<button type="button" class="icon-btn" aria-label="Mese successivo" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg></button>
+</div>
+</div>
+<div style="padding: 12px 14px 14px">
+<div aria-hidden="true" style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); text-align: center; font-size: 11px; font-weight: 600; letter-spacing: 0.04em; color: #62627A; line-height: 28px">
+<span>L</span><span>M</span><span>M</span><span>G</span><span>V</span><span>S</span><span>D</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 2px; font-size: 13px; font-variant-numeric: tabular-nums">
+<!-- row 1 -->
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); justify-items: center">
+<span></span><span></span><span></span>
+<button type="button" class="day" aria-label="1 ottobre, con lezioni" style="position: relative; width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #171721; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">1<span aria-hidden="true" style="position: absolute; left: 50%; bottom: 4px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: #5266EB"></span></button>
+<button type="button" class="day" aria-label="2 ottobre, con lezioni" style="position: relative; width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #171721; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">2<span aria-hidden="true" style="position: absolute; left: 50%; bottom: 4px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: #5266EB"></span></button>
+<button type="button" class="day" aria-label="3 ottobre" style="width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #62627A; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">3</button>
+<button type="button" class="day" aria-label="4 ottobre" style="width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #62627A; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">4</button>
+</div>
+<!-- row 2 (settimana corrente) -->
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); justify-items: center; border-radius: 8px; background: #F3F4F8">
+<button type="button" class="day" aria-label="5 ottobre, con lezioni" style="position: relative; width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #171721; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">5<span aria-hidden="true" style="position: absolute; left: 50%; bottom: 4px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: #5266EB"></span></button>
+<button type="button" aria-label="6 ottobre, oggi, con lezioni" aria-current="date" style="position: relative; width: 32px; height: 32px; border: 0; border-radius: 50%; background: #5266EB; color: #FFFFFF; font-size: 13px; font-weight: 600; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">6<span aria-hidden="true" style="position: absolute; left: 50%; bottom: 4px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: #FFFFFF"></span></button>
+<button type="button" class="day" aria-label="7 ottobre, con lezioni" style="position: relative; width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #171721; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">7<span aria-hidden="true" style="position: absolute; left: 50%; bottom: 4px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: #5266EB"></span></button>
+<button type="button" class="day" aria-label="8 ottobre, con lezioni" style="position: relative; width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #171721; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">8<span aria-hidden="true" style="position: absolute; left: 50%; bottom: 4px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: #5266EB"></span></button>
+<button type="button" class="day" aria-label="9 ottobre, con lezioni" style="position: relative; width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #171721; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">9<span aria-hidden="true" style="position: absolute; left: 50%; bottom: 4px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: #5266EB"></span></button>
+<button type="button" class="day" aria-label="10 ottobre" style="width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #62627A; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">10</button>
+<button type="button" class="day" aria-label="11 ottobre" style="width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #62627A; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">11</button>
+</div>
+<!-- row 3 -->
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); justify-items: center">
+<button type="button" class="day" aria-label="12 ottobre, con lezioni" style="position: relative; width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #171721; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">12<span aria-hidden="true" style="position: absolute; left: 50%; bottom: 4px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: #5266EB"></span></button>
+<button type="button" class="day" aria-label="13 ottobre, con lezioni" style="position: relative; width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #171721; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">13<span aria-hidden="true" style="position: absolute; left: 50%; bottom: 4px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: #5266EB"></span></button>
+<button type="button" class="day" aria-label="14 ottobre" style="width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #171721; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">14</button>
+<button type="button" class="day" aria-label="15 ottobre, con lezioni" style="position: relative; width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #171721; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">15<span aria-hidden="true" style="position: absolute; left: 50%; bottom: 4px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: #5266EB"></span></button>
+<button type="button" class="day" aria-label="16 ottobre, con lezioni" style="position: relative; width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #171721; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">16<span aria-hidden="true" style="position: absolute; left: 50%; bottom: 4px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: #5266EB"></span></button>
+<button type="button" class="day" aria-label="17 ottobre, con lezioni" style="position: relative; width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #62627A; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">17<span aria-hidden="true" style="position: absolute; left: 50%; bottom: 4px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: #5266EB"></span></button>
+<button type="button" class="day" aria-label="18 ottobre" style="width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #62627A; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">18</button>
+</div>
+<!-- row 4 -->
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); justify-items: center">
+<button type="button" class="day" aria-label="19 ottobre, con lezioni" style="position: relative; width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #171721; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">19<span aria-hidden="true" style="position: absolute; left: 50%; bottom: 4px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: #5266EB"></span></button>
+<button type="button" class="day" aria-label="20 ottobre" style="width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #171721; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">20</button>
+<button type="button" class="day" aria-label="21 ottobre, con lezioni" style="position: relative; width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #171721; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">21<span aria-hidden="true" style="position: absolute; left: 50%; bottom: 4px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: #5266EB"></span></button>
+<button type="button" class="day" aria-label="22 ottobre, con lezioni" style="position: relative; width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #171721; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">22<span aria-hidden="true" style="position: absolute; left: 50%; bottom: 4px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: #5266EB"></span></button>
+<button type="button" class="day" aria-label="23 ottobre" style="width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #171721; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">23</button>
+<button type="button" class="day" aria-label="24 ottobre" style="width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #62627A; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">24</button>
+<button type="button" class="day" aria-label="25 ottobre" style="width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #62627A; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">25</button>
+</div>
+<!-- row 5 -->
+<div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); justify-items: center">
+<button type="button" class="day" aria-label="26 ottobre, con lezioni" style="position: relative; width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #171721; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">26<span aria-hidden="true" style="position: absolute; left: 50%; bottom: 4px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: #5266EB"></span></button>
+<button type="button" class="day" aria-label="27 ottobre, con lezioni" style="position: relative; width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #171721; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">27<span aria-hidden="true" style="position: absolute; left: 50%; bottom: 4px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: #5266EB"></span></button>
+<button type="button" class="day" aria-label="28 ottobre" style="width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #171721; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">28</button>
+<button type="button" class="day" aria-label="29 ottobre, con lezioni" style="position: relative; width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #171721; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">29<span aria-hidden="true" style="position: absolute; left: 50%; bottom: 4px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: #5266EB"></span></button>
+<button type="button" class="day" aria-label="30 ottobre, con lezioni" style="position: relative; width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #171721; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">30<span aria-hidden="true" style="position: absolute; left: 50%; bottom: 4px; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: #5266EB"></span></button>
+<button type="button" class="day" aria-label="31 ottobre" style="width: 32px; height: 32px; border: 0; border-radius: 50%; background: transparent; color: #62627A; font-size: 13px; padding: 0 0 3px; cursor: pointer; font-variant-numeric: tabular-nums">31</button>
+<span></span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- suggestion -->
+<section aria-labelledby="sugg-title" style="background: #E8EBFD; border: 1px solid #D5DBFA; border-radius: 8px; padding: 20px">
+<div style="display: flex; align-items: center; gap: 10px">
+<span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 8px; background: #FFFFFF; color: #3E50D0; display: inline-flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13"></path><path d="M14 4.5L17.5 8 14 11.5"></path><path d="M20 16H7"></path><path d="M10 12.5L6.5 16 10 19.5"></path></svg></span>
+<span style="font-size: 13px; font-weight: 600; color: #3E50D0">Suggerimento</span>
+</div>
+<h2 id="sugg-title" style="margin: 12px 0 0; font-size: 15px; font-weight: 560; line-height: 1.4; color: #171721">Riassegna Aggiornamento 81/08 a Geom. Russo</h2>
+<ul style="display: flex; flex-direction: column; gap: 6px; margin: 12px 0 0; padding: 0; list-style: none; font-size: 13px; color: #3B3B4F">
+<li style="display: flex; align-items: flex-start; gap: 8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0B7655" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 2px"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>Libero martedì <span style="font-variant-numeric: tabular-nums">14:00–16:00</span></span></li>
+<li style="display: flex; align-items: flex-start; gap: 8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0B7655" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 2px"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>Abilitato alla materia</span></li>
+<li style="display: flex; align-items: flex-start; gap: 8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0B7655" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 2px"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><span>Aula A disponibile</span></li>
+</ul>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px">
+<button type="button" class="btn-p" style="display: inline-flex; align-items: center; height: 36px; padding: 0 16px; border-radius: 8px; background: #5266EB; border: 0; color: #FFFFFF; font-size: 14px; font-weight: 500; cursor: pointer">Applica</button>
+<button type="button" class="btn-s" style="display: inline-flex; align-items: center; height: 36px; padding: 0 14px; border-radius: 8px; background: #FFFFFF; border: 1px solid #CDD4F7; color: #171721; font-size: 14px; font-weight: 500; cursor: pointer">Altre opzioni</button>
+</div>
+<p style="margin: 12px 0 0; font-size: 12px; line-height: 1.5; color: #62627A">La lettera d’incarico viene aggiornata e inviata in automatico.</p>
+</section>
+
+<!-- teachers -->
+<section aria-labelledby="doc-title" style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05)">
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px; padding: 16px 20px; border-bottom: 1px solid #EFEFF4">
+<h2 id="doc-title" style="margin: 0; font-size: 16px; font-weight: 560; line-height: 1.3">Docenti questa settimana</h2>
+</div>
+<ul style="margin: 0; padding: 0; list-style: none">
+<li style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5">
+<div style="display: flex; align-items: center; gap: 12px">
+<span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #E8EBFD; color: #3E50D0; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">LC</span>
+<div style="flex: 1; min-width: 0">
+<div style="font-weight: 560; color: #171721; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Ing. Luca Conti</div>
+<div style="font-size: 12px; color: #62627A">4 lezioni · <span style="color: #C2343B; font-weight: 560">2 h in conflitto</span></div>
+</div>
+<div style="flex: none; font-variant-numeric: tabular-nums; color: #62627A; font-size: 12px"><span style="font-size: 14px; font-weight: 560; color: #171721">12</span> / 16 h</div>
+</div>
+<div role="img" aria-label="12 ore su 16, di cui 2 in conflitto" style="display: flex; gap: 2px; height: 6px; margin: 8px 0 0 44px; border-radius: 999px; background: #EFEFF4; overflow: hidden">
+<span style="width: 62.5%; background: #5266EB; border-radius: 999px 0 0 999px"></span><span style="width: 12.5%; background: #C2343B"></span>
+</div>
+</li>
+<li style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5">
+<div style="display: flex; align-items: center; gap: 12px">
+<span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #E3F4EC; color: #0B7655; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">GM</span>
+<div style="flex: 1; min-width: 0">
+<div style="font-weight: 560; color: #171721; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Dott.ssa Giulia Mari</div>
+<div style="font-size: 12px; color: #62627A">2 lezioni · HACCP</div>
+</div>
+<div style="flex: none; font-variant-numeric: tabular-nums; color: #62627A; font-size: 12px"><span style="font-size: 14px; font-weight: 560; color: #171721">6</span> / 16 h</div>
+</div>
+<div role="img" aria-label="6 ore su 16" style="height: 6px; margin: 8px 0 0 44px; border-radius: 999px; background: #EFEFF4; overflow: hidden">
+<span style="display: block; width: 37.5%; height: 100%; background: #5266EB; border-radius: 999px"></span>
+</div>
+</li>
+<li style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5">
+<div style="display: flex; align-items: center; gap: 12px">
+<span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #FDF0DC; color: #A15C07; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">AR</span>
+<div style="flex: 1; min-width: 0">
+<div style="font-weight: 560; color: #171721; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Geom. Andrea Russo</div>
+<div style="font-size: 12px; color: #62627A">2 lezioni · Antincendio</div>
+</div>
+<div style="flex: none; font-variant-numeric: tabular-nums; color: #62627A; font-size: 12px"><span style="font-size: 14px; font-weight: 560; color: #171721">6</span> / 16 h</div>
+</div>
+<div role="img" aria-label="6 ore su 16" style="height: 6px; margin: 8px 0 0 44px; border-radius: 999px; background: #EFEFF4; overflow: hidden">
+<span style="display: block; width: 37.5%; height: 100%; background: #5266EB; border-radius: 999px"></span>
+</div>
+</li>
+<li style="padding: 12px 20px">
+<div style="display: flex; align-items: center; gap: 12px">
+<span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #EDF0F8; color: #4E5C8F; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">FB</span>
+<div style="flex: 1; min-width: 0">
+<div style="font-weight: 560; color: #171721; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Dott. Fabio Bassi</div>
+<div style="font-size: 12px; color: #62627A">1 lezione · Primo soccorso</div>
+</div>
+<div style="flex: none; font-variant-numeric: tabular-nums; color: #62627A; font-size: 12px"><span style="font-size: 14px; font-weight: 560; color: #171721">2</span> / 16 h</div>
+</div>
+<div role="img" aria-label="2 ore su 16" style="height: 6px; margin: 8px 0 0 44px; border-radius: 999px; background: #EFEFF4; overflow: hidden">
+<span style="display: block; width: 12.5%; height: 100%; background: #5266EB; border-radius: 999px"></span>
+</div>
+</li>
+</ul>
+</section>
+
+</div>
+</div>
+
+</main>
+</div>
+</div>
+</body>
+</html>

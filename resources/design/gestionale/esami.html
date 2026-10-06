@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Attestami — Esami</title>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght,FLAR,VOLM@300..800,0..100,0..100&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F3F4F8}
+a{color:#5266EB}a:hover{color:#4255D4}
+button,input,select{font-family:inherit}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.app-nav a:hover{background:#F3F4F8;color:#171721}
+.app-nav a[aria-current="page"]:hover{background:#E8EBFD;color:#3E50D0}
+.ib:hover{background:#F3F4F8 !important;color:#171721 !important}
+.bp:hover{background:#4255D4 !important;border-color:#4255D4 !important}
+.bs:hover{background:#F8F8FB !important}
+.bt:hover{background:#E8EBFD !important}
+.tr:hover{background:#FAFAFD}
+.lk:hover{color:#2F3FB8 !important;text-decoration:underline !important}
+.fld:focus-within{outline:2px solid #5266EB;outline-offset:1px}
+.fld input:focus,.fld select:focus{outline:none}
+input::placeholder{color:#62627A;opacity:1}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #5266EB;outline-offset:2px}
+input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+input[type=number]{-moz-appearance:textfield;appearance:textfield}
+.sw{-webkit-appearance:none;appearance:none;flex:none;position:relative;width:36px;height:20px;margin:0;border-radius:999px;background:#D5D5E0;cursor:pointer;transition:background .15s ease}
+.sw::before{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#FFFFFF;box-shadow:0 1px 2px rgba(23,23,33,0.24);transition:transform .15s ease}
+.sw:checked{background:#5266EB}
+.sw:checked::before{transform:translateX(16px)}
+.rng{-webkit-appearance:none;appearance:none;display:block;width:100%;height:20px;margin:0;background:transparent;cursor:pointer}
+.rng::-webkit-slider-runnable-track{height:6px;border-radius:999px;background:linear-gradient(90deg,#5266EB 0,#5266EB 40%,#E1E1EA 40%,#E1E1EA 100%)}
+.rng::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;margin-top:-6px;border-radius:50%;background:#FFFFFF;border:2px solid #5266EB;box-sizing:border-box;box-shadow:0 1px 3px rgba(23,23,33,0.18)}
+.rng::-moz-range-track{height:6px;border-radius:999px;background:#E1E1EA}
+.rng::-moz-range-progress{height:6px;border-radius:999px;background:#5266EB}
+.rng::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#FFFFFF;border:2px solid #5266EB;box-shadow:0 1px 3px rgba(23,23,33,0.18)}
+.rng:focus-visible{outline:2px solid #5266EB;outline-offset:4px;border-radius:4px}
+.bar .b{transition:opacity .15s}
+.bar:hover .b{opacity:.8}
+.g-2{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:stretch}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:#EFEFF4;border-top:1px solid #EFEFF4}
+.f3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.f2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width: 1200px){.g-2{grid-template-columns:minmax(0,1fr)}}
+@media (max-width: 860px){
+.app-side{display:none !important}
+.app-top{padding:0 16px !important;gap:8px !important}
+.app-content{padding:16px !important;gap:16px !important}
+.hide-sm{display:none !important}
+.g-2{gap:16px}
+.stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width: 640px){
+.f3,.f2{grid-template-columns:minmax(0,1fr)}
+}
+</style>
+</head>
+<body>
+<div style="width: 100%; min-height: 100vh; background: #F3F4F8; color: #171721; font-family: 'Commissioner', sans-serif; font-size: 14px; line-height: 1.5; display: flex; flex-wrap: wrap; align-items: stretch">
+
+<aside class="app-side" style="flex: 0 0 256px; background: #FFFFFF; border-right: 1px solid #E9E9F0; display: flex; flex-direction: column">
+<div style="position: sticky; top: 0; height: 100vh; overflow-y: auto; display: flex; flex-direction: column">
+<div style="flex: none; height: 64px; box-sizing: border-box; display: flex; align-items: center; gap: 10px; padding: 0 24px; border-bottom: 1px solid #E9E9F0; color: #5266EB">
+<svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><circle cx="13" cy="13" r="11.25" stroke="currentColor" stroke-width="1.5"></circle><path d="M8.5 13.4l3 3 6-6.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span style="font-family: 'Commissioner', sans-serif; font-size: 19px; font-weight: 520; font-variation-settings: 'FLAR' 100; letter-spacing: 0.01em; color: #171721">Attestami</span>
+</div>
+
+<nav class="app-nav" aria-label="Menu principale" style="padding-bottom: 8px">
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #74748C">Principale</div>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"></rect><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"></rect><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"></rect></svg>Dashboard</a>
+
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #74748C">Formazione</div>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 5a1.5 1.5 0 0 1 1.5-1.5H19v15H6.5A1.5 1.5 0 0 0 5 20z"></path><path d="M5 20a1.5 1.5 0 0 0 1.5 1.5H19"></path><path d="M9 8h6"></path></svg>Corsi</a>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l8.5 4.5-8.5 4.5-8.5-4.5z"></path><path d="M3.5 12.5l8.5 4.5 8.5-4.5"></path><path d="M3.5 16.5l8.5 4.5 8.5-4.5"></path></svg>Edizioni</a>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"></rect><path d="M3.5 10h17M8 3v4M16 3v4"></path></svg>Calendario</a>
+<a href="#" aria-current="page" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; background: #E8EBFD; color: #3E50D0; font-size: 14px; font-weight: 560; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4.5" width="14" height="16.5" rx="2"></rect><path d="M9 4.5V3h6v1.5"></path><path d="M9 13l2 2 4-4.5"></path></svg>Esami</a>
+
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #74748C">Persone</div>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8.5" r="3.5"></circle><path d="M2.5 20c.6-3.5 3.3-5.5 6.5-5.5s5.9 2 6.5 5.5"></path><path d="M15.5 5.2a3.5 3.5 0 0 1 0 6.6M17.5 14.8c2 .7 3.5 2.4 4 5.2"></path></svg>Corsisti</a>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V5a1.5 1.5 0 0 1 1.5-1.5h8A1.5 1.5 0 0 1 15 5v16"></path><path d="M15 9.5h3.5A1.5 1.5 0 0 1 20 11v10M2.5 21h19"></path><path d="M8 8h3M8 12h3M8 16h3"></path></svg>Aziende</a>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"></rect><path d="M12 16v4M8 20.5h8"></path><path d="M7.5 12l3-3 2 2 4-4"></path></svg>Docenti</a>
+
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #74748C">Documenti</div>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5.5"></circle><path d="M8.6 13.4L7.5 21l4.5-2.5 4.5 2.5-1.1-7.6"></path></svg>Attestati</a>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="7.5"></circle><path d="M12 9.5V13l2.5 2M5 4.5L3 6.5M19 4.5l2 2"></path></svg>Scadenze<span style="margin-left: auto; min-width: 22px; height: 20px; padding: 0 7px; box-sizing: border-box; border-radius: 999px; background: #FDF0DC; color: #A15C07; font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; font-variant-numeric: tabular-nums">9</span></a>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="5" rx="1.5"></rect><path d="M5 9v10a1.5 1.5 0 0 0 1.5 1.5h11A1.5 1.5 0 0 0 19 19V9"></path><path d="M10 13h4"></path></svg>Registro</a>
+
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #74748C">Impostazioni</div>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.1 0 1.6-.8 1.6-1.6 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.7-1.6 1.6-1.6H16a5 5 0 0 0 5-5C21 6.4 17 3 12 3z"></path><circle cx="7.5" cy="11" r="1"></circle><circle cx="10.5" cy="7" r="1"></circle><circle cx="15.5" cy="7.5" r="1"></circle></svg>Ente e brand</a>
+<a href="#" style="display: flex; align-items: center; gap: 12px; padding: 9px 16px; margin: 1px 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="8" r="4"></circle><path d="M3 20.5c.7-3.8 3.5-6 7-6 1.4 0 2.7.3 3.8 1"></path><path d="M15.5 18.5l2 2 4-4.5"></path></svg>Utenti</a>
+</nav>
+
+<div style="margin: auto 16px 16px; padding: 14px; background: #F3F4F8; border-radius: 8px">
+<div style="font-weight: 560; color: #171721">Ente Demo Formazione</div>
+<div style="font-size: 12px; color: #62627A">Piano Professional · 3 sedi</div>
+</div>
+</div>
+</aside>
+
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column">
+
+<header class="app-top" style="flex: none; height: 64px; box-sizing: border-box; background: #FFFFFF; border-bottom: 1px solid #E9E9F0; padding: 0 24px; display: flex; align-items: center; gap: 16px">
+<button type="button" class="ib" aria-label="Apri menu" style="flex: none; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"></path></svg></button>
+<div class="fld" style="position: relative; flex: 0 1 420px; min-width: 0; height: 40px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 0 12px; border-radius: 8px; background: #F3F4F8; border: 1px solid #E9E9F0; color: #62627A">
+<label for="app-cerca" class="sr">Cerca in Attestami</label>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="11" cy="11" r="6.5"></circle><path d="M20 20l-4.2-4.2"></path></svg>
+<input id="app-cerca" type="search" placeholder="Cerca corsisti, corsi, attestati…" style="flex: 1; min-width: 0; height: 38px; padding: 0; border: 0; background: transparent; font-size: 14px; color: #171721">
+</div>
+<div style="flex: 1"></div>
+<div style="flex: none; display: flex; align-items: center; gap: 4px">
+<button type="button" class="ib hide-sm" aria-label="Calendario" style="width: 40px; height: 40px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"></rect><path d="M3.5 10h17M8 3v4M16 3v4"></path></svg></button>
+<button type="button" class="ib" aria-label="Notifiche, 3 non lette" style="position: relative; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"></path><path d="M10 21h4"></path></svg><span style="position: absolute; top: 9px; right: 10px; width: 8px; height: 8px; border-radius: 50%; background: #5266EB; box-shadow: 0 0 0 2px #FFFFFF"></span></button>
+<button type="button" class="ib hide-sm" aria-label="Guida" style="width: 40px; height: 40px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6"></path><path d="M12 17.2v.1"></path></svg></button>
+</div>
+<div class="hide-sm" style="flex: none; width: 1px; height: 28px; background: #E9E9F0"></div>
+<div style="flex: none; display: flex; align-items: center; gap: 10px">
+<span aria-hidden="true" style="width: 36px; height: 36px; border-radius: 50%; background: #E8EBFD; color: #3E50D0; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600">MP</span>
+<div class="hide-sm" style="line-height: 1.3">
+<div style="font-size: 14px; font-weight: 560; color: #171721">Marco Predieri</div>
+<div style="font-size: 12px; color: #62627A">Amministratore</div>
+</div>
+</div>
+</header>
+
+<main class="app-content" style="flex: 1; padding: 24px; display: flex; flex-direction: column; gap: 24px">
+
+<!-- PAGE HEADER -->
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px">
+<h1 style="margin: 0; font-size: 22px; font-weight: 560; font-variation-settings: 'FLAR' 60; line-height: 1.25; color: #171721">Esami</h1>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px">
+<nav aria-label="Percorso">
+<ol style="display: flex; align-items: center; gap: 8px; margin: 0; padding: 0; list-style: none; font-size: 13px; color: #62627A">
+<li><a href="#" style="color: #62627A; text-decoration: none">Home</a></li>
+<li aria-hidden="true">/</li>
+<li><a href="#" style="color: #62627A; text-decoration: none">Formazione</a></li>
+<li aria-hidden="true">/</li>
+<li aria-current="page" style="color: #171721; font-weight: 500">Esami</li>
+</ol>
+</nav>
+<div class="hide-sm" style="width: 1px; height: 24px; background: #E1E1EA"></div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<button type="button" class="bs" style="height: 40px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; border: 1px solid #E1E1EA; border-radius: 8px; background: #FFFFFF; color: #171721; font-size: 14px; font-weight: 500; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6.5C4 5.1 7.6 4 12 4s8 1.1 8 2.5S16.4 9 12 9 4 7.9 4 6.5z"></path><path d="M4 6.5v5C4 12.9 7.6 14 12 14s8-1.1 8-2.5v-5"></path><path d="M4 11.5v5C4 17.9 7.6 19 12 19s8-1.1 8-2.5v-5"></path></svg>Banca domande</button>
+<button type="button" class="bp" style="height: 40px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; border: 1px solid #5266EB; border-radius: 8px; background: #5266EB; color: #FFFFFF; font-size: 14px; font-weight: 500; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Nuovo esame</button>
+</div>
+</div>
+</div>
+
+<!-- EXAM SELECTOR -->
+<section aria-labelledby="esame-titolo" style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05); overflow: hidden">
+<div style="padding: 20px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px">
+<div style="flex: 1 1 520px; min-width: 0; display: flex; align-items: flex-start; gap: 16px">
+<span aria-hidden="true" style="flex: none; width: 48px; height: 48px; border-radius: 8px; background: #E8EBFD; color: #3E50D0; display: inline-flex; align-items: center; justify-content: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4.5" width="14" height="16.5" rx="2"></rect><path d="M9 4.5V3h6v1.5"></path><path d="M9 13l2 2 4-4.5"></path></svg></span>
+<div style="flex: 1; min-width: 0">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
+<span style="font-size: 13px; font-weight: 500; color: #62627A">Esame finale</span>
+<span style="display: inline-flex; align-items: center; gap: 6px; padding: 1px 8px; border-radius: 6px; background: #E3F4EC; color: #0B7352; font-size: 12px; font-weight: 560; line-height: 20px"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: #0F8A63"></span>Aperto</span>
+</div>
+<h2 id="esame-titolo" style="margin: 2px 0 0; font-size: 18px; font-weight: 560; font-variation-settings: 'FLAR' 60; line-height: 1.35; color: #171721">
+<button type="button" aria-haspopup="listbox" style="position: relative; display: inline-flex; align-items: center; gap: 8px; max-width: 100%; margin: 0 0 0 -6px; padding: 2px 6px; border: 0; border-radius: 6px; background: transparent; color: inherit; font: inherit; font-variation-settings: inherit; text-align: left; cursor: pointer" class="bt"><span>Formazione Generale Lavoratori — Edizione 2026/081</span><span class="sr">, cambia esame</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#62627A" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M6 9l6 6 6-6"></path></svg></button>
+</h2>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 20px; margin-top: 6px; font-size: 13px; color: #62627A">
+<span style="display: inline-flex; align-items: center; gap: 6px; font-variant-numeric: tabular-nums"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><path d="M12 7.5V12l3 2"></path></svg>Oggi, 6 ottobre · 12:15–13:15</span>
+<span style="display: inline-flex; align-items: center; gap: 6px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 20.5c.8-3.8 3.8-6 7.5-6s6.7 2.2 7.5 6"></path></svg>Ing. Conti</span>
+<span style="display: inline-flex; align-items: center; gap: 6px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>Brescia, aula 2</span>
+</div>
+</div>
+</div>
+<div style="flex: 0 1 auto; min-width: 0; display: flex; flex-wrap: wrap; gap: 8px">
+<button type="button" class="bs" style="height: 36px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px; padding: 0 14px; border: 1px solid #E1E1EA; border-radius: 8px; background: #FFFFFF; color: #171721; font-size: 14px; font-weight: 500; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"></path><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"></path></svg>Copia link per i corsisti</button>
+<button type="button" class="bs" style="height: 36px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px; padding: 0 14px; border: 1px solid #E1E1EA; border-radius: 8px; background: #FFFFFF; color: #171721; font-size: 14px; font-weight: 500; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2"></rect><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"></path></svg>Chiudi esame</button>
+</div>
+</div>
+<dl class="stats" style="margin: 0">
+<div style="background: #FFFFFF; padding: 16px 20px">
+<dt style="font-size: 13px; font-weight: 500; color: #62627A">Iscritti</dt>
+<dd style="margin: 4px 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px"><span style="font-size: 24px; font-weight: 560; line-height: 1.2; font-variant-numeric: tabular-nums; color: #171721">20</span><span style="font-size: 12px; color: #62627A">da 4 aziende</span></dd>
+</div>
+<div style="background: #FFFFFF; padding: 16px 20px">
+<dt style="font-size: 13px; font-weight: 500; color: #62627A">Completati</dt>
+<dd style="margin: 4px 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px"><span style="font-size: 24px; font-weight: 560; line-height: 1.2; font-variant-numeric: tabular-nums; color: #171721">18</span><span style="font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">2 in corso</span></dd>
+</div>
+<div style="background: #FFFFFF; padding: 16px 20px">
+<dt style="font-size: 13px; font-weight: 500; color: #62627A">Superati</dt>
+<dd style="margin: 4px 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px"><span style="font-size: 24px; font-weight: 560; line-height: 1.2; font-variant-numeric: tabular-nums; color: #171721">17</span><span style="font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums"><span style="color: #0B7352; font-weight: 600">94%</span> dei completati</span></dd>
+</div>
+<div style="background: #FFFFFF; padding: 16px 20px">
+<dt style="font-size: 13px; font-weight: 500; color: #62627A">Media</dt>
+<dd style="margin: 4px 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px"><span style="font-size: 24px; font-weight: 560; line-height: 1.2; font-variant-numeric: tabular-nums; color: #171721">86%</span><span style="font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">soglia 70%</span></dd>
+</div>
+</dl>
+</section>
+
+<!-- CONFIG + DISTRIBUTION -->
+<div class="g-2">
+
+<section aria-labelledby="t-config" style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05); min-width: 0">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding: 16px 20px; border-bottom: 1px solid #EFEFF4">
+<h2 id="t-config" style="margin: 0; font-size: 16px; font-weight: 560; line-height: 1.5; color: #171721">Configurazione</h2>
+<span style="display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #62627A; font-variant-numeric: tabular-nums"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F8A63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Salvata il 5 ottobre alle 17:40</span>
+</div>
+<div style="padding: 20px; display: flex; flex-direction: column; gap: 20px">
+
+<div>
+<label for="cfg-banca" style="display: block; margin-bottom: 6px; font-size: 13px; font-weight: 500; color: #3B3B4F">Banca domande</label>
+<div class="fld" style="position: relative; height: 40px; box-sizing: border-box; display: flex; align-items: center; border: 1px solid #E1E1EA; border-radius: 8px; background: #FFFFFF">
+<select id="cfg-banca" style="-webkit-appearance: none; appearance: none; flex: 1; min-width: 0; height: 38px; padding: 0 40px 0 12px; border: 0; border-radius: 8px; background: transparent; font-size: 14px; color: #171721; cursor: pointer">
+<option selected>Sicurezza generale (128 domande)</option>
+<option>Rischio specifico basso (64 domande)</option>
+<option>Antincendio livello 2 (90 domande)</option>
+<option>HACCP alimentaristi (72 domande)</option>
+</select>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position: absolute; right: 12px; top: 11px; color: #62627A; pointer-events: none"><path d="M6 9l6 6 6-6"></path></svg>
+</div>
+<div style="margin-top: 6px; font-size: 12px; color: #62627A">4 aree tematiche dell'Accordo Stato-Regioni · aggiornata il 12 settembre 2026</div>
+</div>
+
+<div class="f3">
+<div>
+<label for="cfg-num" style="display: block; margin-bottom: 6px; font-size: 13px; font-weight: 500; color: #3B3B4F">Domande estratte</label>
+<div class="fld" style="height: 40px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 0 12px; border: 1px solid #E1E1EA; border-radius: 8px; background: #FFFFFF">
+<input id="cfg-num" type="number" value="20" min="5" max="128" aria-describedby="cfg-num-suf" style="flex: 1; min-width: 0; height: 38px; padding: 0; border: 0; background: transparent; font-size: 14px; font-weight: 500; color: #171721; font-variant-numeric: tabular-nums">
+<span id="cfg-num-suf" style="flex: none; font-size: 13px; color: #62627A">su 128</span>
+</div>
+</div>
+<div>
+<label for="cfg-tempo" style="display: block; margin-bottom: 6px; font-size: 13px; font-weight: 500; color: #3B3B4F">Tempo massimo</label>
+<div class="fld" style="height: 40px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 0 12px; border: 1px solid #E1E1EA; border-radius: 8px; background: #FFFFFF">
+<input id="cfg-tempo" type="number" value="30" min="5" max="180" aria-describedby="cfg-tempo-suf" style="flex: 1; min-width: 0; height: 38px; padding: 0; border: 0; background: transparent; font-size: 14px; font-weight: 500; color: #171721; font-variant-numeric: tabular-nums">
+<span id="cfg-tempo-suf" style="flex: none; font-size: 13px; color: #62627A">minuti</span>
+</div>
+</div>
+<div>
+<span id="cfg-tent" style="display: block; margin-bottom: 6px; font-size: 13px; font-weight: 500; color: #3B3B4F">Tentativi</span>
+<div role="group" aria-labelledby="cfg-tent" style="height: 40px; box-sizing: border-box; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; padding: 3px; border: 1px solid #E9E9F0; border-radius: 8px; background: #F3F4F8">
+<button type="button" aria-pressed="true" style="height: 32px; padding: 0; border: 0; border-radius: 6px; background: #FFFFFF; color: #3E50D0; font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; box-shadow: 0 1px 2px rgba(23,23,33,0.08), 0 0 0 1px #E1E1EA; cursor: pointer">1</button>
+<button type="button" aria-pressed="false" style="height: 32px; padding: 0; border: 0; border-radius: 6px; background: transparent; color: #3B3B4F; font-size: 13px; font-weight: 500; font-variant-numeric: tabular-nums; cursor: pointer">2</button>
+<button type="button" aria-pressed="false" style="height: 32px; padding: 0; border: 0; border-radius: 6px; background: transparent; color: #3B3B4F; font-size: 13px; font-weight: 500; font-variant-numeric: tabular-nums; cursor: pointer">3</button>
+</div>
+</div>
+</div>
+
+<div>
+<div style="display: flex; align-items: center; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; margin-bottom: 10px">
+<label for="cfg-soglia" style="font-size: 13px; font-weight: 500; color: #3B3B4F">Soglia di superamento</label>
+<span style="font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums"><span id="cfg-soglia-hint">almeno 14 risposte corrette su 20</span><output for="cfg-soglia" style="display: inline-block; margin-left: 10px; padding: 1px 8px; border-radius: 6px; background: #E8EBFD; color: #3E50D0; font-size: 13px; font-weight: 600; line-height: 20px">70%</output></span>
+</div>
+<input id="cfg-soglia" class="rng" type="range" min="50" max="100" step="5" value="70" aria-describedby="cfg-soglia-hint">
+<div aria-hidden="true" style="display: flex; justify-content: space-between; margin: 6px -5px 0; font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">
+<span style="width: 28px; text-align: center">50</span>
+<span style="width: 28px; text-align: center">60</span>
+<span style="width: 28px; text-align: center; color: #171721; font-weight: 600">70</span>
+<span style="width: 28px; text-align: center">80</span>
+<span style="width: 28px; text-align: center">90</span>
+<span style="width: 28px; text-align: center">100</span>
+</div>
+</div>
+
+<div class="f2">
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 12px 14px; border: 1px solid #E9E9F0; border-radius: 8px">
+<div>
+<label for="cfg-ordine" style="display: block; font-size: 14px; font-weight: 500; color: #171721; cursor: pointer">Ordine casuale</label>
+<div style="font-size: 12px; color: #62627A">Sequenza diversa per ogni corsista</div>
+</div>
+<input type="checkbox" id="cfg-ordine" class="sw" role="switch" checked style="margin-top: 2px">
+</div>
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 12px 14px; border: 1px solid #E9E9F0; border-radius: 8px">
+<div>
+<label for="cfg-mix" style="display: block; font-size: 14px; font-weight: 500; color: #171721; cursor: pointer">Risposte mescolate</label>
+<div style="font-size: 12px; color: #62627A">Le opzioni cambiano posizione</div>
+</div>
+<input type="checkbox" id="cfg-mix" class="sw" role="switch" checked style="margin-top: 2px">
+</div>
+</div>
+
+<div style="padding: 16px; border: 1px solid #E9E9F0; border-radius: 8px; background: #FAFAFC">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px">
+<h3 style="margin: 0; font-size: 14px; font-weight: 560; line-height: 1.5; color: #171721">Anteprima domanda</h3>
+<span style="font-size: 12px; color: #62627A">come la vede il corsista</span>
+</div>
+<button type="button" class="bt" style="height: 32px; display: inline-flex; align-items: center; gap: 6px; padding: 0 10px; border: 0; border-radius: 8px; background: transparent; color: #3E50D0; font-size: 13px; font-weight: 500; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.5 10.5A7.5 7.5 0 0 0 6.2 7L4.5 8.8"></path><path d="M4.5 4.5v4.3h4.3"></path><path d="M4.5 13.5A7.5 7.5 0 0 0 17.8 17l1.7-1.8"></path><path d="M19.5 19.5v-4.3h-4.3"></path></svg>Altra domanda</button>
+</div>
+<div style="margin-top: 12px; font-size: 12px; font-weight: 500; color: #62627A; font-variant-numeric: tabular-nums">Domanda 3 di 20 · Diritti e doveri</div>
+<p style="margin: 4px 0 0; font-size: 16px; font-weight: 560; line-height: 1.4; color: #171721">Chi deve indossare i DPI forniti dal datore di lavoro?</p>
+<ol style="margin: 14px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px">
+<li style="display: flex; align-items: center; gap: 12px; padding: 7px 12px; border: 1px solid #E9E9F0; border-radius: 8px; background: #FFFFFF; color: #3B3B4F"><span aria-hidden="true" style="flex: none; width: 24px; height: 24px; border-radius: 6px; background: #F3F4F8; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">A</span>Solo il preposto</li>
+<li style="display: flex; align-items: center; gap: 12px; padding: 7px 12px; border: 1px solid #B5DEC9; border-radius: 8px; background: #E3F4EC; color: #171721; font-weight: 500"><span aria-hidden="true" style="flex: none; width: 24px; height: 24px; border-radius: 6px; background: #0F8A63; color: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">B</span><span style="flex: 1; min-width: 0">Il lavoratore, conformemente alla formazione ricevuta</span><span style="flex: none; display: inline-flex; align-items: center; gap: 4px; color: #0B7352; font-size: 12px; font-weight: 600"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Corretta</span></li>
+<li style="display: flex; align-items: center; gap: 12px; padding: 7px 12px; border: 1px solid #E9E9F0; border-radius: 8px; background: #FFFFFF; color: #3B3B4F"><span aria-hidden="true" style="flex: none; width: 24px; height: 24px; border-radius: 6px; background: #F3F4F8; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">C</span>Solo in presenza dell'RSPP</li>
+<li style="display: flex; align-items: center; gap: 12px; padding: 7px 12px; border: 1px solid #E9E9F0; border-radius: 8px; background: #FFFFFF; color: #3B3B4F"><span aria-hidden="true" style="flex: none; width: 24px; height: 24px; border-radius: 6px; background: #F3F4F8; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">D</span>È facoltativo se il rischio è basso</li>
+</ol>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; margin-top: 14px; font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">
+<span>Riferimento: D.Lgs 81/08, art. 20</span>
+<span>Estratta per 6 corsisti · 5 risposte corrette</span>
+</div>
+</div>
+
+</div>
+</section>
+
+<section aria-labelledby="t-distr" style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05); min-width: 0; display: flex; flex-direction: column">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding: 16px 20px; border-bottom: 1px solid #EFEFF4">
+<h2 id="t-distr" style="margin: 0; font-size: 16px; font-weight: 560; line-height: 1.5; color: #171721">Distribuzione punteggi</h2>
+<span style="font-size: 13px; color: #62627A; font-variant-numeric: tabular-nums">18 prove consegnate</span>
+</div>
+<div style="padding: 20px">
+<dl style="display: flex; flex-wrap: wrap; gap: 12px 32px; margin: 0">
+<div><dt style="font-size: 12px; color: #62627A">Mediana</dt><dd style="margin: 2px 0 0; font-size: 18px; font-weight: 600; line-height: 1.3; font-variant-numeric: tabular-nums">87,5%</dd></div>
+<div><dt style="font-size: 12px; color: #62627A">Minimo</dt><dd style="margin: 2px 0 0; font-size: 18px; font-weight: 600; line-height: 1.3; font-variant-numeric: tabular-nums">65%</dd></div>
+<div><dt style="font-size: 12px; color: #62627A">Massimo</dt><dd style="margin: 2px 0 0; font-size: 18px; font-weight: 600; line-height: 1.3; font-variant-numeric: tabular-nums">100%</dd></div>
+<div><dt style="font-size: 12px; color: #62627A">Tempo medio</dt><dd style="margin: 2px 0 0; font-size: 18px; font-weight: 600; line-height: 1.3; font-variant-numeric: tabular-nums">19 min</dd></div>
+</dl>
+<svg viewBox="0 0 448 226" role="img" aria-labelledby="hist-title hist-desc" style="display: block; width: 100%; height: auto; margin-top: 16px; font-family: inherit; font-variant-numeric: tabular-nums">
+<title id="hist-title">Distribuzione dei punteggi, 18 prove consegnate</title>
+<desc id="hist-desc">Corsisti per fascia di risposte corrette: 50–64%: 0; 65–69%: 1, sotto soglia; 70–74%: 1; 75–79%: 1; 80–84%: 2; 85–89%: 4; 90–94%: 5; 95–100%: 4. Soglia di superamento al 70%.</desc>
+<g stroke="#EFEFF4" stroke-width="1">
+<line x1="36" y1="26" x2="436" y2="26"></line>
+<line x1="36" y1="84" x2="436" y2="84"></line>
+<line x1="36" y1="142" x2="436" y2="142"></line>
+</g>
+<g font-size="12" fill="#62627A" text-anchor="end">
+<text x="26" y="30">6</text>
+<text x="26" y="88">4</text>
+<text x="26" y="146">2</text>
+<text x="26" y="204">0</text>
+</g>
+<g class="bar"><title>65–69%: 1 corsista, sotto soglia</title><path class="b" d="M160 200V174Q160 171 163 171H189Q192 171 192 174V200Z" fill="#E8999D"></path></g>
+<g class="bar"><title>70–74%: 1 corsista</title><path class="b" d="M200 200V174Q200 171 203 171H229Q232 171 232 174V200Z" fill="#8D9BF0"></path></g>
+<g class="bar"><title>75–79%: 1 corsista</title><path class="b" d="M240 200V174Q240 171 243 171H269Q272 171 272 174V200Z" fill="#8D9BF0"></path></g>
+<g class="bar"><title>80–84%: 2 corsisti</title><path class="b" d="M280 200V145Q280 142 283 142H309Q312 142 312 145V200Z" fill="#8D9BF0"></path></g>
+<g class="bar"><title>85–89%: 4 corsisti</title><path class="b" d="M320 200V87Q320 84 323 84H349Q352 84 352 87V200Z" fill="#8D9BF0"></path></g>
+<g class="bar"><title>90–94%: 5 corsisti, fascia più frequente</title><path class="b" d="M360 200V58Q360 55 363 55H389Q392 55 392 58V200Z" fill="#5266EB"></path></g>
+<g class="bar"><title>95–100%: 4 corsisti</title><path class="b" d="M400 200V87Q400 84 403 84H429Q432 84 432 87V200Z" fill="#8D9BF0"></path></g>
+<line x1="36" y1="200" x2="436" y2="200" stroke="#D5D5E0" stroke-width="1"></line>
+<g stroke="#D5D5E0" stroke-width="1">
+<line x1="36" y1="200" x2="36" y2="204"></line>
+<line x1="116" y1="200" x2="116" y2="204"></line>
+<line x1="196" y1="200" x2="196" y2="204"></line>
+<line x1="276" y1="200" x2="276" y2="204"></line>
+<line x1="356" y1="200" x2="356" y2="204"></line>
+<line x1="436" y1="200" x2="436" y2="204"></line>
+</g>
+<line x1="196" y1="20" x2="196" y2="200" stroke="#3B3B4F" stroke-width="1.5" stroke-dasharray="4 4"></line>
+<text x="202" y="14" font-size="12" font-weight="600" fill="#3B3B4F">Soglia 70%</text>
+<g font-size="12" font-weight="600" fill="#171721" text-anchor="middle">
+<text x="176" y="164">1</text>
+<text x="216" y="164">1</text>
+<text x="256" y="164">1</text>
+<text x="296" y="135">2</text>
+<text x="336" y="77">4</text>
+<text x="376" y="48">5</text>
+<text x="416" y="77">4</text>
+</g>
+<g font-size="12" fill="#62627A" text-anchor="middle">
+<text x="36" y="220">50</text>
+<text x="116" y="220">60</text>
+<text x="196" y="220">70</text>
+<text x="276" y="220">80</text>
+<text x="356" y="220">90</text>
+<text x="430" y="220">100</text>
+</g>
+</svg>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; margin-top: 10px; font-size: 12px; color: #62627A">
+<span>% di risposte corrette · corsisti per fascia</span>
+<span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 3px; background: #8D9BF0"></span>Superato</span>
+<span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 3px; background: #E8999D"></span>Non superato</span>
+</div>
+</div>
+
+<div style="padding: 20px; border-top: 1px solid #EFEFF4">
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px">
+<h3 style="margin: 0; font-size: 14px; font-weight: 560; line-height: 1.5; color: #171721">Domande più sbagliate</h3>
+<span style="font-size: 12px; color: #62627A">errori su risposte date</span>
+</div>
+<ol style="margin: 14px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 18px">
+<li>
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px">
+<div style="min-width: 0">
+<div style="color: #171721; font-weight: 500">Qual è la differenza tra pericolo e rischio?</div>
+<div style="font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">4 errori su 6 · Concetti di rischio</div>
+</div>
+<span style="flex: none; font-weight: 600; color: #C2343B; font-variant-numeric: tabular-nums">67%</span>
+</div>
+<div role="progressbar" aria-label="Errori: Qual è la differenza tra pericolo e rischio?" aria-valuemin="0" aria-valuemax="100" aria-valuenow="67" style="margin-top: 8px; height: 6px; border-radius: 999px; background: #F1F1F5; overflow: hidden"><div style="width: 67%; height: 100%; border-radius: 999px; background: #C2343B"></div></div>
+</li>
+<li>
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px">
+<div style="min-width: 0">
+<div style="color: #171721; font-weight: 500">Chi elegge o designa il Rappresentante dei lavoratori per la sicurezza?</div>
+<div style="font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">3 errori su 5 · Organizzazione della prevenzione</div>
+</div>
+<span style="flex: none; font-weight: 600; color: #C2343B; font-variant-numeric: tabular-nums">60%</span>
+</div>
+<div role="progressbar" aria-label="Errori: Chi elegge o designa il Rappresentante dei lavoratori per la sicurezza?" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60" style="margin-top: 8px; height: 6px; border-radius: 999px; background: #F1F1F5; overflow: hidden"><div style="width: 60%; height: 100%; border-radius: 999px; background: #C2343B"></div></div>
+</li>
+<li>
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px">
+<div style="min-width: 0">
+<div style="color: #171721; font-weight: 500">Che cosa si intende per «quasi incidente»?</div>
+<div style="font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">2 errori su 5 · Concetti di rischio</div>
+</div>
+<span style="flex: none; font-weight: 600; color: #3B3B4F; font-variant-numeric: tabular-nums">40%</span>
+</div>
+<div role="progressbar" aria-label="Errori: Che cosa si intende per quasi incidente?" aria-valuemin="0" aria-valuemax="100" aria-valuenow="40" style="margin-top: 8px; height: 6px; border-radius: 999px; background: #F1F1F5; overflow: hidden"><div style="width: 40%; height: 100%; border-radius: 999px; background: #E8999D"></div></div>
+</li>
+</ol>
+<div style="display: flex; gap: 10px; align-items: flex-start; margin-top: 20px; padding: 12px 14px; border-radius: 8px; background: #E8EBFD; color: #3B3B4F; font-size: 13px; line-height: 1.55">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3E50D0" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 1px"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 7.8v.1"></path></svg>
+<div><strong style="font-weight: 600; color: #171721">Verdi Paolo ha sbagliato 2 di queste 3 domande.</strong> Puoi riproporle nella prova di recupero. <a href="#" class="lk" style="color: #3E50D0; font-weight: 600; text-decoration: none; white-space: nowrap">Programma recupero</a></div>
+</div>
+</div>
+
+<div style="margin-top: auto; padding: 12px 20px; border-top: 1px solid #EFEFF4">
+<a href="#" class="lk" style="display: inline-flex; align-items: center; gap: 6px; color: #3E50D0; font-size: 13px; font-weight: 500; text-decoration: none">Analisi completa delle domande<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
+</div>
+</section>
+
+</div>
+
+<!-- RESULTS TABLE -->
+<section aria-labelledby="t-ris" style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05); overflow: hidden">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 16px; padding: 14px 20px; border-bottom: 1px solid #EFEFF4">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px">
+<h2 id="t-ris" style="margin: 0; font-size: 16px; font-weight: 560; line-height: 1.5; color: #171721">Risultati</h2>
+<span style="font-size: 13px; color: #62627A">aggiornati in tempo reale</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px">
+<div role="group" aria-label="Filtra per esito" style="display: inline-flex; flex-wrap: wrap; gap: 2px; padding: 3px; border: 1px solid #E9E9F0; border-radius: 8px; background: #F3F4F8">
+<button type="button" aria-pressed="true" style="height: 30px; display: inline-flex; align-items: center; gap: 6px; padding: 0 12px; border: 0; border-radius: 6px; background: #FFFFFF; color: #3E50D0; font-size: 13px; font-weight: 600; box-shadow: 0 1px 2px rgba(23,23,33,0.08), 0 0 0 1px #E1E1EA; cursor: pointer">Tutti<span style="color: #62627A; font-weight: 500; font-variant-numeric: tabular-nums">20</span></button>
+<button type="button" aria-pressed="false" style="height: 30px; display: inline-flex; align-items: center; gap: 6px; padding: 0 12px; border: 0; border-radius: 6px; background: transparent; color: #3B3B4F; font-size: 13px; font-weight: 500; cursor: pointer">Superati<span style="color: #62627A; font-variant-numeric: tabular-nums">17</span></button>
+<button type="button" aria-pressed="false" style="height: 30px; display: inline-flex; align-items: center; gap: 6px; padding: 0 12px; border: 0; border-radius: 6px; background: transparent; color: #3B3B4F; font-size: 13px; font-weight: 500; cursor: pointer">Non superati<span style="color: #62627A; font-variant-numeric: tabular-nums">1</span></button>
+<button type="button" aria-pressed="false" style="height: 30px; display: inline-flex; align-items: center; gap: 6px; padding: 0 12px; border: 0; border-radius: 6px; background: transparent; color: #3B3B4F; font-size: 13px; font-weight: 500; cursor: pointer">In corso<span style="color: #62627A; font-variant-numeric: tabular-nums">2</span></button>
+</div>
+<button type="button" class="bs" style="height: 38px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px; padding: 0 14px; border: 1px solid #E1E1EA; border-radius: 8px; background: #FFFFFF; color: #171721; font-size: 14px; font-weight: 500; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7.5 10.5L12 15l4.5-4.5M5 19.5h14"></path></svg>Esporta esiti</button>
+</div>
+</div>
+
+<div style="position: relative; overflow-x: auto">
+<table style="width: 100%; min-width: 980px; border-collapse: collapse; font-size: 14px; line-height: 1.45">
+<thead>
+<tr style="background: #FAFAFC">
+<th scope="col" style="padding: 10px 10px 10px 20px; text-align: left; border-bottom: 1px solid #EFEFF4; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #62627A; white-space: nowrap">Corsista</th>
+<th scope="col" style="padding: 10px; text-align: left; border-bottom: 1px solid #EFEFF4; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #62627A; white-space: nowrap">Inizio</th>
+<th scope="col" style="padding: 10px; text-align: left; border-bottom: 1px solid #EFEFF4; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #62627A; white-space: nowrap">Durata</th>
+<th scope="col" style="padding: 10px; text-align: right; border-bottom: 1px solid #EFEFF4; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #62627A; white-space: nowrap">Punteggio</th>
+<th scope="col" style="padding: 10px 10px 10px 24px; text-align: left; border-bottom: 1px solid #EFEFF4; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #62627A; white-space: nowrap">Percentuale</th>
+<th scope="col" style="padding: 10px; text-align: left; border-bottom: 1px solid #EFEFF4; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #62627A; white-space: nowrap">Esito</th>
+<th scope="col" style="padding: 10px; text-align: left; border-bottom: 1px solid #EFEFF4; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #62627A; white-space: nowrap">Attestato</th>
+<th scope="col" style="padding: 10px 20px 10px 4px; border-bottom: 1px solid #EFEFF4"><span class="sr">Azioni</span></th>
+</tr>
+</thead>
+<tbody>
+
+<tr class="tr">
+<td style="padding: 12px 10px 12px 20px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #E8EBFD; color: #3E50D0; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">RM</span><div><div style="font-weight: 560; color: #171721; white-space: nowrap">Rossi Mario</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">Metalli Srl</div></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; font-variant-numeric: tabular-nums; white-space: nowrap">12:15</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; font-variant-numeric: tabular-nums; white-space: nowrap">14 min</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; text-align: right; color: #171721; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap">20/20</td>
+<td style="padding: 12px 10px 12px 24px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 12px"><span style="flex: none; width: 38px; font-size: 13px; font-weight: 600; color: #171721; font-variant-numeric: tabular-nums">100%</span><div aria-hidden="true" style="position: relative; flex: none; width: 112px; height: 6px; border-radius: 999px; background: #EFEFF4"><div style="width: 100%; height: 6px; border-radius: 999px; background: #0F8A63"></div><span style="position: absolute; left: 70%; top: -2px; width: 2px; height: 10px; margin-left: -1px; border-radius: 1px; background: #62627A; box-shadow: 0 0 0 1px #FFFFFF"></span></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 6px; background: #E3F4EC; color: #0B7352; font-size: 12px; font-weight: 560; line-height: 18px; white-space: nowrap"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: #0F8A63"></span>Superato</span></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><a href="#" class="lk" style="display: inline-flex; align-items: center; gap: 6px; color: #3E50D0; font-weight: 500; text-decoration: none; font-variant-numeric: tabular-nums; white-space: nowrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3.5H7A1.5 1.5 0 0 0 5.5 5v14A1.5 1.5 0 0 0 7 20.5h10a1.5 1.5 0 0 0 1.5-1.5V8z"></path><path d="M14 3.5V8h4.5"></path></svg>ATT-2026-0414-2D</a></td>
+<td style="padding: 12px 20px 12px 4px; border-bottom: 1px solid #EFEFF4; text-align: right"><button type="button" class="ib" aria-label="Vedi le risposte di Rossi Mario" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button></td>
+</tr>
+
+<tr class="tr">
+<td style="padding: 12px 10px 12px 20px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #E3F4EC; color: #0B7352; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">CE</span><div><div style="font-weight: 560; color: #171721; white-space: nowrap">Conti Elisa</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">Logistica Nord</div></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; font-variant-numeric: tabular-nums; white-space: nowrap">12:15</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; font-variant-numeric: tabular-nums; white-space: nowrap">17 min</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; text-align: right; color: #171721; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap">19/20</td>
+<td style="padding: 12px 10px 12px 24px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 12px"><span style="flex: none; width: 38px; font-size: 13px; font-weight: 600; color: #171721; font-variant-numeric: tabular-nums">95%</span><div aria-hidden="true" style="position: relative; flex: none; width: 112px; height: 6px; border-radius: 999px; background: #EFEFF4"><div style="width: 95%; height: 6px; border-radius: 999px; background: #0F8A63"></div><span style="position: absolute; left: 70%; top: -2px; width: 2px; height: 10px; margin-left: -1px; border-radius: 1px; background: #62627A; box-shadow: 0 0 0 1px #FFFFFF"></span></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 6px; background: #E3F4EC; color: #0B7352; font-size: 12px; font-weight: 560; line-height: 18px; white-space: nowrap"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: #0F8A63"></span>Superato</span></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><a href="#" class="lk" style="display: inline-flex; align-items: center; gap: 6px; color: #3E50D0; font-weight: 500; text-decoration: none; font-variant-numeric: tabular-nums; white-space: nowrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3.5H7A1.5 1.5 0 0 0 5.5 5v14A1.5 1.5 0 0 0 7 20.5h10a1.5 1.5 0 0 0 1.5-1.5V8z"></path><path d="M14 3.5V8h4.5"></path></svg>ATT-2026-0415-9H</a></td>
+<td style="padding: 12px 20px 12px 4px; border-bottom: 1px solid #EFEFF4; text-align: right"><button type="button" class="ib" aria-label="Vedi le risposte di Conti Elisa" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button></td>
+</tr>
+
+<tr class="tr">
+<td style="padding: 12px 10px 12px 20px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #FDF0DC; color: #A15C07; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">VP</span><div><div style="font-weight: 560; color: #171721; white-space: nowrap">Verdi Paolo</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">Forno Aurora</div></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; font-variant-numeric: tabular-nums; white-space: nowrap">12:15</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; font-variant-numeric: tabular-nums; white-space: nowrap">24 min</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; text-align: right; color: #171721; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap">13/20</td>
+<td style="padding: 12px 10px 12px 24px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 12px"><span style="flex: none; width: 38px; font-size: 13px; font-weight: 600; color: #C2343B; font-variant-numeric: tabular-nums">65%</span><div aria-hidden="true" style="position: relative; flex: none; width: 112px; height: 6px; border-radius: 999px; background: #EFEFF4"><div style="width: 65%; height: 6px; border-radius: 999px; background: #C2343B"></div><span style="position: absolute; left: 70%; top: -2px; width: 2px; height: 10px; margin-left: -1px; border-radius: 1px; background: #62627A; box-shadow: 0 0 0 1px #FFFFFF"></span></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 6px; background: #FBE7E8; color: #C2343B; font-size: 12px; font-weight: 560; line-height: 18px; white-space: nowrap"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: currentColor"></span>Non superato</span></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; white-space: nowrap"><a href="#" class="lk" style="color: #3E50D0; font-size: 13px; font-weight: 500; text-decoration: none">Programma recupero</a></td>
+<td style="padding: 12px 20px 12px 4px; border-bottom: 1px solid #EFEFF4; text-align: right"><button type="button" class="ib" aria-label="Vedi le risposte di Verdi Paolo" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button></td>
+</tr>
+
+<tr class="tr">
+<td style="padding: 12px 10px 12px 20px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #E8EBFD; color: #3E50D0; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">BL</span><div><div style="font-weight: 560; color: #171721; white-space: nowrap">Bianchi Laura</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">Metalli Srl</div></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; font-variant-numeric: tabular-nums; white-space: nowrap">12:16</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; font-variant-numeric: tabular-nums; white-space: nowrap">21 min</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; text-align: right; color: #171721; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap">18/20</td>
+<td style="padding: 12px 10px 12px 24px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 12px"><span style="flex: none; width: 38px; font-size: 13px; font-weight: 600; color: #171721; font-variant-numeric: tabular-nums">90%</span><div aria-hidden="true" style="position: relative; flex: none; width: 112px; height: 6px; border-radius: 999px; background: #EFEFF4"><div style="width: 90%; height: 6px; border-radius: 999px; background: #0F8A63"></div><span style="position: absolute; left: 70%; top: -2px; width: 2px; height: 10px; margin-left: -1px; border-radius: 1px; background: #62627A; box-shadow: 0 0 0 1px #FFFFFF"></span></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 6px; background: #E3F4EC; color: #0B7352; font-size: 12px; font-weight: 560; line-height: 18px; white-space: nowrap"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: #0F8A63"></span>Superato</span></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><a href="#" class="lk" style="display: inline-flex; align-items: center; gap: 6px; color: #3E50D0; font-weight: 500; text-decoration: none; font-variant-numeric: tabular-nums; white-space: nowrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3.5H7A1.5 1.5 0 0 0 5.5 5v14A1.5 1.5 0 0 0 7 20.5h10a1.5 1.5 0 0 0 1.5-1.5V8z"></path><path d="M14 3.5V8h4.5"></path></svg>ATT-2026-0418-7Q</a></td>
+<td style="padding: 12px 20px 12px 4px; border-bottom: 1px solid #EFEFF4; text-align: right"><button type="button" class="ib" aria-label="Vedi le risposte di Bianchi Laura" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button></td>
+</tr>
+
+<tr class="tr">
+<td style="padding: 12px 10px 12px 20px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #EDEDF3; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">FL</span><div><div style="font-weight: 560; color: #171721; white-space: nowrap">Ferrari Luca</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">Forno Aurora</div></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; font-variant-numeric: tabular-nums; white-space: nowrap">12:16</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; font-variant-numeric: tabular-nums; white-space: nowrap">22 min</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; text-align: right; color: #171721; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap">14/20</td>
+<td style="padding: 12px 10px 12px 24px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 12px"><span style="flex: none; width: 38px; font-size: 13px; font-weight: 600; color: #171721; font-variant-numeric: tabular-nums">70%</span><div aria-hidden="true" style="position: relative; flex: none; width: 112px; height: 6px; border-radius: 999px; background: #EFEFF4"><div style="width: 70%; height: 6px; border-radius: 999px; background: #0F8A63"></div><span style="position: absolute; left: 70%; top: -2px; width: 2px; height: 10px; margin-left: -1px; border-radius: 1px; background: #62627A; box-shadow: 0 0 0 1px #FFFFFF"></span></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 6px; background: #E3F4EC; color: #0B7352; font-size: 12px; font-weight: 560; line-height: 18px; white-space: nowrap"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: #0F8A63"></span>Superato</span></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><a href="#" class="lk" style="display: inline-flex; align-items: center; gap: 6px; color: #3E50D0; font-weight: 500; text-decoration: none; font-variant-numeric: tabular-nums; white-space: nowrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3.5H7A1.5 1.5 0 0 0 5.5 5v14A1.5 1.5 0 0 0 7 20.5h10a1.5 1.5 0 0 0 1.5-1.5V8z"></path><path d="M14 3.5V8h4.5"></path></svg>ATT-2026-0419-5B</a></td>
+<td style="padding: 12px 20px 12px 4px; border-bottom: 1px solid #EFEFF4; text-align: right"><button type="button" class="ib" aria-label="Vedi le risposte di Ferrari Luca" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button></td>
+</tr>
+
+<tr class="tr">
+<td style="padding: 12px 10px 12px 20px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #E3F4EC; color: #0B7352; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">NA</span><div><div style="font-weight: 560; color: #171721; white-space: nowrap">Neri Anna</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">Studio Ferri</div></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; font-variant-numeric: tabular-nums; white-space: nowrap">12:17</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; font-variant-numeric: tabular-nums; white-space: nowrap">19 min</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; text-align: right; color: #171721; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap">17/20</td>
+<td style="padding: 12px 10px 12px 24px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 12px"><span style="flex: none; width: 38px; font-size: 13px; font-weight: 600; color: #171721; font-variant-numeric: tabular-nums">85%</span><div aria-hidden="true" style="position: relative; flex: none; width: 112px; height: 6px; border-radius: 999px; background: #EFEFF4"><div style="width: 85%; height: 6px; border-radius: 999px; background: #0F8A63"></div><span style="position: absolute; left: 70%; top: -2px; width: 2px; height: 10px; margin-left: -1px; border-radius: 1px; background: #62627A; box-shadow: 0 0 0 1px #FFFFFF"></span></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 6px; background: #E3F4EC; color: #0B7352; font-size: 12px; font-weight: 560; line-height: 18px; white-space: nowrap"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: #0F8A63"></span>Superato</span></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><a href="#" class="lk" style="display: inline-flex; align-items: center; gap: 6px; color: #3E50D0; font-weight: 500; text-decoration: none; font-variant-numeric: tabular-nums; white-space: nowrap"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3.5H7A1.5 1.5 0 0 0 5.5 5v14A1.5 1.5 0 0 0 7 20.5h10a1.5 1.5 0 0 0 1.5-1.5V8z"></path><path d="M14 3.5V8h4.5"></path></svg>ATT-2026-0417-4T</a></td>
+<td style="padding: 12px 20px 12px 4px; border-bottom: 1px solid #EFEFF4; text-align: right"><button type="button" class="ib" aria-label="Vedi le risposte di Neri Anna" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button></td>
+</tr>
+
+<tr class="tr">
+<td style="padding: 12px 10px 12px 20px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #EDEDF3; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">GS</span><div><div style="font-weight: 560; color: #171721; white-space: nowrap">Gallo Stefano</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">Metalli Srl</div></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; font-variant-numeric: tabular-nums; white-space: nowrap">12:22</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; white-space: nowrap"><div style="color: #3B3B4F; font-variant-numeric: tabular-nums">18 min</div><div style="font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">12 di 20 risposte</div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; text-align: right; color: #62627A; font-variant-numeric: tabular-nums; white-space: nowrap"><span aria-label="Non ancora disponibile">—</span></td>
+<td style="padding: 12px 10px 12px 24px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 12px"><span style="flex: none; width: 38px; font-size: 13px; color: #62627A">—</span><div aria-hidden="true" style="flex: none; width: 112px; height: 6px; border-radius: 999px; background: repeating-linear-gradient(90deg, #E1E1EA 0, #E1E1EA 4px, transparent 4px, transparent 8px)"></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 6px; background: #E8EBFD; color: #3E50D0; font-size: 12px; font-weight: 560; line-height: 18px; white-space: nowrap"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: #5266EB"></span>In corso</span></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #62627A">—</td>
+<td style="padding: 12px 20px 12px 4px; border-bottom: 1px solid #EFEFF4; text-align: right"><button type="button" class="ib" aria-label="Segui la prova di Gallo Stefano" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button></td>
+</tr>
+
+<tr class="tr">
+<td style="padding: 12px 10px 12px 20px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #E8EBFD; color: #3E50D0; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">EG</span><div><div style="font-weight: 560; color: #171721; white-space: nowrap">Esposito Giulia</div><div style="font-size: 12px; color: #62627A; white-space: nowrap">Studio Ferri</div></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #3B3B4F; font-variant-numeric: tabular-nums; white-space: nowrap">12:25</td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; white-space: nowrap"><div style="color: #3B3B4F; font-variant-numeric: tabular-nums">15 min</div><div style="font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">9 di 20 risposte</div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; text-align: right; color: #62627A; font-variant-numeric: tabular-nums; white-space: nowrap"><span aria-label="Non ancora disponibile">—</span></td>
+<td style="padding: 12px 10px 12px 24px; border-bottom: 1px solid #EFEFF4"><div style="display: flex; align-items: center; gap: 12px"><span style="flex: none; width: 38px; font-size: 13px; color: #62627A">—</span><div aria-hidden="true" style="flex: none; width: 112px; height: 6px; border-radius: 999px; background: repeating-linear-gradient(90deg, #E1E1EA 0, #E1E1EA 4px, transparent 4px, transparent 8px)"></div></div></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; border-radius: 6px; background: #E8EBFD; color: #3E50D0; font-size: 12px; font-weight: 560; line-height: 18px; white-space: nowrap"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: #5266EB"></span>In corso</span></td>
+<td style="padding: 12px 10px; border-bottom: 1px solid #EFEFF4; color: #62627A">—</td>
+<td style="padding: 12px 20px 12px 4px; border-bottom: 1px solid #EFEFF4; text-align: right"><button type="button" class="ib" aria-label="Segui la prova di Esposito Giulia" style="width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #62627A; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"></path><circle cx="12" cy="12" r="3"></circle></svg></button></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 16px; padding: 12px 20px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; font-size: 13px; color: #62627A">
+<span style="font-variant-numeric: tabular-nums">Mostrati 1–8 di 20</span>
+<span style="display: inline-flex; align-items: center; gap: 6px"><span aria-hidden="true" style="display: inline-block; width: 2px; height: 10px; border-radius: 1px; background: #62627A"></span>Soglia di superamento 70%</span>
+</div>
+<nav aria-label="Pagine dei risultati" style="display: flex; align-items: center; gap: 4px">
+<button type="button" class="ib" aria-label="Pagina precedente" disabled style="width: 32px; height: 32px; padding: 0; border: 1px solid #E9E9F0; border-radius: 8px; background: #FFFFFF; color: #A3A3B8; display: inline-flex; align-items: center; justify-content: center; cursor: default"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button>
+<button type="button" aria-current="page" style="min-width: 32px; height: 32px; padding: 0 8px; border: 1px solid #5266EB; border-radius: 8px; background: #5266EB; color: #FFFFFF; font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; cursor: pointer">1</button>
+<button type="button" class="ib" style="min-width: 32px; height: 32px; padding: 0 8px; border: 1px solid #E9E9F0; border-radius: 8px; background: #FFFFFF; color: #3B3B4F; font-size: 13px; font-weight: 500; font-variant-numeric: tabular-nums; cursor: pointer">2</button>
+<button type="button" class="ib" style="min-width: 32px; height: 32px; padding: 0 8px; border: 1px solid #E9E9F0; border-radius: 8px; background: #FFFFFF; color: #3B3B4F; font-size: 13px; font-weight: 500; font-variant-numeric: tabular-nums; cursor: pointer">3</button>
+<button type="button" class="ib" aria-label="Pagina successiva" style="width: 32px; height: 32px; padding: 0; border: 1px solid #E9E9F0; border-radius: 8px; background: #FFFFFF; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button>
+</nav>
+</div>
+</section>
+
+</main>
+</div>
+</div>
+</body>
+</html>

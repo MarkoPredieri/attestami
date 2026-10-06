@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Attestami — Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght,FLAR,VOLM@300..800,0..100,0..100&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F3F4F8}
+a{color:#5266EB}a:hover{color:#4255D4}
+button,input{font-family:inherit}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.nav-item:hover{background:#F3F4F8;color:#171721}
+.icon-btn:hover{background:#F3F4F8;color:#171721}
+.btn-p:hover{background:#4255D4 !important;color:#FFFFFF}
+.btn-s:hover{background:#F6F6F9 !important;color:#171721}
+.act:hover{background:#F3F4F8 !important;color:#171721 !important}
+.search:focus-within{border-color:#5266EB !important;box-shadow:0 0 0 3px #E8EBFD}
+.search input::placeholder{color:#62627A;opacity:1}
+a:focus-visible,button:focus-visible{outline:2px solid #5266EB;outline-offset:2px}
+.bar .b{transition:opacity .15s}
+.bar:hover .b{opacity:.78}
+.trow:hover td{background:#FAFAFC}
+.g-main{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:20px}
+.g-three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media (max-width:1280px){.g-three{grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}}
+@media (max-width:1200px){.g-main{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:860px){
+.app-side{display:none !important}
+.ph-actions{align-items:flex-start !important}
+.app-content{padding:16px !important}
+.app-top{padding:0 12px !important;gap:8px !important}
+.hide-sm{display:none !important}
+}
+</style>
+</head>
+<body>
+<div style="width: 100%; min-height: 100vh; background: #F3F4F8; color: #171721; font-family: 'Commissioner', sans-serif; font-size: 14px; line-height: 1.5; display: flex; flex-wrap: wrap; align-items: stretch">
+
+<!-- SIDEBAR -->
+<aside class="app-side" style="flex: 0 0 256px; background: #FFFFFF; border-right: 1px solid #E9E9F0; display: flex; flex-direction: column; box-sizing: border-box">
+<a href="#" style="height: 64px; flex: none; display: flex; align-items: center; gap: 10px; padding: 0 24px; border-bottom: 1px solid #E9E9F0; color: #5266EB; text-decoration: none; box-sizing: border-box">
+<svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true"><circle cx="13" cy="13" r="11.25" stroke="currentColor" stroke-width="1.5"></circle><path d="M8.5 13.4l3 3 6-6.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<span style="font-family: 'Commissioner', sans-serif; font-size: 19px; font-weight: 520; font-variation-settings: 'FLAR' 100; letter-spacing: 0.01em; color: #171721">Attestami</span>
+</a>
+
+<nav aria-label="Menu principale" style="padding: 4px 0 16px">
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #72728A">Principale</div>
+<a href="#" class="nav-item" aria-current="page" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; background: #E8EBFD; color: #3E50D0; font-weight: 560; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><rect x="3" y="3" width="7.5" height="9" rx="1.5"></rect><rect x="13.5" y="3" width="7.5" height="5" rx="1.5"></rect><rect x="13.5" y="11" width="7.5" height="10" rx="1.5"></rect><rect x="3" y="15" width="7.5" height="6" rx="1.5"></rect></svg>Dashboard</a>
+
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #72728A">Formazione</div>
+<a href="#" class="nav-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M2.5 5h5.5a4 4 0 0 1 4 4v11a3 3 0 0 0-3-3H2.5z"></path><path d="M21.5 5H16a4 4 0 0 0-4 4v11a3 3 0 0 1 3-3h6.5z"></path></svg>Corsi</a>
+<a href="#" class="nav-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M12 3l9 4.5-9 4.5-9-4.5z"></path><path d="M3 12l9 4.5 9-4.5"></path><path d="M3 16.5l9 4.5 9-4.5"></path></svg>Edizioni</a>
+<a href="#" class="nav-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><rect x="3" y="4.5" width="18" height="16.5" rx="2"></rect><path d="M3 9.5h18"></path><path d="M8 2.5v4"></path><path d="M16 2.5v4"></path></svg>Calendario</a>
+<a href="#" class="nav-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M9 2.5h6v3H9z"></path><path d="M9 13l2 2 4-4"></path></svg>Esami</a>
+
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #72728A">Persone</div>
+<a href="#" class="nav-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="9" cy="8" r="3.5"></circle><path d="M2.5 20a6.5 6.5 0 0 1 13 0"></path><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8"></path><path d="M18 14.2a6.5 6.5 0 0 1 3.5 5.8"></path></svg>Corsisti</a>
+<a href="#" class="nav-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M4 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"></path><path d="M16 9h2a2 2 0 0 1 2 2v10"></path><path d="M2.5 21h19"></path><path d="M8 7h4"></path><path d="M8 11h4"></path><path d="M8 15h4"></path></svg>Aziende</a>
+<a href="#" class="nav-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="10" cy="8" r="3.5"></circle><path d="M3.5 20a6.5 6.5 0 0 1 10.8-4.9"></path><path d="M15.5 18.5l2 2 4-4"></path></svg>Docenti</a>
+
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #72728A">Documenti</div>
+<a href="#" class="nav-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="12" cy="9" r="6"></circle><path d="M8.6 13.9L7 21.5l5-2.5 5 2.5-1.6-7.6"></path></svg>Attestati</a>
+<a href="#" class="nav-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>Scadenze<span style="margin-left: auto; padding: 0 8px; border-radius: 999px; background: #FDF0DC; color: #A15C07; font-size: 12px; font-weight: 600; line-height: 20px; font-variant-numeric: tabular-nums">9<span class="sr"> in scadenza</span></span></a>
+<a href="#" class="nav-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"></path><path d="M14 3v5h5"></path><path d="M9 13h6"></path><path d="M9 17h6"></path></svg>Registro</a>
+
+<div style="padding: 18px 24px 6px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #72728A">Impostazioni</div>
+<a href="#" class="nav-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M4 6h9"></path><path d="M17 6h3"></path><path d="M4 12h3"></path><path d="M11 12h9"></path><path d="M4 18h11"></path><path d="M19 18h1"></path><circle cx="15" cy="6" r="2"></circle><circle cx="9" cy="12" r="2"></circle><circle cx="17" cy="18" r="2"></circle></svg>Ente e brand</a>
+<a href="#" class="nav-item" style="display: flex; align-items: center; gap: 12px; padding: 10px 16px; margin: 0 8px; border-radius: 8px; color: #3B3B4F; font-size: 14px; text-decoration: none">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>Utenti</a>
+</nav>
+
+<div style="margin: auto 16px 16px; padding: 14px; border-radius: 8px; background: #F3F4F8">
+<div style="font-weight: 560; color: #171721">Ente Demo Formazione</div>
+<div style="margin-top: 2px; font-size: 13px; color: #62627A">Piano Professional · 3 sedi</div>
+</div>
+</aside>
+
+<!-- MAIN -->
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column">
+
+<header class="app-top" style="position: sticky; top: 0; z-index: 20; height: 64px; flex: none; background: #FFFFFF; border-bottom: 1px solid #E9E9F0; padding: 0 24px; display: flex; align-items: center; gap: 16px; box-sizing: border-box">
+<button type="button" class="icon-btn" aria-label="Apri menu" style="flex: none; width: 40px; height: 40px; border: 0; border-radius: 8px; background: transparent; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16"></path><path d="M4 12h16"></path><path d="M4 18h10"></path></svg>
+</button>
+<div class="search" style="flex: 0 1 420px; min-width: 0; height: 40px; display: flex; align-items: center; gap: 8px; padding: 0 12px; border-radius: 8px; background: #F3F4F8; border: 1px solid #E9E9F0; color: #62627A; box-sizing: border-box">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><circle cx="11" cy="11" r="7"></circle><path d="M20.5 20.5L16 16"></path></svg>
+<label for="app-search" class="sr">Cerca nel gestionale</label>
+<input id="app-search" type="search" placeholder="Cerca corsisti, corsi, attestati…" style="flex: 1; min-width: 0; height: 100%; border: 0; background: transparent; color: #171721; font-size: 14px; outline: none; padding: 0">
+</div>
+<div style="flex: 1 1 auto"></div>
+<div style="display: flex; align-items: center; gap: 4px; flex: none">
+<button type="button" class="icon-btn hide-sm" aria-label="Calendario" style="width: 40px; height: 40px; border: 0; border-radius: 8px; background: transparent; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16.5" rx="2"></rect><path d="M3 9.5h18"></path><path d="M8 2.5v4"></path><path d="M16 2.5v4"></path></svg>
+</button>
+<button type="button" class="icon-btn" aria-label="Notifiche, 3 non lette" style="position: relative; width: 40px; height: 40px; border: 0; border-radius: 8px; background: transparent; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9a6 6 0 0 1 12 0c0 6 2.5 7.5 2.5 7.5h-17S6 15 6 9z"></path><path d="M10 20a2 2 0 0 0 4 0"></path></svg>
+<span aria-hidden="true" style="position: absolute; top: 8px; right: 9px; width: 8px; height: 8px; border-radius: 50%; background: #5266EB; box-shadow: 0 0 0 2px #FFFFFF"></span>
+</button>
+<button type="button" class="icon-btn hide-sm" aria-label="Guida" style="width: 40px; height: 40px; border: 0; border-radius: 8px; background: transparent; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M9.6 9.5a2.5 2.5 0 0 1 4.9.7c0 1.7-2.5 2.2-2.5 3.8"></path><path d="M12 17.2v.1"></path></svg>
+</button>
+</div>
+<a href="#" style="flex: none; display: flex; align-items: center; gap: 10px; margin-left: 4px; padding-left: 16px; border-left: 1px solid #E9E9F0; height: 40px; color: inherit; text-decoration: none">
+<span aria-hidden="true" style="width: 36px; height: 36px; border-radius: 50%; background: #E8EBFD; color: #3E50D0; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; flex: none">MP</span>
+<span class="hide-sm" style="display: flex; flex-direction: column; line-height: 1.3">
+<span style="font-size: 14px; font-weight: 560; color: #171721">Marco Predieri</span>
+<span style="font-size: 12px; color: #62627A">Amministratore</span>
+</span>
+<span class="sr">Profilo di Marco Predieri</span>
+</a>
+</header>
+
+<main class="app-content" style="flex: 1; padding: 24px; display: flex; flex-direction: column; gap: 20px; min-width: 0">
+
+<!-- PAGE HEADER -->
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 24px; padding-bottom: 4px">
+<div style="min-width: 0">
+<h1 style="margin: 0; font-size: 22px; font-weight: 560; font-variation-settings: 'FLAR' 60; letter-spacing: 0.005em; line-height: 1.25">Buongiorno, Marco</h1>
+<p style="margin: 6px 0 0; font-size: 14px; color: #62627A">Ente Demo Formazione · martedì 6 ottobre 2026</p>
+</div>
+<div class="ph-actions" style="display: flex; flex-direction: column; align-items: flex-end; gap: 12px">
+<nav aria-label="Percorso" style="font-size: 13px; color: #62627A">
+<a href="#" style="color: #62627A; text-decoration: none">Home</a><span aria-hidden="true" style="margin: 0 8px; color: #A9A9BC">/</span><span aria-current="page" style="color: #171721">Dashboard</span>
+</nav>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<button type="button" class="btn-s" style="display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px; border-radius: 8px; background: #FFFFFF; border: 1px solid #E1E1EA; color: #171721; font-size: 14px; font-weight: 500; cursor: pointer; box-sizing: border-box">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V4"></path><path d="M7.5 8.5L12 4l4.5 4.5"></path><path d="M5 14v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"></path></svg>Esporta registro</button>
+<button type="button" class="btn-p" style="display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px; border-radius: 8px; background: #5266EB; border: 0; color: #FFFFFF; font-size: 14px; font-weight: 500; cursor: pointer; box-sizing: border-box">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>Nuova edizione</button>
+</div>
+</div>
+</div>
+
+<!-- ROW 1 · KPI -->
+<section aria-label="Indicatori principali" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px">
+
+<div style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05); padding: 20px">
+<div style="font-size: 13px; color: #62627A">Corsisti a norma</div>
+<div style="margin-top: 6px; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px">
+<div style="font-size: 28px; font-weight: 600; line-height: 1.2; letter-spacing: 0.005em; font-variant-numeric: tabular-nums">142</div>
+<svg width="96" height="40" viewBox="0 0 96 40" aria-hidden="true" style="flex: none"><polygon points="2,38 2.0,34.0 15.1,30.8 28.3,27.5 41.4,28.6 54.6,22.1 67.7,19.9 80.9,14.5 94.0,8.0 94,38" fill="#0F8A63" fill-opacity="0.08"></polygon><polyline points="2.0,34.0 15.1,30.8 28.3,27.5 41.4,28.6 54.6,22.1 67.7,19.9 80.9,14.5 94.0,8.0" fill="none" stroke="#0F8A63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline><circle cx="92" cy="8.5" r="3" fill="#0F8A63" stroke="#FFFFFF" stroke-width="1.5"></circle></svg>
+</div>
+<div style="margin-top: 12px; display: flex; align-items: center; gap: 6px; font-size: 13px; color: #62627A">
+<span style="display: inline-flex; align-items: center; gap: 3px; color: #0B7655; font-weight: 600; font-variant-numeric: tabular-nums"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 10V2.5"></path><path d="M2.8 5.5L6 2.3l3.2 3.2"></path></svg>12</span>nel mese
+</div>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05); padding: 20px">
+<div style="font-size: 13px; color: #62627A">In scadenza entro 30 gg</div>
+<div style="margin-top: 6px; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px">
+<div style="font-size: 28px; font-weight: 600; line-height: 1.2; letter-spacing: 0.005em; font-variant-numeric: tabular-nums">9</div>
+<svg width="96" height="40" viewBox="0 0 96 40" aria-hidden="true" style="flex: none"><polygon points="2,38 2.0,12.3 15.1,16.7 28.3,8.0 41.4,21.0 54.6,25.3 67.7,21.0 80.9,29.7 94.0,34.0 94,38" fill="#A15C07" fill-opacity="0.08"></polygon><polyline points="2.0,12.3 15.1,16.7 28.3,8.0 41.4,21.0 54.6,25.3 67.7,21.0 80.9,29.7 94.0,34.0" fill="none" stroke="#A15C07" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline><circle cx="92.2" cy="33.4" r="3" fill="#A15C07" stroke="#FFFFFF" stroke-width="1.5"></circle></svg>
+</div>
+<div style="margin-top: 12px; display: flex; align-items: center; gap: 6px; font-size: 13px; color: #62627A">
+<span style="display: inline-flex; align-items: center; gap: 3px; color: #0B7655; font-weight: 600; font-variant-numeric: tabular-nums"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2v7.5"></path><path d="M2.8 6.5L6 9.7l3.2-3.2"></path></svg>3</span>rispetto a settembre
+</div>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05); padding: 20px">
+<div style="font-size: 13px; color: #62627A">Attestati rilasciati 2026</div>
+<div style="margin-top: 6px; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px">
+<div style="font-size: 28px; font-weight: 600; line-height: 1.2; letter-spacing: 0.005em; font-variant-numeric: tabular-nums">318</div>
+<svg width="96" height="40" viewBox="0 0 96 40" aria-hidden="true" style="flex: none"><polygon points="2,38 2.0,34.0 12.2,31.2 22.4,27.7 32.7,24.4 42.9,20.6 53.1,17.0 63.3,14.5 73.6,13.8 83.8,9.2 94.0,8.0 94,38" fill="#5266EB" fill-opacity="0.08"></polygon><polyline points="2.0,34.0 12.2,31.2 22.4,27.7 32.7,24.4 42.9,20.6 53.1,17.0 63.3,14.5 73.6,13.8 83.8,9.2 94.0,8.0" fill="none" stroke="#5266EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline><circle cx="92" cy="8.3" r="3" fill="#5266EB" stroke="#FFFFFF" stroke-width="1.5"></circle></svg>
+</div>
+<div style="margin-top: 12px; display: flex; align-items: center; gap: 6px; font-size: 13px; color: #62627A">
+<span style="display: inline-flex; align-items: center; gap: 3px; color: #0B7655; font-weight: 600; font-variant-numeric: tabular-nums"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 10V2.5"></path><path d="M2.8 5.5L6 2.3l3.2 3.2"></path></svg>14</span>da inizio ottobre
+</div>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05); padding: 20px">
+<div style="font-size: 13px; color: #62627A">Edizioni attive</div>
+<div style="margin-top: 6px; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px">
+<div style="font-size: 28px; font-weight: 600; line-height: 1.2; letter-spacing: 0.005em; font-variant-numeric: tabular-nums">7</div>
+<svg width="96" height="40" viewBox="0 0 96 40" aria-hidden="true" style="flex: none"><polygon points="2,38 2.0,34.0 15.1,25.3 28.3,25.3 41.4,16.7 54.6,25.3 67.7,16.7 80.9,8.0 94.0,8.0 94,38" fill="#6F7FB0" fill-opacity="0.1"></polygon><polyline points="2.0,34.0 15.1,25.3 28.3,25.3 41.4,16.7 54.6,25.3 67.7,16.7 80.9,8.0 94.0,8.0" fill="none" stroke="#6F7FB0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline><circle cx="92" cy="8" r="3" fill="#6F7FB0" stroke="#FFFFFF" stroke-width="1.5"></circle></svg>
+</div>
+<div style="margin-top: 12px; display: flex; align-items: center; gap: 6px; font-size: 13px; color: #62627A">
+<span style="display: inline-flex; align-items: center; gap: 3px; color: #0B7655; font-weight: 600; font-variant-numeric: tabular-nums"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 10V2.5"></path><path d="M2.8 5.5L6 2.3l3.2 3.2"></path></svg>2</span>rispetto a settembre
+</div>
+</div>
+</section>
+
+<!-- ROW 2 -->
+<div class="g-main">
+
+<section aria-labelledby="t-mesi" style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05); min-width: 0">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; border-bottom: 1px solid #EFEFF4">
+<h2 id="t-mesi" style="margin: 0; font-size: 16px; font-weight: 560; line-height: 1.5">Attestati rilasciati per mese</h2>
+<button type="button" class="btn-s" aria-label="Anno: 2026, cambia anno" style="display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 10px 0 12px; border-radius: 8px; background: #FFFFFF; border: 1px solid #E1E1EA; color: #3B3B4F; font-size: 13px; font-weight: 500; cursor: pointer; font-variant-numeric: tabular-nums">2026<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
+</div>
+<div style="padding: 20px">
+<div style="display: flex; flex-wrap: wrap; gap: 12px 40px">
+<div>
+<div style="font-size: 22px; font-weight: 600; line-height: 1.25; font-variant-numeric: tabular-nums">318</div>
+<div style="font-size: 13px; color: #62627A">rilasciati da gennaio</div>
+</div>
+<div>
+<div style="font-size: 22px; font-weight: 600; line-height: 1.25; font-variant-numeric: tabular-nums">64</div>
+<div style="font-size: 13px; color: #62627A">previsti a novembre e dicembre</div>
+</div>
+<div>
+<div style="font-size: 22px; font-weight: 600; line-height: 1.25; font-variant-numeric: tabular-nums">94%</div>
+<div style="font-size: 13px; color: #62627A">esami superati al primo tentativo</div>
+</div>
+</div>
+<div style="margin-top: 20px; overflow-x: auto">
+<svg viewBox="0 0 700 236" role="img" aria-labelledby="mesi-title mesi-desc" style="display: block; width: 100%; min-width: 560px; height: auto; font-family: inherit; font-variant-numeric: tabular-nums">
+<title id="mesi-title">Attestati rilasciati per mese, 2026</title>
+<desc id="mesi-desc">Gennaio 22, febbraio 32, marzo 40, aprile 37, maggio 44, giugno 41, luglio 28, agosto 8, settembre 52, ottobre 14 (mese in corso). Previsti: novembre 38, dicembre 26.</desc>
+<g stroke="#EFEFF4" stroke-width="1">
+<line x1="40" y1="14" x2="700" y2="14"></line>
+<line x1="40" y1="62" x2="700" y2="62"></line>
+<line x1="40" y1="110" x2="700" y2="110"></line>
+<line x1="40" y1="158" x2="700" y2="158"></line>
+</g>
+<g font-size="12" fill="#62627A" text-anchor="end">
+<text x="30" y="18">60</text>
+<text x="30" y="66">45</text>
+<text x="30" y="114">30</text>
+<text x="30" y="162">15</text>
+<text x="30" y="210">0</text>
+</g>
+<g class="bar"><title>Gennaio 2026: 22 attestati</title><rect x="40" y="10" width="55" height="196" fill="#FFFFFF" fill-opacity="0"></rect><path class="b" d="M55.5 206V139.6Q55.5 135.6 59.5 135.6H75.5Q79.5 135.6 79.5 139.6V206Z" fill="#C9D1F5"></path></g>
+<g class="bar"><title>Febbraio 2026: 32 attestati</title><rect x="95" y="10" width="55" height="196" fill="#FFFFFF" fill-opacity="0"></rect><path class="b" d="M110.5 206V107.6Q110.5 103.6 114.5 103.6H130.5Q134.5 103.6 134.5 107.6V206Z" fill="#C9D1F5"></path></g>
+<g class="bar"><title>Marzo 2026: 40 attestati</title><rect x="150" y="10" width="55" height="196" fill="#FFFFFF" fill-opacity="0"></rect><path class="b" d="M165.5 206V82.0Q165.5 78.0 169.5 78.0H185.5Q189.5 78.0 189.5 82.0V206Z" fill="#C9D1F5"></path></g>
+<g class="bar"><title>Aprile 2026: 37 attestati</title><rect x="205" y="10" width="55" height="196" fill="#FFFFFF" fill-opacity="0"></rect><path class="b" d="M220.5 206V91.6Q220.5 87.6 224.5 87.6H240.5Q244.5 87.6 244.5 91.6V206Z" fill="#C9D1F5"></path></g>
+<g class="bar"><title>Maggio 2026: 44 attestati</title><rect x="260" y="10" width="55" height="196" fill="#FFFFFF" fill-opacity="0"></rect><path class="b" d="M275.5 206V69.2Q275.5 65.2 279.5 65.2H295.5Q299.5 65.2 299.5 69.2V206Z" fill="#C9D1F5"></path></g>
+<g class="bar"><title>Giugno 2026: 41 attestati</title><rect x="315" y="10" width="55" height="196" fill="#FFFFFF" fill-opacity="0"></rect><path class="b" d="M330.5 206V78.8Q330.5 74.8 334.5 74.8H350.5Q354.5 74.8 354.5 78.8V206Z" fill="#C9D1F5"></path></g>
+<g class="bar"><title>Luglio 2026: 28 attestati</title><rect x="370" y="10" width="55" height="196" fill="#FFFFFF" fill-opacity="0"></rect><path class="b" d="M385.5 206V120.4Q385.5 116.4 389.5 116.4H405.5Q409.5 116.4 409.5 120.4V206Z" fill="#C9D1F5"></path></g>
+<g class="bar"><title>Agosto 2026: 8 attestati</title><rect x="425" y="10" width="55" height="196" fill="#FFFFFF" fill-opacity="0"></rect><path class="b" d="M440.5 206V184.4Q440.5 180.4 444.5 180.4H460.5Q464.5 180.4 464.5 184.4V206Z" fill="#C9D1F5"></path></g>
+<g class="bar"><title>Settembre 2026: 52 attestati</title><rect x="480" y="10" width="55" height="196" fill="#FFFFFF" fill-opacity="0"></rect><path class="b" d="M495.5 206V43.6Q495.5 39.6 499.5 39.6H515.5Q519.5 39.6 519.5 43.6V206Z" fill="#C9D1F5"></path></g>
+<g class="bar"><title>Ottobre 2026, in corso: 14 attestati</title><rect x="535" y="10" width="55" height="196" fill="#FFFFFF" fill-opacity="0"></rect><path class="b" d="M550.5 206V165.2Q550.5 161.2 554.5 161.2H570.5Q574.5 161.2 574.5 165.2V206Z" fill="#5266EB"></path></g>
+<g class="bar"><title>Novembre 2026: 38 previsti dalle edizioni in calendario</title><rect x="590" y="10" width="55" height="196" fill="#FFFFFF" fill-opacity="0"></rect><path class="b" d="M605.5 206V88.4Q605.5 84.4 609.5 84.4H625.5Q629.5 84.4 629.5 88.4V206Z" fill="#F4F6FE" stroke="#8C9AE8" stroke-width="1.5" stroke-dasharray="4 3"></path></g>
+<g class="bar"><title>Dicembre 2026: 26 previsti dalle edizioni in calendario</title><rect x="645" y="10" width="55" height="196" fill="#FFFFFF" fill-opacity="0"></rect><path class="b" d="M660.5 206V126.8Q660.5 122.8 664.5 122.8H680.5Q684.5 122.8 684.5 126.8V206Z" fill="#F4F6FE" stroke="#8C9AE8" stroke-width="1.5" stroke-dasharray="4 3"></path></g>
+<line x1="40" y1="206" x2="700" y2="206" stroke="#E1E1EA" stroke-width="1"></line>
+<g font-size="12" font-weight="600" fill="#171721" text-anchor="middle">
+<text x="507.5" y="31">52</text>
+<text x="562.5" y="153">14</text>
+</g>
+<g font-size="12" fill="#62627A" text-anchor="middle">
+<text x="67.5" y="226">gen</text>
+<text x="122.5" y="226">feb</text>
+<text x="177.5" y="226">mar</text>
+<text x="232.5" y="226">apr</text>
+<text x="287.5" y="226">mag</text>
+<text x="342.5" y="226">giu</text>
+<text x="397.5" y="226">lug</text>
+<text x="452.5" y="226">ago</text>
+<text x="507.5" y="226">set</text>
+<text x="562.5" y="226" fill="#171721" font-weight="600">ott</text>
+<text x="617.5" y="226">nov</text>
+<text x="672.5" y="226">dic</text>
+</g>
+</svg>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 12px; font-size: 12px; color: #62627A">
+<span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 3px; background: #C9D1F5"></span>Mesi chiusi</span>
+<span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 3px; background: #5266EB"></span>Ottobre, in corso</span>
+<span style="display: inline-flex; align-items: center; gap: 8px"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 3px; background: #F4F6FE; border: 1.5px dashed #8C9AE8; box-sizing: border-box"></span>Previsti dalle edizioni in calendario</span>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="t-conf" style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05); min-width: 0; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; border-bottom: 1px solid #EFEFF4">
+<h2 id="t-conf" style="margin: 0; font-size: 16px; font-weight: 560; line-height: 1.5">Conformità per corso</h2>
+<span style="font-size: 13px; color: #62627A">Lavoratori a norma</span>
+</div>
+<div style="flex: 1; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; gap: 22px">
+
+<div>
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px">
+<span style="font-weight: 500">Formazione generale</span>
+<span style="font-variant-numeric: tabular-nums; white-space: nowrap"><span style="font-size: 13px; color: #62627A">96/96</span><span style="display: inline-block; min-width: 44px; text-align: right; font-weight: 600">100%</span></span>
+</div>
+<div role="progressbar" aria-label="Formazione generale" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" style="margin-top: 8px; height: 8px; border-radius: 999px; background: #EFEFF4; overflow: hidden"><div style="width: 100%; height: 100%; border-radius: 999px; background: #5266EB"></div></div>
+</div>
+
+<div>
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px">
+<span style="font-weight: 500">HACCP</span>
+<span style="font-variant-numeric: tabular-nums; white-space: nowrap"><span style="font-size: 13px; color: #62627A">46/48</span><span style="display: inline-block; min-width: 44px; text-align: right; font-weight: 600">96%</span></span>
+</div>
+<div role="progressbar" aria-label="HACCP" aria-valuemin="0" aria-valuemax="100" aria-valuenow="96" style="margin-top: 8px; height: 8px; border-radius: 999px; background: #EFEFF4; overflow: hidden"><div style="width: 96%; height: 100%; border-radius: 999px; background: #5266EB"></div></div>
+</div>
+
+<div>
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px">
+<span style="font-weight: 500">Primo soccorso</span>
+<span style="font-variant-numeric: tabular-nums; white-space: nowrap"><span style="font-size: 13px; color: #62627A">21/23</span><span style="display: inline-block; min-width: 44px; text-align: right; font-weight: 600">91%</span></span>
+</div>
+<div role="progressbar" aria-label="Primo soccorso" aria-valuemin="0" aria-valuemax="100" aria-valuenow="91" style="margin-top: 8px; height: 8px; border-radius: 999px; background: #EFEFF4; overflow: hidden"><div style="width: 91%; height: 100%; border-radius: 999px; background: #5266EB"></div></div>
+</div>
+
+<div>
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px">
+<span style="display: inline-flex; align-items: center; gap: 6px; font-weight: 500">Antincendio<span style="padding: 0 8px; border-radius: 999px; background: #FDF0DC; color: #A15C07; font-size: 12px; font-weight: 560; line-height: 20px">Sotto soglia</span></span>
+<span style="font-variant-numeric: tabular-nums; white-space: nowrap"><span style="font-size: 13px; color: #62627A">21/25</span><span style="display: inline-block; min-width: 44px; text-align: right; font-weight: 600; color: #A15C07">84%</span></span>
+</div>
+<div role="progressbar" aria-label="Antincendio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="84" style="margin-top: 8px; height: 8px; border-radius: 999px; background: #EFEFF4; overflow: hidden"><div style="width: 84%; height: 100%; border-radius: 999px; background: #C9821B"></div></div>
+</div>
+
+<div style="display: flex; gap: 10px; align-items: flex-start; padding: 14px; border-radius: 8px; background: #E8EBFD; color: #3B3B4F; font-size: 13px; line-height: 1.55">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3E50D0" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 1px"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 7.8v.1"></path></svg>
+<div><strong style="font-weight: 600; color: #171721">4 lavoratori in scadenza Antincendio:</strong> c'è posto nell'edizione del 20 ottobre. <a href="#" style="display: inline-flex; align-items: center; gap: 4px; color: #3E50D0; font-weight: 600; text-decoration: none; white-space: nowrap">Convoca<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a></div>
+</div>
+</div>
+</section>
+</div>
+
+<!-- ROW 3 -->
+<div class="g-three">
+
+<section aria-labelledby="t-scad" style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05); min-width: 0">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; border-bottom: 1px solid #EFEFF4">
+<h2 id="t-scad" style="margin: 0; font-size: 16px; font-weight: 560; line-height: 1.5">Scadenze imminenti</h2>
+<a href="#" style="font-size: 13px; font-weight: 500; text-decoration: none">Vedi tutte</a>
+</div>
+<ul style="list-style: none; margin: 0; padding: 4px 20px 8px">
+<li style="display: flex; align-items: center; gap: 12px; padding: 12px 0">
+<span aria-hidden="true" style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #E8EBFD; color: #3E50D0; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600">GS</span>
+<div style="flex: 1; min-width: 0">
+<div style="font-weight: 560">Gallo Stefano</div>
+<div style="font-size: 13px; color: #62627A; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Antincendio · Metalli Srl</div>
+</div>
+<div style="flex: none; text-align: right">
+<span style="display: inline-block; padding: 0 8px; border-radius: 999px; background: #FBE7E8; color: #C2343B; font-size: 12px; font-weight: 560; line-height: 20px; font-variant-numeric: tabular-nums">tra 5 gg</span>
+<div style="margin-top: 4px; font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">11 ott</div>
+</div>
+</li>
+<li style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid #F1F1F5">
+<span aria-hidden="true" style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #E6E9F2; color: #4A5578; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600">CE</span>
+<div style="flex: 1; min-width: 0">
+<div style="font-weight: 560">Conti Elisa</div>
+<div style="font-size: 13px; color: #62627A; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Agg. 81/08 · Logistica Nord</div>
+</div>
+<div style="flex: none; text-align: right">
+<span style="display: inline-block; padding: 0 8px; border-radius: 999px; background: #FDF0DC; color: #A15C07; font-size: 12px; font-weight: 560; line-height: 20px; font-variant-numeric: tabular-nums">tra 12 gg</span>
+<div style="margin-top: 4px; font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">18 ott</div>
+</div>
+</li>
+<li style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid #F1F1F5">
+<span aria-hidden="true" style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #EDEDF3; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600">VP</span>
+<div style="flex: 1; min-width: 0">
+<div style="font-weight: 560">Verdi Paolo</div>
+<div style="font-size: 13px; color: #62627A; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Antincendio · Logistica Nord</div>
+</div>
+<div style="flex: none; text-align: right">
+<span style="display: inline-block; padding: 0 8px; border-radius: 999px; background: #FDF0DC; color: #A15C07; font-size: 12px; font-weight: 560; line-height: 20px; font-variant-numeric: tabular-nums">tra 16 gg</span>
+<div style="margin-top: 4px; font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">22 ott</div>
+</div>
+</li>
+<li style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid #F1F1F5">
+<span aria-hidden="true" style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #E4EAF8; color: #3D5A9E; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600">RM</span>
+<div style="flex: 1; min-width: 0">
+<div style="font-weight: 560">Rossi Mario</div>
+<div style="font-size: 13px; color: #62627A; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Primo soccorso · Metalli Srl</div>
+</div>
+<div style="flex: none; text-align: right">
+<span style="display: inline-block; padding: 0 8px; border-radius: 999px; background: #FDF0DC; color: #A15C07; font-size: 12px; font-weight: 560; line-height: 20px; font-variant-numeric: tabular-nums">tra 23 gg</span>
+<div style="margin-top: 4px; font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">29 ott</div>
+</div>
+</li>
+<li style="display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid #F1F1F5">
+<span aria-hidden="true" style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #E8EBFD; color: #3E50D0; display: inline-flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600">ML</span>
+<div style="flex: 1; min-width: 0">
+<div style="font-weight: 560">Marino Luca</div>
+<div style="font-size: 13px; color: #62627A; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">HACCP · Forno Aurora</div>
+</div>
+<div style="flex: none; text-align: right">
+<span style="display: inline-block; padding: 0 8px; border-radius: 999px; background: #FDF0DC; color: #A15C07; font-size: 12px; font-weight: 560; line-height: 20px; font-variant-numeric: tabular-nums">tra 28 gg</span>
+<div style="margin-top: 4px; font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">3 nov</div>
+</div>
+</li>
+</ul>
+</section>
+
+<section aria-labelledby="t-att" style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05); min-width: 0">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; border-bottom: 1px solid #EFEFF4">
+<h2 id="t-att" style="margin: 0; font-size: 16px; font-weight: 560; line-height: 1.5">Attività recenti</h2>
+<a href="#" style="font-size: 13px; font-weight: 500; text-decoration: none">Tutte</a>
+</div>
+<ol style="list-style: none; margin: 0; padding: 20px 20px 4px">
+<li style="position: relative; display: flex; gap: 14px; padding-bottom: 20px">
+<span aria-hidden="true" style="position: absolute; left: 5px; top: 18px; bottom: 0; width: 2px; background: #EFEFF4"></span>
+<span aria-hidden="true" style="position: relative; flex: none; width: 12px; height: 12px; margin-top: 4px; border-radius: 50%; background: #FFFFFF; border: 3px solid #0F8A63; box-sizing: border-box"></span>
+<div style="flex: 1; min-width: 0">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px"><span style="font-weight: 600">Attestato emesso</span><span style="flex: none; font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">Oggi, 09:42</span></div>
+<div style="margin-top: 2px; font-size: 13px; color: #3B3B4F">Neri Anna, Formazione generale</div>
+</div>
+</li>
+<li style="position: relative; display: flex; gap: 14px; padding-bottom: 20px">
+<span aria-hidden="true" style="position: absolute; left: 5px; top: 18px; bottom: 0; width: 2px; background: #EFEFF4"></span>
+<span aria-hidden="true" style="position: relative; flex: none; width: 12px; height: 12px; margin-top: 4px; border-radius: 50%; background: #FFFFFF; border: 3px solid #5266EB; box-sizing: border-box"></span>
+<div style="flex: 1; min-width: 0">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px"><span style="font-weight: 600">Esame superato</span><span style="flex: none; font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">Oggi, 08:15</span></div>
+<div style="margin-top: 2px; font-size: 13px; color: #3B3B4F">Bianchi Laura, HACCP Base · <span style="font-variant-numeric: tabular-nums">18/20</span></div>
+</div>
+</li>
+<li style="position: relative; display: flex; gap: 14px; padding-bottom: 20px">
+<span aria-hidden="true" style="position: absolute; left: 5px; top: 18px; bottom: 0; width: 2px; background: #EFEFF4"></span>
+<span aria-hidden="true" style="position: relative; flex: none; width: 12px; height: 12px; margin-top: 4px; border-radius: 50%; background: #FFFFFF; border: 3px solid #6F7FB0; box-sizing: border-box"></span>
+<div style="flex: 1; min-width: 0">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px"><span style="font-weight: 600">Iscrizione</span><span style="flex: none; font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">Ieri, 17:30</span></div>
+<div style="margin-top: 2px; font-size: 13px; color: #3B3B4F">3 nuovi corsisti a HACCP Base</div>
+</div>
+</li>
+<li style="position: relative; display: flex; gap: 14px; padding-bottom: 20px">
+<span aria-hidden="true" style="position: absolute; left: 5px; top: 18px; bottom: 0; width: 2px; background: #EFEFF4"></span>
+<span aria-hidden="true" style="position: relative; flex: none; width: 12px; height: 12px; margin-top: 4px; border-radius: 50%; background: #FFFFFF; border: 3px solid #C9821B; box-sizing: border-box"></span>
+<div style="flex: 1; min-width: 0">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px"><span style="font-weight: 600">Conflitto risolto</span><span style="flex: none; font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">Ieri, 11:05</span></div>
+<div style="margin-top: 2px; font-size: 13px; color: #3B3B4F">Agg. 81/08 riassegnato a Geom. Russo</div>
+</div>
+</li>
+<li style="position: relative; display: flex; gap: 14px; padding-bottom: 20px">
+<span aria-hidden="true" style="position: relative; flex: none; width: 12px; height: 12px; margin-top: 4px; border-radius: 50%; background: #FFFFFF; border: 3px solid #A9A9BC; box-sizing: border-box"></span>
+<div style="flex: 1; min-width: 0">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 8px"><span style="font-weight: 600">Lettera d'incarico firmata</span><span style="flex: none; font-size: 12px; color: #62627A; font-variant-numeric: tabular-nums">Lun, 16:20</span></div>
+<div style="margin-top: 2px; font-size: 13px; color: #3B3B4F">Dott.ssa Mari, HACCP Base</div>
+</div>
+</li>
+</ol>
+</section>
+
+<section aria-labelledby="t-lez" style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05); min-width: 0">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; border-bottom: 1px solid #EFEFF4">
+<h2 id="t-lez" style="margin: 0; font-size: 16px; font-weight: 560; line-height: 1.5">Prossime lezioni</h2>
+<a href="#" style="font-size: 13px; font-weight: 500; text-decoration: none">Calendario</a>
+</div>
+<ul style="list-style: none; margin: 0; padding: 4px 20px 8px">
+<li style="display: flex; align-items: center; gap: 14px; padding: 12px 0">
+<div style="flex: none; width: 52px; height: 56px; border-radius: 8px; background: #E8EBFD; color: #3E50D0; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.1">
+<span style="font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums">7</span><span style="margin-top: 3px; font-size: 12px; font-weight: 500">mer</span>
+</div>
+<div style="flex: 1; min-width: 0">
+<div style="font-weight: 560; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Antincendio liv. 2 · agg.</div>
+<div style="font-size: 13px; color: #62627A; font-variant-numeric: tabular-nums">09:00–14:00 · Aula 2</div>
+<div style="font-size: 13px; color: #3B3B4F">Ing. Conti</div>
+</div>
+<div style="flex: none; text-align: right; font-size: 12px; color: #62627A; line-height: 1.35"><span style="display: block; font-size: 14px; font-weight: 560; color: #171721; font-variant-numeric: tabular-nums">12/15</span>iscritti</div>
+</li>
+<li style="display: flex; align-items: center; gap: 14px; padding: 12px 0; border-top: 1px solid #F1F1F5">
+<div style="flex: none; width: 52px; height: 56px; border-radius: 8px; background: #F3F4F8; color: #171721; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.1">
+<span style="font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums">8</span><span style="margin-top: 3px; font-size: 12px; font-weight: 500; color: #62627A">gio</span>
+</div>
+<div style="flex: 1; min-width: 0">
+<div style="font-weight: 560; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">HACCP Base</div>
+<div style="font-size: 13px; color: #62627A; font-variant-numeric: tabular-nums">14:00–18:00 · Aula 1</div>
+<div style="font-size: 13px; color: #3B3B4F">Dott.ssa Mari</div>
+</div>
+<div style="flex: none; text-align: right; font-size: 12px; color: #62627A; line-height: 1.35"><span style="display: block; font-size: 14px; font-weight: 560; color: #171721; font-variant-numeric: tabular-nums">18/20</span>iscritti</div>
+</li>
+<li style="display: flex; align-items: center; gap: 14px; padding: 12px 0; border-top: 1px solid #F1F1F5">
+<div style="flex: none; width: 52px; height: 56px; border-radius: 8px; background: #F3F4F8; color: #171721; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.1">
+<span style="font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums">9</span><span style="margin-top: 3px; font-size: 12px; font-weight: 500; color: #62627A">ven</span>
+</div>
+<div style="flex: 1; min-width: 0">
+<div style="font-weight: 560; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Primo soccorso gr. B</div>
+<div style="font-size: 13px; color: #62627A; font-variant-numeric: tabular-nums">09:00–13:00 · Aula 3</div>
+<div style="font-size: 13px; color: #3B3B4F">Dott. Bassi</div>
+</div>
+<div style="flex: none; text-align: right; font-size: 12px; color: #62627A; line-height: 1.35"><span style="display: block; font-size: 14px; font-weight: 560; color: #171721; font-variant-numeric: tabular-nums">10/12</span>iscritti</div>
+</li>
+<li style="display: flex; align-items: center; gap: 14px; padding: 12px 0; border-top: 1px solid #F1F1F5">
+<div style="flex: none; width: 52px; height: 56px; border-radius: 8px; background: #F3F4F8; color: #171721; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.1">
+<span style="font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums">12</span><span style="margin-top: 3px; font-size: 12px; font-weight: 500; color: #62627A">lun</span>
+</div>
+<div style="flex: 1; min-width: 0">
+<div style="font-weight: 560; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Agg. lavoratori 81/08</div>
+<div style="font-size: 13px; color: #62627A; font-variant-numeric: tabular-nums">15:00–17:00 · Online</div>
+<div style="font-size: 13px; color: #3B3B4F">Geom. Russo</div>
+</div>
+<div style="flex: none; text-align: right; font-size: 12px; color: #62627A; line-height: 1.35"><span style="display: block; font-size: 14px; font-weight: 560; color: #171721; font-variant-numeric: tabular-nums">22/30</span>iscritti</div>
+</li>
+</ul>
+</section>
+</div>
+
+<!-- ROW 4 · TABLE -->
+<section aria-labelledby="t-ult" style="background: #FFFFFF; border: 1px solid #E9E9F0; border-radius: 8px; box-shadow: 0 4px 24px rgba(23,23,33,0.05); min-width: 0">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; border-bottom: 1px solid #EFEFF4">
+<h2 id="t-ult" style="margin: 0; font-size: 16px; font-weight: 560; line-height: 1.5">Ultimi attestati emessi</h2>
+<a href="#" class="btn-s" style="display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 8px; background: #FFFFFF; border: 1px solid #E1E1EA; color: #171721; font-size: 13px; font-weight: 500; text-decoration: none; box-sizing: border-box">Vedi tutti</a>
+</div>
+<div style="overflow-x: auto">
+<table style="width: 100%; min-width: 860px; border-collapse: collapse; font-size: 14px">
+<thead>
+<tr>
+<th scope="col" style="text-align: left; padding: 12px 20px; background: #FAFAFC; border-bottom: 1px solid #EFEFF4; font-size: 12px; font-weight: 600; color: #62627A; white-space: nowrap">Codice</th>
+<th scope="col" style="text-align: left; padding: 12px 20px; background: #FAFAFC; border-bottom: 1px solid #EFEFF4; font-size: 12px; font-weight: 600; color: #62627A; white-space: nowrap">Corsista</th>
+<th scope="col" style="text-align: left; padding: 12px 20px; background: #FAFAFC; border-bottom: 1px solid #EFEFF4; font-size: 12px; font-weight: 600; color: #62627A; white-space: nowrap">Corso</th>
+<th scope="col" style="text-align: left; padding: 12px 20px; background: #FAFAFC; border-bottom: 1px solid #EFEFF4; font-size: 12px; font-weight: 600; color: #62627A; white-space: nowrap">Data</th>
+<th scope="col" style="text-align: left; padding: 12px 20px; background: #FAFAFC; border-bottom: 1px solid #EFEFF4; font-size: 12px; font-weight: 600; color: #62627A; white-space: nowrap">Esito</th>
+<th scope="col" style="text-align: left; padding: 12px 20px; background: #FAFAFC; border-bottom: 1px solid #EFEFF4; font-size: 12px; font-weight: 600; color: #62627A; white-space: nowrap">Stato</th>
+<th scope="col" style="text-align: right; padding: 12px 20px; background: #FAFAFC; border-bottom: 1px solid #EFEFF4; font-size: 12px; font-weight: 600; color: #62627A; white-space: nowrap">Azioni</th>
+</tr>
+</thead>
+<tbody>
+<tr class="trow">
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap; font-variant-numeric: tabular-nums"><a href="#" style="color: #171721; font-weight: 500; text-decoration: none">ATT-2026-0418-7Q</a></td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #E3F4EC; color: #0B7655; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">NA</span><div style="line-height: 1.35"><div style="font-weight: 560">Neri Anna</div><div style="font-size: 12px; color: #62627A">Forno Aurora</div></div></div></td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap; color: #3B3B4F">Formazione generale</td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap; color: #3B3B4F; font-variant-numeric: tabular-nums">06/10/2026</td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap"><span style="display: inline-flex; align-items: center; gap: 6px; color: #3B3B4F"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F8A63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Superato <span style="color: #62627A; font-variant-numeric: tabular-nums">19/20</span></span></td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap"><span style="display: inline-block; padding: 0 10px; border-radius: 999px; background: #E3F4EC; color: #0B7655; font-size: 12px; font-weight: 560; line-height: 22px">Inviato</span></td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap; text-align: right"><div style="display: inline-flex; gap: 6px">
+<button type="button" class="act" aria-label="Scarica PDF ATT-2026-0418-7Q" style="width: 32px; height: 32px; border-radius: 8px; border: 1px solid #E9E9F0; background: #FFFFFF; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"></path><path d="M7 10.5l5 5 5-5"></path><path d="M5 20h14"></path></svg></button>
+<button type="button" class="act" aria-label="Invia ATT-2026-0418-7Q via email" style="width: 32px; height: 32px; border-radius: 8px; border: 1px solid #E9E9F0; background: #FFFFFF; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3L10.5 13.5"></path><path d="M21 3l-6.5 18-4-7.5-7.5-4z"></path></svg></button>
+</div></td>
+</tr>
+<tr class="trow">
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap; font-variant-numeric: tabular-nums"><a href="#" style="color: #171721; font-weight: 500; text-decoration: none">ATT-2026-0417-3K</a></td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #E8EBFD; color: #3E50D0; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">BL</span><div style="line-height: 1.35"><div style="font-weight: 560">Bianchi Laura</div><div style="font-size: 12px; color: #62627A">Studio Ferri</div></div></div></td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap; color: #3B3B4F">HACCP Base</td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap; color: #3B3B4F; font-variant-numeric: tabular-nums">06/10/2026</td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap"><span style="display: inline-flex; align-items: center; gap: 6px; color: #3B3B4F"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F8A63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Superato <span style="color: #62627A; font-variant-numeric: tabular-nums">18/20</span></span></td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap"><span style="display: inline-block; padding: 0 10px; border-radius: 999px; background: #FDF0DC; color: #A15C07; font-size: 12px; font-weight: 560; line-height: 22px">Da inviare</span></td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap; text-align: right"><div style="display: inline-flex; gap: 6px">
+<button type="button" class="act" aria-label="Scarica PDF ATT-2026-0417-3K" style="width: 32px; height: 32px; border-radius: 8px; border: 1px solid #E9E9F0; background: #FFFFFF; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"></path><path d="M7 10.5l5 5 5-5"></path><path d="M5 20h14"></path></svg></button>
+<button type="button" class="act" aria-label="Invia ATT-2026-0417-3K via email" style="width: 32px; height: 32px; border-radius: 8px; border: 1px solid #E9E9F0; background: #FFFFFF; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3L10.5 13.5"></path><path d="M21 3l-6.5 18-4-7.5-7.5-4z"></path></svg></button>
+</div></td>
+</tr>
+<tr class="trow">
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap; font-variant-numeric: tabular-nums"><a href="#" style="color: #171721; font-weight: 500; text-decoration: none">ATT-2026-0416-9M</a></td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #E4EAF8; color: #3D5A9E; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">RM</span><div style="line-height: 1.35"><div style="font-weight: 560">Rossi Mario</div><div style="font-size: 12px; color: #62627A">Metalli Srl</div></div></div></td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap; color: #3B3B4F">Agg. lavoratori 81/08</td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap; color: #3B3B4F; font-variant-numeric: tabular-nums">05/10/2026</td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap"><span style="display: inline-flex; align-items: center; gap: 6px; color: #3B3B4F"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F8A63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Superato <span style="color: #62627A; font-variant-numeric: tabular-nums">17/20</span></span></td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap"><span style="display: inline-block; padding: 0 10px; border-radius: 999px; background: #E3F4EC; color: #0B7655; font-size: 12px; font-weight: 560; line-height: 22px">Inviato</span></td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap; text-align: right"><div style="display: inline-flex; gap: 6px">
+<button type="button" class="act" aria-label="Scarica PDF ATT-2026-0416-9M" style="width: 32px; height: 32px; border-radius: 8px; border: 1px solid #E9E9F0; background: #FFFFFF; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"></path><path d="M7 10.5l5 5 5-5"></path><path d="M5 20h14"></path></svg></button>
+<button type="button" class="act" aria-label="Invia ATT-2026-0416-9M via email" style="width: 32px; height: 32px; border-radius: 8px; border: 1px solid #E9E9F0; background: #FFFFFF; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3L10.5 13.5"></path><path d="M21 3l-6.5 18-4-7.5-7.5-4z"></path></svg></button>
+</div></td>
+</tr>
+<tr class="trow">
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap; font-variant-numeric: tabular-nums"><a href="#" style="color: #171721; font-weight: 500; text-decoration: none">ATT-2026-0415-2D</a></td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #EDEDF3; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">VP</span><div style="line-height: 1.35"><div style="font-weight: 560">Verdi Paolo</div><div style="font-size: 12px; color: #62627A">Logistica Nord</div></div></div></td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap; color: #3B3B4F">Primo soccorso gr. B</td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap; color: #3B3B4F; font-variant-numeric: tabular-nums">02/10/2026</td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap"><span style="display: inline-flex; align-items: center; gap: 6px; color: #3B3B4F"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F8A63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Superato <span style="color: #62627A; font-variant-numeric: tabular-nums">20/20</span></span></td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap"><span style="display: inline-block; padding: 0 10px; border-radius: 999px; background: #E3F4EC; color: #0B7655; font-size: 12px; font-weight: 560; line-height: 22px">Inviato</span></td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap; text-align: right"><div style="display: inline-flex; gap: 6px">
+<button type="button" class="act" aria-label="Scarica PDF ATT-2026-0415-2D" style="width: 32px; height: 32px; border-radius: 8px; border: 1px solid #E9E9F0; background: #FFFFFF; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"></path><path d="M7 10.5l5 5 5-5"></path><path d="M5 20h14"></path></svg></button>
+<button type="button" class="act" aria-label="Invia ATT-2026-0415-2D via email" style="width: 32px; height: 32px; border-radius: 8px; border: 1px solid #E9E9F0; background: #FFFFFF; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3L10.5 13.5"></path><path d="M21 3l-6.5 18-4-7.5-7.5-4z"></path></svg></button>
+</div></td>
+</tr>
+<tr class="trow">
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap; font-variant-numeric: tabular-nums"><a href="#" style="color: #171721; font-weight: 500; text-decoration: none">ATT-2026-0414-6T</a></td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap"><div style="display: flex; align-items: center; gap: 10px"><span aria-hidden="true" style="flex: none; width: 32px; height: 32px; border-radius: 50%; background: #E6E9F2; color: #4A5578; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600">GS</span><div style="line-height: 1.35"><div style="font-weight: 560">Gallo Stefano</div><div style="font-size: 12px; color: #62627A">Metalli Srl</div></div></div></td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap; color: #3B3B4F">Formazione specifica rischio alto</td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap; color: #3B3B4F; font-variant-numeric: tabular-nums">01/10/2026</td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap"><span style="display: inline-flex; align-items: center; gap: 6px; color: #3B3B4F"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0F8A63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Superato <span style="color: #62627A; font-variant-numeric: tabular-nums">16/20</span></span></td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap"><span style="display: inline-block; padding: 0 10px; border-radius: 999px; background: #E8EBFD; color: #3E50D0; font-size: 12px; font-weight: 560; line-height: 22px">Scaricato</span></td>
+<td style="padding: 12px 20px; border-bottom: 1px solid #F1F1F5; white-space: nowrap; text-align: right"><div style="display: inline-flex; gap: 6px">
+<button type="button" class="act" aria-label="Scarica PDF ATT-2026-0414-6T" style="width: 32px; height: 32px; border-radius: 8px; border: 1px solid #E9E9F0; background: #FFFFFF; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"></path><path d="M7 10.5l5 5 5-5"></path><path d="M5 20h14"></path></svg></button>
+<button type="button" class="act" aria-label="Invia ATT-2026-0414-6T via email" style="width: 32px; height: 32px; border-radius: 8px; border: 1px solid #E9E9F0; background: #FFFFFF; color: #3B3B4F; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; padding: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3L10.5 13.5"></path><path d="M21 3l-6.5 18-4-7.5-7.5-4z"></path></svg></button>
+</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 20px; font-size: 13px; color: #62627A">
+<span>5 di <span style="font-variant-numeric: tabular-nums">318</span> attestati emessi nel 2026</span>
+<a href="#" style="display: inline-flex; align-items: center; gap: 4px; font-weight: 500; text-decoration: none">Vai agli attestati<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
+</div>
+</section>
+
+</main>
+</div>
+</div>
+</body>
+</html>
