@@ -193,6 +193,7 @@
                                         ['label' => "In lista d'attesa", 'value' => '7', 'line' => '0,18 10,16 20,17 30,12 40,14 50,15 60,11 72,12', 'fill' => '#FDF0DC', 'stroke' => '#A15C07', 'highlight' => '3', 'highlightClass' => 'text-warning', 'note' => 'su Antincendio liv. 2'],
                                     ];
                                 @endphp
+                                {{-- "▲" non è in Commissioner: come nel design ripiega sul sans-serif generico, non su system-ui. --}}
                                 <div class="mt-4 grid grid-cols-[repeat(auto-fit,minmax(170px,1fr))] gap-3.5">
                                     @foreach ($heroStats as $stat)
                                         <div class="{{ $mockCard }} px-4 py-3.5">
@@ -201,7 +202,7 @@
                                                 <span class="text-[24px] font-[560] leading-[1.15] tabular-nums">{{ $stat['value'] }}</span>
                                                 <svg width="72" height="28" viewBox="0 0 72 28" fill="none" aria-hidden="true"><polygon points="{{ $stat['line'] }} 72,28 0,28" fill="{{ $stat['fill'] }}"></polygon><polyline points="{{ $stat['line'] }}" stroke="{{ $stat['stroke'] }}" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
                                             </div>
-                                            <div class="mt-1.5 text-[11.5px] text-muted">@if ($stat['highlight'])<span class="font-semibold {{ $stat['highlightClass'] }}">{{ $stat['highlight'] }}</span> @endif{{ $stat['note'] }}</div>
+                                            <div class="mt-1.5 text-[11.5px] text-muted">@if ($stat['highlight'])<span class="font-semibold [font-family:Commissioner,sans-serif] {{ $stat['highlightClass'] }}">{{ $stat['highlight'] }}</span> @endif{{ $stat['note'] }}</div>
                                         </div>
                                     @endforeach
                                 </div>

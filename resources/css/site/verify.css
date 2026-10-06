@@ -1,1 +1,7 @@
 /* Stili specifici della pagina "verify" (classi non esprimibili con le utility Tailwind). */
+
+/*
+ * Nessuna regola dedicata: gradienti, modulo di verifica (incluso lo stato :focus-within
+ * e il layout impilato sotto i 480px), scheda d'esito e anteprima dell'attestato
+ * sono resi interamente con utility Tailwind e gli effetti di scroll condivisi di app.css.
+ */

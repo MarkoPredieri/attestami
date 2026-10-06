@@ -1,1 +1,27 @@
 /* Stili specifici della pagina "contact" (classi non esprimibili con le utility Tailwind). */
+
+@layer components {
+    /*
+     * "Cosa succede dopo": la linea cobalto della timeline si riempie dall'alto
+     * mentre la sezione entra nel viewport. Senza supporto, o con "riduci animazioni", resta piena.
+     */
+    @media (prefers-reduced-motion: no-preference) {
+        @supports (animation-timeline: view()) {
+            .contact-timeline-fill {
+                transform-origin: 50% 0;
+                animation: contact-timeline-fill linear both;
+                animation-timeline: view();
+                animation-range: entry 0% entry 100%;
+            }
+        }
+    }
+}
+
+@keyframes contact-timeline-fill {
+    from {
+        transform: scaleY(0);
+    }
+    to {
+        transform: scaleY(1);
+    }
+}

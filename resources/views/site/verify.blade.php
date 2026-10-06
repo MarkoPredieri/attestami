@@ -94,7 +94,7 @@
         <div class="site-wrap relative z-2 text-center">
             <div class="parallax-text">
                 <p class="{{ $eyebrow }}">Verifica pubblica</p>
-                <h1 class="mx-auto mt-5 max-w-[1080px] font-display text-[clamp(48px,7vw,96px)] leading-[1.02]">Verifica un attestato<br class="max-[860px]:hidden"> in un secondo.</h1>
+                <h1 class="mx-auto mt-5 max-w-[1080px] font-display text-[clamp(48px,7vw,96px)] leading-[1.02] min-[860px]:text-balance">Verifica un attestato in un secondo.</h1>
                 <p class="mx-auto mt-7 max-w-[560px] text-[19px] leading-[1.6] text-ink-soft">Inserisci il codice stampato sull'attestato o inquadra il QR con la fotocamera del telefono.</p>
             </div>
 
@@ -127,7 +127,7 @@
             @if ($code)
                 <div id="verifica-avviso" role="status" class="mx-auto mt-4 flex max-w-[600px] items-start gap-3 rounded-[16px] bg-cobalt-soft px-5 py-4 text-left text-[15px] leading-[1.5] text-ink-soft">
                     {{ $icon('info', 20, '1.75', 'mt-px flex-none text-cobalt-text') }}
-                    <p>La verifica online sarà attiva con il lancio della piattaforma. Il codice <span class="font-medium tracking-[0.04em] break-all text-ink tabular-nums">{{ $code }}</span> non può ancora essere controllato.</p>
+                    <p class="min-w-0">La verifica online sarà attiva con il lancio della piattaforma. Il codice <span class="inline-block max-w-full font-medium tracking-[0.04em] wrap-anywhere text-ink tabular-nums">{{ $code }}</span> non può ancora essere controllato.</p>
                 </div>
             @endif
 
